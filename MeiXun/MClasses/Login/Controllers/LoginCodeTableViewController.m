@@ -11,6 +11,8 @@
 @interface LoginCodeTableViewController ()
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *enterLabels;
 @property (weak, nonatomic) IBOutlet UITextField *enterField;
+@property (weak, nonatomic) IBOutlet UIView *againEnterView;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 @end
 
@@ -25,6 +27,21 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+#pragma mark - selectors
+//提交验证码
+- (IBAction)tapSubmitBtn:(id)sender {
+    HTLog(@"sumit ");
+}
+//发送验证码
+- (IBAction)tapCodeBtn:(id)sender {
+    HTLog(@"get code btn clicked ");
+}
+
+//再次发送验证码
+- (IBAction)tapReCodeBtn:(id)sender {
+    HTLog(@"reget code btn clicked ");
 }
 
 #pragma mark - setup UI 
