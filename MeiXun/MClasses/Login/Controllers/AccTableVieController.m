@@ -28,6 +28,7 @@
 
 #pragma mark - selectors
 - (IBAction)tapNextBtn:(id)sender {
+    [self.view endEditing:YES];
     [self performSegueWithIdentifier:@"codeSegue" sender:nil];
 }
 

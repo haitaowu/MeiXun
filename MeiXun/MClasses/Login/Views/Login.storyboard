@@ -190,7 +190,7 @@
             <objects>
                 <navigationController storyboardIdentifier="LoginNavController" automaticallyAdjustsScrollViewInsets="NO" id="Hyk-Lh-BIp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="5tG-5e-bir">
+                    <navigationBar key="navigationBar" hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5tG-5e-bir">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
