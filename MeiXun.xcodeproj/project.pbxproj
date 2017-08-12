@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		6B93A1E07252B2FC99D6F25B /* libPods-MeiXun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
-		BE63E6CB1F3DEF8D00E6CC48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6CA1F3DEF8D00E6CC48 /* ViewController.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
 		BE63E6D31F3DEF8D00E6CC48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6D11F3DEF8D00E6CC48 /* LaunchScreen.storyboard */; };
 		BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6EA1F3DF28F00E6CC48 /* AppDelegate.m */; };
 		BE63E6FA1F3DF30A00E6CC48 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6F91F3DF30A00E6CC48 /* Login.storyboard */; };
+		BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */; };
+		BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */; };
+		BEBD69951F3EE0270062AA36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEBD69971F3EE0270062AA36 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +24,6 @@
 		A360D35DA78737F4678F2B94 /* Pods-MeiXun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiXun.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeiXun/Pods-MeiXun.release.xcconfig"; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BE63E6C91F3DEF8D00E6CC48 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BE63E6CA1F3DEF8D00E6CC48 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE63E6D21F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +31,18 @@
 		BE63E6E91F3DF28F00E6CC48 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BE63E6EA1F3DF28F00E6CC48 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BE63E6F91F3DF30A00E6CC48 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		BE63E6FB1F3DFB0800E6CC48 /* AccTableVieController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccTableVieController.h; sourceTree = "<group>"; };
+		BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccTableVieController.m; sourceTree = "<group>"; };
+		BEBD698A1F3ED9610062AA36 /* LoginCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCodeTableViewController.h; sourceTree = "<group>"; };
+		BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCodeTableViewController.m; sourceTree = "<group>"; };
+		BEBD698E1F3EDC000062AA36 /* MColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MColor.h; sourceTree = "<group>"; };
+		BEBD698F1F3EDC2C0062AA36 /* MXPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXPrefixHeader.pch; sourceTree = "<group>"; };
+		BEBD69901F3EDD510062AA36 /* MConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MConstant.h; sourceTree = "<group>"; };
+		BEBD69911F3EDFA60062AA36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		BEBD69921F3EDFA70062AA36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		BEBD69961F3EE0270062AA36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEBD69981F3EE02B0062AA36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEBD69991F3EE02C0062AA36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeiXun.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,13 +98,13 @@
 			children = (
 				BE63E6EC1F3DF2F000E6CC48 /* MClasses */,
 				BE63E6E71F3DF28F00E6CC48 /* MBases */,
-				BE63E6C91F3DEF8D00E6CC48 /* ViewController.h */,
-				BE63E6CA1F3DEF8D00E6CC48 /* ViewController.m */,
 				BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */,
 				BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */,
 				BE63E6D11F3DEF8D00E6CC48 /* LaunchScreen.storyboard */,
 				BE63E6D41F3DEF8D00E6CC48 /* Info.plist */,
 				BE63E6C31F3DEF8D00E6CC48 /* Supporting Files */,
+				BEBD698F1F3EDC2C0062AA36 /* MXPrefixHeader.pch */,
+				BEBD69971F3EE0270062AA36 /* InfoPlist.strings */,
 			);
 			path = MeiXun;
 			sourceTree = "<group>";
@@ -108,6 +120,7 @@
 		BE63E6E71F3DF28F00E6CC48 /* MBases */ = {
 			isa = PBXGroup;
 			children = (
+				BEBD698D1F3EDBE50062AA36 /* Util */,
 				BE63E6E81F3DF28F00E6CC48 /* Launch */,
 			);
 			path = MBases;
@@ -168,6 +181,10 @@
 		BE63E6F11F3DF2F000E6CC48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE63E6FB1F3DFB0800E6CC48 /* AccTableVieController.h */,
+				BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */,
+				BEBD698A1F3ED9610062AA36 /* LoginCodeTableViewController.h */,
+				BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,6 +243,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BEBD698D1F3EDBE50062AA36 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				BEBD698E1F3EDC000062AA36 /* MColor.h */,
+				BEBD69901F3EDD510062AA36 /* MConstant.h */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -272,6 +298,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = BE63E6B71F3DEF8D00E6CC48;
 			productRefGroup = BE63E6C11F3DEF8D00E6CC48 /* Products */;
@@ -292,6 +319,7 @@
 				BE63E6D31F3DEF8D00E6CC48 /* LaunchScreen.storyboard in Resources */,
 				BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */,
 				BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */,
+				BEBD69951F3EE0270062AA36 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +378,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE63E6CB1F3DEF8D00E6CC48 /* ViewController.m in Sources */,
+				BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */,
+				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */,
 			);
@@ -363,6 +392,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE63E6CD1F3DEF8D00E6CC48 /* Base */,
+				BEBD69911F3EDFA60062AA36 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -371,8 +401,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE63E6D21F3DEF8D00E6CC48 /* Base */,
+				BEBD69921F3EDFA70062AA36 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BEBD69971F3EE0270062AA36 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEBD69961F3EE0270062AA36 /* en */,
+				BEBD69981F3EE02B0062AA36 /* Base */,
+				BEBD69991F3EE02C0062AA36 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -382,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -430,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -474,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UY8D3JBH69;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MeiXun/MXPrefixHeader.pch";
 				INFOPLIST_FILE = MeiXun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -488,6 +532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UY8D3JBH69;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MeiXun/MXPrefixHeader.pch";
 				INFOPLIST_FILE = MeiXun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

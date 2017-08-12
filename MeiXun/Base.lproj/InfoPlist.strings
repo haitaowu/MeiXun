@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  MeiXun
+
+  Created by taotao on 2017/8/12.
+  Copyright © 2017年 taotao. All rights reserved.
+*/
+// Localizable App Name是App在英语环境环境下显示的名称
+CFBundleDisplayName = "MeiXun";

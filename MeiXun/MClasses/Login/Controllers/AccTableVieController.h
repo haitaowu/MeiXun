@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AccTableVieController.h
 //  MeiXun
 //
 //  Created by taotao on 2017/8/11.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AccTableVieController : UITableViewController
 
 @end
-
