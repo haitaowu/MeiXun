@@ -34,18 +34,7 @@
 }
 
 
-//- (void)varsSet:(NSString*)strVal
-//{
-//    unsigned int count = 0;
-//    Ivar *vars = class_copyIvarList([self class], &count);
-//    for (unsigned int idx = 0; idx < count; idx ++) {
-//        Ivar var = vars[idx];
-//        NSString *valueStr = [NSString stringWithFormat:@"%d-%@",idx,strVal];
-//        object_setIvar(self, var, valueStr);
-//    }
-//}
-
-
+#pragma mark - private methods
 - (id)varValueFor:(Ivar)var
 {
     id varValue = object_getIvar(self, var);
