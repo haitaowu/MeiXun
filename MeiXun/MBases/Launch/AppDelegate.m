@@ -29,6 +29,7 @@
     //未选中字体颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:MNavBarColor} forState:UIControlStateSelected];
     
+    [[UINavigationBar appearance] setTintColor:MNavBarColor];
     return YES;
 }
 
