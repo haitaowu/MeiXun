@@ -19,22 +19,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
-    self.window.rootViewController = rootController;
-    [self setupNavigationBarUI];
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+//    UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
+//    self.window.rootViewController = rootController;
+//    [self setupNavigationBarUI];
+//    [self.window makeKeyAndVisible];
     
-    MDataUtil *dataUtil = [MDataUtil shareInstance];
-    if (dataUtil.accModel == nil) {
-        MAccModel *acc = [[MAccModel alloc] init];
-        acc.name = @"haiHai";
-        acc.phone = @"18206s35";
-        [dataUtil archiveAccModel:acc];
-    }else{
-        NSLog(@"name = %@ phone = %@",dataUtil.accModel.name,dataUtil.accModel.phone);
-    }
+    //未选中字体颜色
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:MNavBarColor} forState:UIControlStateSelected];
+    
     return YES;
 }
 
