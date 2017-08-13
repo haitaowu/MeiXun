@@ -460,7 +460,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="stx-2L-lg5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <state key="normal" title="确定">
+                                                    <state key="normal" title="退出登录">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
@@ -469,10 +469,17 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-kw-bKL" userLabel="coverBtn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="SfB-kw-bKL" secondAttribute="bottom" id="95P-KC-4qX"/>
+                                                <constraint firstItem="SfB-kw-bKL" firstAttribute="top" secondItem="nOd-Wt-zIv" secondAttribute="top" id="L6B-4y-Jf8"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Yv-Xc-f17" secondAttribute="trailing" constant="20" id="MzC-fV-mos"/>
+                                                <constraint firstItem="SfB-kw-bKL" firstAttribute="leading" secondItem="nOd-Wt-zIv" secondAttribute="leading" id="VyW-AI-YPs"/>
                                                 <constraint firstItem="8Yv-Xc-f17" firstAttribute="centerY" secondItem="nOd-Wt-zIv" secondAttribute="centerY" id="dQL-xo-5Md"/>
+                                                <constraint firstAttribute="trailing" secondItem="SfB-kw-bKL" secondAttribute="trailing" id="gPV-DT-4ex"/>
                                                 <constraint firstItem="8Yv-Xc-f17" firstAttribute="leading" secondItem="nOd-Wt-zIv" secondAttribute="leading" constant="20" id="zOQ-mm-sb0"/>
                                             </constraints>
                                         </tableViewCellContentView>
