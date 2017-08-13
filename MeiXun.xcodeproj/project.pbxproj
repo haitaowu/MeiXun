@@ -20,6 +20,7 @@
 		BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B7D1F3FF70F00BAA66E /* EnterPwdTableViewController.m */; };
 		BEE23B821F4006A800BAA66E /* MAccModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B811F4006A800BAA66E /* MAccModel.m */; };
 		BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B841F40087200BAA66E /* MDataUtil.m */; };
+		BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B871F404DF700BAA66E /* MeTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		BEE23B811F4006A800BAA66E /* MAccModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAccModel.m; sourceTree = "<group>"; };
 		BEE23B831F40087200BAA66E /* MDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDataUtil.h; sourceTree = "<group>"; };
 		BEE23B841F40087200BAA66E /* MDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDataUtil.m; sourceTree = "<group>"; };
+		BEE23B861F404DF700BAA66E /* MeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeTableViewController.h; sourceTree = "<group>"; };
+		BEE23B871F404DF700BAA66E /* MeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeTableViewController.m; sourceTree = "<group>"; };
 		D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeiXun.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,6 +224,8 @@
 		BE63E6F41F3DF2F000E6CC48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BEE23B861F404DF700BAA66E /* MeTableViewController.h */,
+				BEE23B871F404DF700BAA66E /* MeTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */,
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
+				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
 				BEE23B821F4006A800BAA66E /* MAccModel.m in Sources */,
 				BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
