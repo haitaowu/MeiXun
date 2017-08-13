@@ -43,6 +43,7 @@
 {
     self.pwdField.leftViewMode = UITextFieldViewModeAlways;
     self.pwdField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 40)];
+    
 }
 
 #pragma mark - UITableView --- Table view  delegate

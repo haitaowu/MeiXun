@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MDataUtil.h"
+
 
 @interface AppDelegate ()
 
@@ -23,6 +25,16 @@
     self.window.rootViewController = rootController;
     [self setupNavigationBarUI];
     [self.window makeKeyAndVisible];
+    
+    MDataUtil *dataUtil = [MDataUtil shareInstance];
+    if (dataUtil.accModel == nil) {
+        MAccModel *acc = [[MAccModel alloc] init];
+        acc.name = @"haiHai";
+        acc.phone = @"18206s35";
+        [dataUtil archiveAccModel:acc];
+    }else{
+        NSLog(@"name = %@ phone = %@",dataUtil.accModel.name,dataUtil.accModel.phone);
+    }
     return YES;
 }
 
