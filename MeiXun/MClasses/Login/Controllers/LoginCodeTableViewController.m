@@ -33,6 +33,7 @@
 //提交验证码
 - (IBAction)tapSubmitBtn:(id)sender {
     HTLog(@"sumit ");
+    [self performSegueWithIdentifier:@"pwdSegue" sender:nil];
 }
 //发送验证码
 - (IBAction)tapCodeBtn:(id)sender {
@@ -58,6 +59,7 @@
 - (IBAction)tapEnterBtn:(id)sender {
     [self.enterField becomeFirstResponder];
 }
+
 - (void)txtStrDidChange:(UITextField*)sender
 {
     NSString *txt = sender.text;

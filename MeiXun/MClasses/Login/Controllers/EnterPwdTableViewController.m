@@ -1,19 +1,20 @@
 //
-//  AccTableVieController.m
+//  EnterPwdTableViewController.m
 //  MeiXun
 //
 //  Created by taotao on 2017/8/11.
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
-#import "AccTableVieController.h"
+#import "EnterPwdTableViewController.h"
 
-@interface AccTableVieController ()<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *accField;
+@interface EnterPwdTableViewController ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *pwdField;
+@property (weak, nonatomic) IBOutlet UILabel *accLabel;
 
 @end
 
-@implementation AccTableVieController
+@implementation EnterPwdTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,15 +31,18 @@
 - (IBAction)tapNextBtn:(id)sender {
     [self.view endEditing:YES];
 //    [self performSegueWithIdentifier:@"codeSegue" sender:nil];
-    [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
+//    [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
 }
 
+- (IBAction)clickBackBtn:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - setup UI 
 - (void)setupAccViewUI
 {
-    self.accField.leftViewMode = UITextFieldViewModeAlways;
-    self.accField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 40)];
+    self.pwdField.leftViewMode = UITextFieldViewModeAlways;
+    self.pwdField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 40)];
 }
 
 #pragma mark - UITableView --- Table view  delegate
