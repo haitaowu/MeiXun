@@ -1325,7 +1325,7 @@
         <!--关于我们-->
         <scene sceneID="06D-YX-iXQ">
             <objects>
-                <viewController id="dON-6t-oWm" sceneMemberID="viewController">
+                <viewController id="dON-6t-oWm" customClass="AboutUsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4sx-Mx-cmk"/>
                         <viewControllerLayoutGuide type="bottom" id="nWm-96-E2B"/>
@@ -1383,6 +1383,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="关于我们" id="HCB-yg-ZX3"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="IgA-Rc-zwJ" id="D0f-2f-Q19"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgB-KY-Bxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
