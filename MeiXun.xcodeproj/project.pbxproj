@@ -15,6 +15,7 @@
 		BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6EA1F3DF28F00E6CC48 /* AppDelegate.m */; };
 		BE63E6FA1F3DF30A00E6CC48 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6F91F3DF30A00E6CC48 /* Login.storyboard */; };
 		BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */; };
+		BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */; };
 		BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */; };
 		BEBD69951F3EE0270062AA36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEBD69971F3EE0270062AA36 /* InfoPlist.strings */; };
 		BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B7D1F3FF70F00BAA66E /* EnterPwdTableViewController.m */; };
@@ -38,6 +39,8 @@
 		BE63E6F91F3DF30A00E6CC48 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BE63E6FB1F3DFB0800E6CC48 /* AccTableVieController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccTableVieController.h; sourceTree = "<group>"; };
 		BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccTableVieController.m; sourceTree = "<group>"; };
+		BE82B9671F40A040000DE786 /* ModifyPwdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPwdTableViewController.h; sourceTree = "<group>"; };
+		BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdTableViewController.m; sourceTree = "<group>"; };
 		BEBD698A1F3ED9610062AA36 /* LoginCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCodeTableViewController.h; sourceTree = "<group>"; };
 		BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCodeTableViewController.m; sourceTree = "<group>"; };
 		BEBD698E1F3EDC000062AA36 /* MColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MColor.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				BEE23B871F404DF700BAA66E /* MeTableViewController.m */,
 				BEE23B891F408C0A00BAA66E /* AccSettingTableViewController.h */,
 				BEE23B8A1F408C0A00BAA66E /* AccSettingTableViewController.m */,
+				BE82B9671F40A040000DE786 /* ModifyPwdTableViewController.h */,
+				BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */,
 				BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */,
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
+				BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
 				BEE23B821F4006A800BAA66E /* MAccModel.m in Sources */,
