@@ -1,18 +1,18 @@
 //
-//  ModifyPwdTableViewController.m
+//  ChagneAccTableViewController.m
 //  MeiXun
 //
 //  Created by taotao on 2017/8/13.
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
-#import "ModifyPwdTableViewController.h"
+#import "ChagneAccTableViewController.h"
 
-@interface ModifyPwdTableViewController ()
+@interface ChagneAccTableViewController ()
 
 @end
 
-@implementation ModifyPwdTableViewController
+@implementation ChagneAccTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -25,6 +25,9 @@
 		BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B8A1F408C0A00BAA66E /* AccSettingTableViewController.m */; };
 		BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */; };
 		BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4D1F41DC5900469DB3 /* AboutUsViewController.m */; };
+		BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC501F41E04500469DB3 /* FeedbackTableViewController.m */; };
+		BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC531F41E11300469DB3 /* BindingAccTableViewController.m */; };
+		BEF9FC571F41E15700469DB3 /* ChagneAccTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC561F41E15700469DB3 /* ChagneAccTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +70,12 @@
 		BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
 		BEF9FC4C1F41DC5900469DB3 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		BEF9FC4D1F41DC5900469DB3 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		BEF9FC4F1F41E04500469DB3 /* FeedbackTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackTableViewController.h; sourceTree = "<group>"; };
+		BEF9FC501F41E04500469DB3 /* FeedbackTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackTableViewController.m; sourceTree = "<group>"; };
+		BEF9FC521F41E11300469DB3 /* BindingAccTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindingAccTableViewController.h; sourceTree = "<group>"; };
+		BEF9FC531F41E11300469DB3 /* BindingAccTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindingAccTableViewController.m; sourceTree = "<group>"; };
+		BEF9FC551F41E15700469DB3 /* ChagneAccTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChagneAccTableViewController.h; sourceTree = "<group>"; };
+		BEF9FC561F41E15700469DB3 /* ChagneAccTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChagneAccTableViewController.m; sourceTree = "<group>"; };
 		D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeiXun.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -246,6 +255,12 @@
 				BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */,
 				BEF9FC4C1F41DC5900469DB3 /* AboutUsViewController.h */,
 				BEF9FC4D1F41DC5900469DB3 /* AboutUsViewController.m */,
+				BEF9FC4F1F41E04500469DB3 /* FeedbackTableViewController.h */,
+				BEF9FC501F41E04500469DB3 /* FeedbackTableViewController.m */,
+				BEF9FC521F41E11300469DB3 /* BindingAccTableViewController.h */,
+				BEF9FC531F41E11300469DB3 /* BindingAccTableViewController.m */,
+				BEF9FC551F41E15700469DB3 /* ChagneAccTableViewController.h */,
+				BEF9FC561F41E15700469DB3 /* ChagneAccTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -433,10 +448,13 @@
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
+				BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */,
 				BEE23B821F4006A800BAA66E /* MAccModel.m in Sources */,
 				BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */,
 				BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */,
+				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
+				BEF9FC571F41E15700469DB3 /* ChagneAccTableViewController.m in Sources */,
 				BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

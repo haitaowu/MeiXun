@@ -1,33 +1,32 @@
 //
-//  ModifyPwdTableViewController.m
+//  FeedbackTableViewController.m
 //  MeiXun
 //
 //  Created by taotao on 2017/8/13.
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
-#import "ModifyPwdTableViewController.h"
+#import "FeedbackTableViewController.h"
 
-@interface ModifyPwdTableViewController ()
+@interface FeedbackTableViewController ()
 
 @end
 
-@implementation ModifyPwdTableViewController
-
+@implementation FeedbackTableViewController
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 20;
-    }else{
-        return 20;
-    }
+    return 0.001;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

@@ -1,18 +1,18 @@
 //
-//  ModifyPwdTableViewController.m
+//  BindingAccTableViewController.m
 //  MeiXun
 //
 //  Created by taotao on 2017/8/13.
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
-#import "ModifyPwdTableViewController.h"
+#import "BindingAccTableViewController.h"
 
-@interface ModifyPwdTableViewController ()
+@interface BindingAccTableViewController ()
 
 @end
 
-@implementation ModifyPwdTableViewController
+@implementation BindingAccTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
