@@ -10,6 +10,11 @@
 		6B93A1E07252B2FC99D6F25B /* libPods-MeiXun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */; };
 		BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */; };
 		BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */; };
+		BE2A77C91F43351100FDD1BD /* MKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2A77C81F43351100FDD1BD /* MKeyboard.xib */; };
+		BE2A77CC1F43363400FDD1BD /* MKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77CB1F43363400FDD1BD /* MKeyboard.m */; };
+		BE2A77D01F433D6300FDD1BD /* MNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77CE1F433D6300FDD1BD /* MNumbers.m */; };
+		BE2A77D11F433D6300FDD1BD /* MNumbers.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2A77CF1F433D6300FDD1BD /* MNumbers.xib */; };
+		BE2A77D51F433E0400FDD1BD /* UIView+PositionExt.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77D41F433E0400FDD1BD /* UIView+PositionExt.m */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
@@ -40,6 +45,14 @@
 		BE2A77C31F432B6A00FDD1BD /* MTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTabbarController.h; sourceTree = "<group>"; };
 		BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTabbarController.m; sourceTree = "<group>"; };
 		BE2A77C61F432BB900FDD1BD /* MKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKeys.h; sourceTree = "<group>"; };
+		BE2A77C81F43351100FDD1BD /* MKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKeyboard.xib; sourceTree = "<group>"; };
+		BE2A77CA1F43363400FDD1BD /* MKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKeyboard.h; sourceTree = "<group>"; };
+		BE2A77CB1F43363400FDD1BD /* MKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKeyboard.m; sourceTree = "<group>"; };
+		BE2A77CD1F433D6300FDD1BD /* MNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNumbers.h; sourceTree = "<group>"; };
+		BE2A77CE1F433D6300FDD1BD /* MNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNumbers.m; sourceTree = "<group>"; };
+		BE2A77CF1F433D6300FDD1BD /* MNumbers.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MNumbers.xib; sourceTree = "<group>"; };
+		BE2A77D31F433E0400FDD1BD /* UIView+PositionExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PositionExt.h"; sourceTree = "<group>"; };
+		BE2A77D41F433E0400FDD1BD /* UIView+PositionExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PositionExt.m"; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,6 +149,7 @@
 		BE2A77BE1F432AB400FDD1BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE2A77C71F43345C00FDD1BD /* keyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,6 +161,28 @@
 				BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BE2A77C71F43345C00FDD1BD /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				BE2A77C81F43351100FDD1BD /* MKeyboard.xib */,
+				BE2A77CA1F43363400FDD1BD /* MKeyboard.h */,
+				BE2A77CB1F43363400FDD1BD /* MKeyboard.m */,
+				BE2A77CD1F433D6300FDD1BD /* MNumbers.h */,
+				BE2A77CE1F433D6300FDD1BD /* MNumbers.m */,
+				BE2A77CF1F433D6300FDD1BD /* MNumbers.xib */,
+			);
+			path = keyboard;
+			sourceTree = "<group>";
+		};
+		BE2A77D21F433DFA00FDD1BD /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BE2A77D31F433E0400FDD1BD /* UIView+PositionExt.h */,
+				BE2A77D41F433E0400FDD1BD /* UIView+PositionExt.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		BE63E6B71F3DEF8D00E6CC48 = {
@@ -194,6 +230,7 @@
 		BE63E6E71F3DF28F00E6CC48 /* MBases */ = {
 			isa = PBXGroup;
 			children = (
+				BE2A77D21F433DFA00FDD1BD /* Category */,
 				BE2A77C21F432B3E00FDD1BD /* Controllers */,
 				BEBD698D1F3EDBE50062AA36 /* Util */,
 				BE63E6E81F3DF28F00E6CC48 /* Launch */,
@@ -398,9 +435,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2A77C91F43351100FDD1BD /* MKeyboard.xib in Resources */,
 				BE63E6FA1F3DF30A00E6CC48 /* Login.storyboard in Resources */,
 				BE63E6D31F3DEF8D00E6CC48 /* LaunchScreen.storyboard in Resources */,
 				BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */,
+				BE2A77D11F433D6300FDD1BD /* MNumbers.xib in Resources */,
 				BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */,
 				BEBD69951F3EE0270062AA36 /* InfoPlist.strings in Resources */,
 			);
@@ -469,9 +508,12 @@
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
+				BE2A77CC1F43363400FDD1BD /* MKeyboard.m in Sources */,
 				BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */,
 				BEE23B821F4006A800BAA66E /* MAccModel.m in Sources */,
+				BE2A77D01F433D6300FDD1BD /* MNumbers.m in Sources */,
 				BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */,
+				BE2A77D51F433E0400FDD1BD /* UIView+PositionExt.m in Sources */,
 				BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */,
 				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,

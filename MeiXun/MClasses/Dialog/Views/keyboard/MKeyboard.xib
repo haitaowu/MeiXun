@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MKeyboard">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ul-y4-Yef" userLabel="coverBtn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="tapCoverBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="8VW-M9-DwU"/>
+                    </connections>
+                </button>
+                <tabBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-hR-8W1">
+                    <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem title="拨号" image="tabbar_dialog_unSelect" selectedImage="tabbar_dialog" id="qvW-sS-oip"/>
+                        <tabBarItem title="联系人" image="tabbar_contact_unselect" selectedImage="tabbar_contact" id="Mz2-dC-fik"/>
+                        <tabBarItem title="我" image="tabbar_me_unselect" selectedImage="tabbar_me" id="W0w-fd-Ddd"/>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="cvg-2E-eNj"/>
+                    </connections>
+                </tabBar>
+            </subviews>
+            <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97647058819999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1Ul-y4-Yef" secondAttribute="bottom" id="0zR-8h-wI3"/>
+                <constraint firstItem="1Ul-y4-Yef" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Km-BH-SH8"/>
+                <constraint firstAttribute="trailing" secondItem="1Ul-y4-Yef" secondAttribute="trailing" id="UwW-QN-eED"/>
+                <constraint firstItem="1Ul-y4-Yef" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qri-AY-Ged"/>
+            </constraints>
+            <connections>
+                <outlet property="mTabbar" destination="jUt-hR-8W1" id="ef5-n4-tjE"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="tabbar_contact" width="30" height="30"/>
+        <image name="tabbar_contact_unselect" width="30" height="30"/>
+        <image name="tabbar_dialog" width="30" height="30"/>
+        <image name="tabbar_dialog_unSelect" width="30" height="30"/>
+        <image name="tabbar_me" width="30" height="30"/>
+        <image name="tabbar_me_unselect" width="30" height="30"/>
+    </resources>
+</document>

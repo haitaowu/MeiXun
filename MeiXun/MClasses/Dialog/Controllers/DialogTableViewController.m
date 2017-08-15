@@ -7,6 +7,7 @@
 //
 
 #import "DialogTableViewController.h"
+#import "MKeyboard.h"
 
 @interface DialogTableViewController ()
 
@@ -35,12 +36,14 @@
 - (void)setupBase
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarSelecteItem) name:kFirstTabbarItemSelectedNotification object:nil];
+    MKeyboard *keyboard = [MKeyboard showMKeyboard];
 }
 
 #pragma mark - selectors
 - (void)tabbarSelecteItem
 {
     HTLog(@"select dialog item tabbar ");
+    MKeyboard *keyboard = [MKeyboard showMKeyboard];
 }
 
 @end
