@@ -599,7 +599,7 @@
                                                     <rect key="frame" x="65" y="12" width="294" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLinePixel" translatesAutoresizingMaskIntoConstraints="NO" id="9GO-Y8-kVu">
                                                     <rect key="frame" x="0.0" y="43.5" width="375" height="0.5"/>
@@ -897,7 +897,7 @@
                                                     <rect key="frame" x="102" y="12" width="257" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLinePixel" translatesAutoresizingMaskIntoConstraints="NO" id="CH9-Jj-d1O">
                                                     <rect key="frame" x="0.0" y="43" width="375" height="0.5"/>
@@ -938,7 +938,7 @@
                                                     <rect key="frame" x="102" y="12" width="257" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeparatorLinePixel" translatesAutoresizingMaskIntoConstraints="NO" id="DYX-mL-5jl">
                                                     <rect key="frame" x="0.0" y="43" width="375" height="0.5"/>
@@ -998,7 +998,7 @@
                                                     <rect key="frame" x="102" y="12" width="257" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
