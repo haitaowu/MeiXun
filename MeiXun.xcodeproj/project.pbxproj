@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B93A1E07252B2FC99D6F25B /* libPods-MeiXun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */; };
+		BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */; };
+		BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
@@ -33,6 +35,11 @@
 /* Begin PBXFileReference section */
 		4984CF8DB189A6F5E092B49C /* Pods-MeiXun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiXun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeiXun/Pods-MeiXun.debug.xcconfig"; sourceTree = "<group>"; };
 		A360D35DA78737F4678F2B94 /* Pods-MeiXun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiXun.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeiXun/Pods-MeiXun.release.xcconfig"; sourceTree = "<group>"; };
+		BE2A77BF1F432AE900FDD1BD /* DialogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTableViewController.h; sourceTree = "<group>"; };
+		BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTableViewController.m; sourceTree = "<group>"; };
+		BE2A77C31F432B6A00FDD1BD /* MTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTabbarController.h; sourceTree = "<group>"; };
+		BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTabbarController.m; sourceTree = "<group>"; };
+		BE2A77C61F432BB900FDD1BD /* MKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKeys.h; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,6 +115,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BE2A77BC1F432AB400FDD1BD /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				BE2A77BD1F432AB400FDD1BD /* Controllers */,
+				BE2A77BE1F432AB400FDD1BD /* Views */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
+		BE2A77BD1F432AB400FDD1BD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE2A77BF1F432AE900FDD1BD /* DialogTableViewController.h */,
+				BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BE2A77BE1F432AB400FDD1BD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BE2A77C21F432B3E00FDD1BD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE2A77C31F432B6A00FDD1BD /* MTabbarController.h */,
+				BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		BE63E6B71F3DEF8D00E6CC48 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +194,7 @@
 		BE63E6E71F3DF28F00E6CC48 /* MBases */ = {
 			isa = PBXGroup;
 			children = (
+				BE2A77C21F432B3E00FDD1BD /* Controllers */,
 				BEBD698D1F3EDBE50062AA36 /* Util */,
 				BE63E6E81F3DF28F00E6CC48 /* Launch */,
 			);
@@ -171,10 +213,10 @@
 		BE63E6EC1F3DF2F000E6CC48 /* MClasses */ = {
 			isa = PBXGroup;
 			children = (
+				BE2A77BC1F432AB400FDD1BD /* Dialog */,
 				BE63E6ED1F3DF2F000E6CC48 /* Contacts */,
 				BE63E6F01F3DF2F000E6CC48 /* Login */,
 				BE63E6F31F3DF2F000E6CC48 /* Me */,
-				BE63E6F61F3DF2F000E6CC48 /* Record */,
 			);
 			path = MClasses;
 			sourceTree = "<group>";
@@ -272,32 +314,10 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BE63E6F61F3DF2F000E6CC48 /* Record */ = {
-			isa = PBXGroup;
-			children = (
-				BE63E6F71F3DF2F000E6CC48 /* Controllers */,
-				BE63E6F81F3DF2F000E6CC48 /* Views */,
-			);
-			path = Record;
-			sourceTree = "<group>";
-		};
-		BE63E6F71F3DF2F000E6CC48 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		BE63E6F81F3DF2F000E6CC48 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		BEBD698D1F3EDBE50062AA36 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				BE2A77C61F432BB900FDD1BD /* MKeys.h */,
 				BEBD698E1F3EDC000062AA36 /* MColor.h */,
 				BEBD69901F3EDD510062AA36 /* MConstant.h */,
 				BEE23B831F40087200BAA66E /* MDataUtil.h */,
@@ -445,6 +465,7 @@
 				BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */,
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
 				BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */,
+				BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */,
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
@@ -454,6 +475,7 @@
 				BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */,
 				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
+				BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */,
 				BEF9FC571F41E15700469DB3 /* ChagneAccTableViewController.m in Sources */,
 				BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */,
 			);

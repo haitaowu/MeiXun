@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tabbar Controller-->
         <scene sceneID="FD2-Eg-l9K">
             <objects>
-                <tabBarController id="mIr-de-aTn" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MTabbarController" id="mIr-de-aTn" customClass="MTabbarController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fY8-jc-Wwq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -32,7 +32,7 @@
         <!--拨号-->
         <scene sceneID="6B6-xV-5qD">
             <objects>
-                <tableViewController id="kzY-hi-glg" sceneMemberID="viewController">
+                <tableViewController id="kzY-hi-glg" customClass="DialogTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="j7P-G2-sRV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
