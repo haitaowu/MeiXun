@@ -63,7 +63,7 @@
     }];
 }
 
-- (void)disappearViewNumbersView
+- (void)disappearNumbersView
 {
     CGFloat y = SCREEN_HEIGHT - 49;
     [UIView animateWithDuration:0.4 animations:^{
@@ -75,7 +75,7 @@
 
 #pragma mark - selectors
 - (IBAction)tapCoverBtn:(id)sender {
-    [self disappearViewNumbersView];
+    [self disappearNumbersView];
 }
 
 #pragma mark - UITabBarDelegate
@@ -83,7 +83,9 @@
 {
     NSInteger idx = [tabBar.items indexOfObject:item];
     HTLog(@"didSelectItem index = %ld",idx);
-    [self disappearView];
+    if(idx == 0){
+        [self disappearNumbersView];
+    }
 }
 
 
