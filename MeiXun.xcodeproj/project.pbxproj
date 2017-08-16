@@ -30,6 +30,8 @@
 		BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B841F40087200BAA66E /* MDataUtil.m */; };
 		BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B871F404DF700BAA66E /* MeTableViewController.m */; };
 		BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B8A1F408C0A00BAA66E /* AccSettingTableViewController.m */; };
+		BEED88F51F43EE310068D948 /* MNetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED88F41F43EE310068D948 /* MNetworkUtil.m */; };
+		BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED88F81F44254B0068D948 /* LoginViewModel.m */; };
 		BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */; };
 		BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4D1F41DC5900469DB3 /* AboutUsViewController.m */; };
 		BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC501F41E04500469DB3 /* FeedbackTableViewController.m */; };
@@ -86,6 +88,10 @@
 		BEE23B871F404DF700BAA66E /* MeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeTableViewController.m; sourceTree = "<group>"; };
 		BEE23B891F408C0A00BAA66E /* AccSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccSettingTableViewController.h; sourceTree = "<group>"; };
 		BEE23B8A1F408C0A00BAA66E /* AccSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccSettingTableViewController.m; sourceTree = "<group>"; };
+		BEED88F31F43EE310068D948 /* MNetworkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNetworkUtil.h; sourceTree = "<group>"; };
+		BEED88F41F43EE310068D948 /* MNetworkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNetworkUtil.m; sourceTree = "<group>"; };
+		BEED88F71F44254B0068D948 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		BEED88F81F44254B0068D948 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		BEF9FC491F41D8ED00469DB3 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
 		BEF9FC4C1F41DC5900469DB3 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
@@ -206,8 +212,8 @@
 		BE63E6C21F3DEF8D00E6CC48 /* MeiXun */ = {
 			isa = PBXGroup;
 			children = (
-				BE63E6EC1F3DF2F000E6CC48 /* MClasses */,
 				BE63E6E71F3DF28F00E6CC48 /* MBases */,
+				BE63E6EC1F3DF2F000E6CC48 /* MClasses */,
 				BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */,
 				BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */,
 				BE63E6D11F3DEF8D00E6CC48 /* LaunchScreen.storyboard */,
@@ -230,6 +236,7 @@
 		BE63E6E71F3DF28F00E6CC48 /* MBases */ = {
 			isa = PBXGroup;
 			children = (
+				BEED88F21F43EE160068D948 /* Network */,
 				BE2A77D21F433DFA00FDD1BD /* Category */,
 				BE2A77C21F432B3E00FDD1BD /* Controllers */,
 				BEBD698D1F3EDBE50062AA36 /* Util */,
@@ -284,6 +291,7 @@
 		BE63E6F01F3DF2F000E6CC48 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BEED88F61F4425400068D948 /* ViewModels */,
 				BEE23B7F1F40069500BAA66E /* Model */,
 				BE63E6F11F3DF2F000E6CC48 /* Controllers */,
 				BE63E6F21F3DF2F000E6CC48 /* Views */,
@@ -370,6 +378,24 @@
 				BEE23B811F4006A800BAA66E /* MAccModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BEED88F21F43EE160068D948 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BEED88F31F43EE310068D948 /* MNetworkUtil.h */,
+				BEED88F41F43EE310068D948 /* MNetworkUtil.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BEED88F61F4425400068D948 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BEED88F71F44254B0068D948 /* LoginViewModel.h */,
+				BEED88F81F44254B0068D948 /* LoginViewModel.m */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +528,7 @@
 			files = (
 				BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */,
 				BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */,
+				BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */,
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
 				BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */,
 				BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */,
@@ -519,6 +546,7 @@
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
 				BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */,
 				BEF9FC571F41E15700469DB3 /* ChagneAccTableViewController.m in Sources */,
+				BEED88F51F43EE310068D948 /* MNetworkUtil.m in Sources */,
 				BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

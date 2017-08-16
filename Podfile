@@ -7,5 +7,5 @@ target 'MeiXun' do
 
   # Pods for MeiXun
 	pod 'AFNetworking', '~> 3.1.0'
-
+    pod 'SVProgressHUD', '~> 2.1.2'
 end
