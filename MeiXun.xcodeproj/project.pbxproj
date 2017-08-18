@@ -23,6 +23,9 @@
 		BE39516B1F46BE0300872662 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = BE3951651F46BE0300872662 /* unicode_to_hanyu_pinyin.txt */; };
 		BE39516F1F46C00A00872662 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39516E1F46C00A00872662 /* PersonModel.m */; };
 		BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951711F46C22E00872662 /* NSString+Extension.m */; };
+		BE3951B01F46D72900872662 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951AF1F46D72900872662 /* ContactsTableViewController.m */; };
+		BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B21F46D7CB00872662 /* ContactsCell.m */; };
+		BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3951B31F46D7CB00872662 /* ContactsCell.xib */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
@@ -79,6 +82,11 @@
 		BE39516E1F46C00A00872662 /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
 		BE3951701F46C22E00872662 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		BE3951711F46C22E00872662 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		BE3951AE1F46D72900872662 /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		BE3951AF1F46D72900872662 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
+		BE3951B11F46D7CB00872662 /* ContactsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsCell.h; sourceTree = "<group>"; };
+		BE3951B21F46D7CB00872662 /* ContactsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsCell.m; sourceTree = "<group>"; };
+		BE3951B31F46D7CB00872662 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -358,6 +366,8 @@
 		BE63E6EE1F3DF2F000E6CC48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE3951AE1F46D72900872662 /* ContactsTableViewController.h */,
+				BE3951AF1F46D72900872662 /* ContactsTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -365,6 +375,9 @@
 		BE63E6EF1F3DF2F000E6CC48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE3951B11F46D7CB00872662 /* ContactsCell.h */,
+				BE3951B21F46D7CB00872662 /* ContactsCell.m */,
+				BE3951B31F46D7CB00872662 /* ContactsCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,6 +561,7 @@
 				BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */,
 				BE39516B1F46BE0300872662 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				BE2A77D11F433D6300FDD1BD /* MNumbers.xib in Resources */,
+				BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */,
 				BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */,
 				BEBD69951F3EE0270062AA36 /* InfoPlist.strings in Resources */,
 			);
@@ -610,6 +624,7 @@
 			files = (
 				BE39516A1F46BE0300872662 /* PinyinHelper.m in Sources */,
 				BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */,
+				BE3951B01F46D72900872662 /* ContactsTableViewController.m in Sources */,
 				BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */,
 				BE3951661F46BE0300872662 /* ChineseToPinyinResource.m in Sources */,
 				BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */,
@@ -621,6 +636,7 @@
 				BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
+				BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */,
 				BE3951691F46BE0300872662 /* PinyinFormatter.m in Sources */,
 				BE2A77CC1F43363400FDD1BD /* MKeyboard.m in Sources */,
 				BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */,

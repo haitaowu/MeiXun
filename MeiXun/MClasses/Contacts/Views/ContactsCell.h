@@ -1,0 +1,15 @@
+//
+//  ContactsCell.h
+//  MeiXun
+//
+//  Created by taotao on 2017/8/18.
+//  Copyright © 2017年 taotao. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+@class PersonModel;
+
+@interface ContactsCell : UITableViewCell
+@property (nonatomic,strong)PersonModel* personModel;
+
+@end

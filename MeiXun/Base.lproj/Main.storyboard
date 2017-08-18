@@ -61,7 +61,7 @@
         <!--联系人-->
         <scene sceneID="4Vb-ep-jYT">
             <objects>
-                <tableViewController id="YQ1-Sm-e7x" sceneMemberID="viewController">
+                <tableViewController id="YQ1-Sm-e7x" customClass="ContactsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vu1-aX-Jw0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

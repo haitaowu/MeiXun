@@ -142,8 +142,6 @@ static MDataUtil *instance = nil;
             [self.contacts addObject:sectionContacts];
         }
     }
-    HTLog(@"thread = %@",[NSThread currentThread]);
-    HTLog(@"sections count = %ld contacts count = %ld",[_sections count],[_contacts count]);
 }
 
 
