@@ -21,6 +21,8 @@
 		BE3951691F46BE0300872662 /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951611F46BE0300872662 /* PinyinFormatter.m */; };
 		BE39516A1F46BE0300872662 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951631F46BE0300872662 /* PinyinHelper.m */; };
 		BE39516B1F46BE0300872662 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = BE3951651F46BE0300872662 /* unicode_to_hanyu_pinyin.txt */; };
+		BE39516F1F46C00A00872662 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39516E1F46C00A00872662 /* PersonModel.m */; };
+		BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951711F46C22E00872662 /* NSString+Extension.m */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
@@ -73,6 +75,10 @@
 		BE3951621F46BE0300872662 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
 		BE3951631F46BE0300872662 /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
 		BE3951651F46BE0300872662 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		BE39516D1F46C00A00872662 /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
+		BE39516E1F46C00A00872662 /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
+		BE3951701F46C22E00872662 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		BE3951711F46C22E00872662 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -205,6 +211,8 @@
 			children = (
 				BE2A77D31F433E0400FDD1BD /* UIView+PositionExt.h */,
 				BE2A77D41F433E0400FDD1BD /* UIView+PositionExt.m */,
+				BE3951701F46C22E00872662 /* NSString+Extension.h */,
+				BE3951711F46C22E00872662 /* NSString+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -251,6 +259,15 @@
 				BE3951651F46BE0300872662 /* unicode_to_hanyu_pinyin.txt */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BE39516C1F46BFDB00872662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE39516D1F46C00A00872662 /* PersonModel.h */,
+				BE39516E1F46C00A00872662 /* PersonModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BE63E6B71F3DEF8D00E6CC48 = {
@@ -331,6 +348,7 @@
 		BE63E6ED1F3DF2F000E6CC48 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				BE39516C1F46BFDB00872662 /* Model */,
 				BE63E6EE1F3DF2F000E6CC48 /* Controllers */,
 				BE63E6EF1F3DF2F000E6CC48 /* Views */,
 			);
@@ -600,6 +618,7 @@
 				BE3951681F46BE0300872662 /* NSString+PinYin4Cocoa.m in Sources */,
 				BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */,
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
+				BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
 				BE3951691F46BE0300872662 /* PinyinFormatter.m in Sources */,
@@ -610,6 +629,7 @@
 				BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */,
 				BE2A77D51F433E0400FDD1BD /* UIView+PositionExt.m in Sources */,
 				BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */,
+				BE39516F1F46C00A00872662 /* PersonModel.m in Sources */,
 				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
 				BE3951671F46BE0300872662 /* HanyuPinyinOutputFormat.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
