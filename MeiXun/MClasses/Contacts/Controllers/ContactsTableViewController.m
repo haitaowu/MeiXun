@@ -56,6 +56,16 @@ static NSString *ContactsCellID = @"ContactsCellID";
 
 }
 
+- (nullable NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [[MDataUtil shareInstance] sections];
+}
+
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+//{
+//    
+//}
+
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,6 +86,11 @@ static NSString *ContactsCellID = @"ContactsCellID";
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 10;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+   return [[[MDataUtil shareInstance] sections] objectAtIndex:section];
 }
 
 

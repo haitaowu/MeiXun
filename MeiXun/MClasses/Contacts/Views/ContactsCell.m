@@ -31,6 +31,15 @@
     }else{
         self.nameLabel.text = personModel.name;
     }
+    
+    UIImage *img;
+    if (personModel.avatarData != nil) {
+        img = [UIImage imageWithData:personModel.avatarData];
+    }else{
+        
+        img = [UIImage imageNamed:@"icon_user_hd"];
+    }
+    self.avatarView.image = img;
 }
 
 
