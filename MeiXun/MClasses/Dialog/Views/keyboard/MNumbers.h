@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MNumbers : UIView
+typedef void(^PhoneChangeBlock)(NSString *phoneNum);
 
+@interface MNumbers : UIView
+@property (nonatomic,copy) PhoneChangeBlock phoneNumbBlock;
 + (MNumbers*)keyboardNumbers;
 @end

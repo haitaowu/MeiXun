@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MKeyboard : UIView
+typedef void(^SelectItem) (NSInteger itemIdx);
 
+@interface MKeyboard : UIView
+@property (nonatomic,copy) SelectItem selectItemBlock;
 + (MKeyboard*)showMKeyboard;
+- (void)showView;
 @end

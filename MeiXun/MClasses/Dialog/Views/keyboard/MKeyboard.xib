@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,7 +18,7 @@
             <subviews>
                 <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ul-y4-Yef" userLabel="coverBtn">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.53333336109999996" green="0.53333336109999996" blue="0.53333336109999996" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="tapCoverBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="8VW-M9-DwU"/>
                     </connections>
@@ -35,20 +36,32 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="cvg-2E-eNj"/>
                     </connections>
                 </tabBar>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVT-5g-07k" userLabel="dilogBtn">
+                    <rect key="frame" x="125" y="618" width="125" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="ac8-uC-PUn"/>
+                    </constraints>
+                    <state key="normal" image="btn_phone"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.97647058819999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="1Ul-y4-Yef" secondAttribute="bottom" id="0zR-8h-wI3"/>
                 <constraint firstItem="1Ul-y4-Yef" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3Km-BH-SH8"/>
+                <constraint firstItem="jVT-5g-07k" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:3" id="8kl-us-tUg"/>
+                <constraint firstAttribute="bottom" secondItem="jVT-5g-07k" secondAttribute="bottom" id="AVz-6G-7p3"/>
+                <constraint firstItem="jVT-5g-07k" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="PHK-ww-BRT"/>
                 <constraint firstAttribute="trailing" secondItem="1Ul-y4-Yef" secondAttribute="trailing" id="UwW-QN-eED"/>
                 <constraint firstItem="1Ul-y4-Yef" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qri-AY-Ged"/>
             </constraints>
             <connections>
+                <outlet property="dilogBtn" destination="jVT-5g-07k" id="n59-F9-MKX"/>
                 <outlet property="mTabbar" destination="jUt-hR-8W1" id="ef5-n4-tjE"/>
             </connections>
         </view>
     </objects>
     <resources>
+        <image name="btn_phone" width="60" height="60"/>
         <image name="tabbar_contact" width="30" height="30"/>
         <image name="tabbar_contact_unselect" width="30" height="30"/>
         <image name="tabbar_dialog" width="30" height="30"/>

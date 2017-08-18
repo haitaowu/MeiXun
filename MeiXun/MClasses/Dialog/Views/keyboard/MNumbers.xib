@@ -13,70 +13,106 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MNumbers">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAQ-Pd-3sO">
-                    <rect key="frame" x="0.0" y="44" width="375" height="356"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="256"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v34-xV-8Zm" userLabel="1">
-                            <rect key="frame" x="47" y="-8" width="80" height="80"/>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v34-xV-8Zm" userLabel="1">
+                            <rect key="frame" x="17" y="8" width="100" height="60"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="7fW-2H-dPx"/>
-                                <constraint firstAttribute="width" secondItem="v34-xV-8Zm" secondAttribute="height" multiplier="1:1" id="dUP-bg-HyM"/>
+                                <constraint firstAttribute="width" constant="100" id="7fW-2H-dPx"/>
+                                <constraint firstAttribute="width" secondItem="v34-xV-8Zm" secondAttribute="height" multiplier="2:1.2" id="dUP-bg-HyM"/>
                             </constraints>
                             <state key="normal" image="1"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="zWQ-Pr-fZj"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8a-ti-8j5" userLabel="2">
-                            <rect key="frame" x="147" y="-8" width="80" height="80"/>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8a-ti-8j5" userLabel="2">
+                            <rect key="frame" x="137" y="8" width="100" height="60"/>
                             <state key="normal" image="ABC"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ai3-wd-t8U"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EY8-Nx-hXk" userLabel="3">
-                            <rect key="frame" x="247" y="-8" width="80" height="80"/>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EY8-Nx-hXk" userLabel="3">
+                            <rect key="frame" x="257" y="8" width="100" height="60"/>
                             <state key="normal" image="DEF"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="cmM-iY-jqy"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMx-oo-Doq" userLabel="4">
-                            <rect key="frame" x="47" y="88" width="80" height="80"/>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMx-oo-Doq" userLabel="4">
+                            <rect key="frame" x="17" y="68" width="100" height="60"/>
                             <state key="normal" image="GHI"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="l1O-EU-2lg"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON7-pK-wvm" userLabel="5">
-                            <rect key="frame" x="147" y="88" width="80" height="80"/>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON7-pK-wvm" userLabel="5">
+                            <rect key="frame" x="137" y="68" width="100" height="60"/>
                             <state key="normal" image="JKL"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="BMN-14-ydm"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dre-Bu-6f3" userLabel="6">
-                            <rect key="frame" x="247" y="88" width="80" height="80"/>
+                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dre-Bu-6f3" userLabel="6">
+                            <rect key="frame" x="257" y="68" width="100" height="60"/>
                             <state key="normal" image="MNO"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="1mN-xM-egf"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRE-b0-EYm" userLabel="separatorLine">
-                            <rect key="frame" x="8" y="178" width="359" height="0.5"/>
+                            <rect key="frame" x="8" y="128" width="359" height="0.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="oB1-pz-O0m"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYd-E8-cn2" userLabel="7">
-                            <rect key="frame" x="47" y="188.5" width="80" height="80"/>
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYd-E8-cn2" userLabel="7">
+                            <rect key="frame" x="17" y="128.5" width="100" height="60"/>
                             <state key="normal" image="PQRS"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="RYF-8w-jy5"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNM-i8-1uL" userLabel="8">
-                            <rect key="frame" x="147" y="188.5" width="80" height="80"/>
+                        <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNM-i8-1uL" userLabel="8">
+                            <rect key="frame" x="137" y="128.5" width="100" height="60"/>
                             <state key="normal" image="TUV"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="Y0R-a7-m0E"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouk-cu-V3V" userLabel="9">
-                            <rect key="frame" x="247" y="188.5" width="80" height="80"/>
+                        <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouk-cu-V3V" userLabel="9">
+                            <rect key="frame" x="257" y="128.5" width="100" height="60"/>
                             <state key="normal" image="WXYZ"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="bP7-kw-XZx"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SR9-DC-m52" userLabel="0">
-                            <rect key="frame" x="147" y="280.5" width="80" height="80"/>
+                            <rect key="frame" x="137" y="188.5" width="100" height="60"/>
                             <state key="normal" image="+"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="NdH-Yr-c4W"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLm-hD-rg4" userLabel="#">
-                            <rect key="frame" x="247" y="280.5" width="80" height="80"/>
+                        <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLm-hD-rg4" userLabel="#">
+                            <rect key="frame" x="257" y="188.5" width="100" height="60"/>
                             <state key="normal" image="#"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="hw6-uP-g62"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQy-ge-mMH" userLabel="*">
-                            <rect key="frame" x="47" y="280.5" width="80" height="80"/>
+                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQy-ge-mMH" userLabel="*">
+                            <rect key="frame" x="17" y="188.5" width="100" height="60"/>
                             <state key="normal" image="-"/>
+                            <connections>
+                                <action selector="tapNumberItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="eBo-f0-fXP"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,7 +126,7 @@
                         <constraint firstItem="Dre-Bu-6f3" firstAttribute="width" secondItem="v34-xV-8Zm" secondAttribute="width" id="7IE-c1-zO8"/>
                         <constraint firstItem="EY8-Nx-hXk" firstAttribute="width" secondItem="v34-xV-8Zm" secondAttribute="width" id="9Xv-JI-j6f"/>
                         <constraint firstItem="EY8-Nx-hXk" firstAttribute="leading" secondItem="v8a-ti-8j5" secondAttribute="trailing" constant="20" id="9eZ-hw-Z3X"/>
-                        <constraint firstItem="ON7-pK-wvm" firstAttribute="top" secondItem="v8a-ti-8j5" secondAttribute="bottom" constant="16" id="BHC-9G-pMo"/>
+                        <constraint firstItem="ON7-pK-wvm" firstAttribute="top" secondItem="v8a-ti-8j5" secondAttribute="bottom" id="BHC-9G-pMo"/>
                         <constraint firstItem="RMx-oo-Doq" firstAttribute="height" secondItem="v34-xV-8Zm" secondAttribute="height" id="BOY-Jl-Z9e"/>
                         <constraint firstItem="sRE-b0-EYm" firstAttribute="centerX" secondItem="LAQ-Pd-3sO" secondAttribute="centerX" id="C9m-bv-1yz"/>
                         <constraint firstItem="EY8-Nx-hXk" firstAttribute="height" secondItem="v34-xV-8Zm" secondAttribute="height" id="Cbc-35-p2q"/>
@@ -101,12 +137,11 @@
                         <constraint firstItem="cQy-ge-mMH" firstAttribute="centerX" secondItem="v34-xV-8Zm" secondAttribute="centerX" id="Gz4-xx-saN"/>
                         <constraint firstItem="bNM-i8-1uL" firstAttribute="centerX" secondItem="ON7-pK-wvm" secondAttribute="centerX" id="H2J-vj-Rlz"/>
                         <constraint firstItem="ouk-cu-V3V" firstAttribute="centerX" secondItem="EY8-Nx-hXk" secondAttribute="centerX" id="HWL-RM-cu3"/>
-                        <constraint firstItem="RMx-oo-Doq" firstAttribute="top" secondItem="v34-xV-8Zm" secondAttribute="bottom" constant="16" id="HgJ-iF-nxe"/>
                         <constraint firstItem="ouk-cu-V3V" firstAttribute="height" secondItem="v34-xV-8Zm" secondAttribute="height" id="Iqh-Jq-xGF"/>
                         <constraint firstItem="cQy-ge-mMH" firstAttribute="height" secondItem="v34-xV-8Zm" secondAttribute="height" id="P6R-k7-PQP"/>
                         <constraint firstItem="ON7-pK-wvm" firstAttribute="height" secondItem="v34-xV-8Zm" secondAttribute="height" id="R6z-lm-m0R"/>
                         <constraint firstItem="sRE-b0-EYm" firstAttribute="centerY" secondItem="LAQ-Pd-3sO" secondAttribute="centerY" id="Rzs-kt-G3Z"/>
-                        <constraint firstItem="SR9-DC-m52" firstAttribute="top" secondItem="bNM-i8-1uL" secondAttribute="bottom" constant="12" id="TBK-5O-dDp"/>
+                        <constraint firstItem="SR9-DC-m52" firstAttribute="top" secondItem="bNM-i8-1uL" secondAttribute="bottom" id="TBK-5O-dDp"/>
                         <constraint firstItem="bNM-i8-1uL" firstAttribute="height" secondItem="v34-xV-8Zm" secondAttribute="height" id="U66-mf-bAX"/>
                         <constraint firstAttribute="trailing" secondItem="sRE-b0-EYm" secondAttribute="trailing" constant="8" id="Vhy-B1-1Xw"/>
                         <constraint firstItem="Dre-Bu-6f3" firstAttribute="centerY" secondItem="RMx-oo-Doq" secondAttribute="centerY" id="W9z-p0-Cfu"/>
@@ -117,8 +152,8 @@
                         <constraint firstItem="v8a-ti-8j5" firstAttribute="width" secondItem="v34-xV-8Zm" secondAttribute="width" id="ftT-qH-bic"/>
                         <constraint firstItem="IYd-E8-cn2" firstAttribute="width" secondItem="v34-xV-8Zm" secondAttribute="width" id="g5m-5S-sHg"/>
                         <constraint firstItem="LLm-hD-rg4" firstAttribute="width" secondItem="v34-xV-8Zm" secondAttribute="width" id="hag-OY-Cj0"/>
-                        <constraint firstItem="bNM-i8-1uL" firstAttribute="top" secondItem="sRE-b0-EYm" secondAttribute="bottom" constant="10" id="iZt-zs-blG"/>
-                        <constraint firstItem="sRE-b0-EYm" firstAttribute="top" secondItem="ON7-pK-wvm" secondAttribute="bottom" constant="10" id="irB-Qk-zs6"/>
+                        <constraint firstItem="bNM-i8-1uL" firstAttribute="top" secondItem="sRE-b0-EYm" secondAttribute="bottom" id="iZt-zs-blG"/>
+                        <constraint firstItem="sRE-b0-EYm" firstAttribute="top" secondItem="ON7-pK-wvm" secondAttribute="bottom" id="irB-Qk-zs6"/>
                         <constraint firstItem="sRE-b0-EYm" firstAttribute="leading" secondItem="LAQ-Pd-3sO" secondAttribute="leading" constant="8" id="jXt-vm-a06"/>
                         <constraint firstItem="EY8-Nx-hXk" firstAttribute="centerY" secondItem="v34-xV-8Zm" secondAttribute="centerY" id="ltA-cU-dqw"/>
                         <constraint firstItem="v8a-ti-8j5" firstAttribute="centerY" secondItem="v34-xV-8Zm" secondAttribute="centerY" id="oBC-Qp-s8c"/>
@@ -138,9 +173,33 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzC-gT-pM1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmQ-JF-T6d" userLabel="numberLabel">
+                            <rect key="frame" x="0.0" y="21.5" width="320" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulq-h9-NCW" userLabel="deleteBtn">
+                            <rect key="frame" x="320" y="2.5" width="39" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="39" id="WgF-J7-9Fa"/>
+                                <constraint firstAttribute="width" secondItem="ulq-h9-NCW" secondAttribute="height" multiplier="1:1" id="h5l-k5-RC4"/>
+                            </constraints>
+                            <state key="normal" image="icon_-backspace"/>
+                            <connections>
+                                <action selector="tapDeleteNumBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="goZ-Qn-WV2"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="ulq-h9-NCW" firstAttribute="centerY" secondItem="qzC-gT-pM1" secondAttribute="centerY" id="0NW-yK-EFI"/>
+                        <constraint firstItem="ZmQ-JF-T6d" firstAttribute="centerY" secondItem="qzC-gT-pM1" secondAttribute="centerY" id="45j-wn-f2p"/>
+                        <constraint firstAttribute="trailing" secondItem="ulq-h9-NCW" secondAttribute="trailing" constant="16" id="Ewd-qL-uHL"/>
                         <constraint firstAttribute="height" constant="44" id="rUJ-2C-gZP"/>
+                        <constraint firstItem="ulq-h9-NCW" firstAttribute="leading" secondItem="ZmQ-JF-T6d" secondAttribute="trailing" id="w63-vc-WD7"/>
+                        <constraint firstItem="ZmQ-JF-T6d" firstAttribute="leading" secondItem="qzC-gT-pM1" secondAttribute="leading" id="xxc-cB-6xn"/>
                     </constraints>
                 </view>
             </subviews>
@@ -156,6 +215,10 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="deleteBtn" destination="ulq-h9-NCW" id="YRy-ay-bui"/>
+                <outlet property="numberLabel" destination="ZmQ-JF-T6d" id="Vvo-yX-bEC"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="54"/>
         </view>
     </objects>
@@ -172,5 +235,6 @@
         <image name="PQRS" width="66" height="66"/>
         <image name="TUV" width="66" height="66"/>
         <image name="WXYZ" width="66" height="66"/>
+        <image name="icon_-backspace" width="39" height="39"/>
     </resources>
 </document>
