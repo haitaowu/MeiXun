@@ -34,6 +34,9 @@
     [rootController setDelegate:self];
     self.window.rootViewController = rootController;
     [self.window makeKeyAndVisible];
+    [[MDataUtil shareInstance] loadContactsWithBlock:^{
+        
+    }];
     return YES;
 }
 

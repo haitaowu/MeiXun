@@ -9,9 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "MAccModel.h"
 
+typedef void(^LoadContactsBlock)();
+
 @interface MDataUtil : NSObject
 @property (nonatomic,strong)MAccModel *accModel;
+@property (nonatomic,strong)NSMutableArray *contacts;
+@property (nonatomic,strong)NSMutableArray *sections;
 +(instancetype)shareInstance;
 - (void)archiveAccModel:(MAccModel*)accModel;
 - (void)archiveAccModel;
+- (void)loadContactsWithBlock:(LoadContactsBlock)loadBlock;
 @end

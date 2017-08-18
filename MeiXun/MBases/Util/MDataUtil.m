@@ -7,6 +7,8 @@
 //
 
 #import "MDataUtil.h"
+#import <AddressBook/AddressBook.h>
+#import "PinYin4Objc.h"
 
 
 #define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
@@ -19,15 +21,7 @@ static MDataUtil *instance = nil;
 
 
 @implementation MDataUtil
-+(instancetype)shareInstance
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[[self class ] alloc] init];
-    });
-    return instance;
-}
-
+#pragma mark - override methods
 + (instancetype)allocWithZone:(struct _NSZone *)zone
 {
     static dispatch_once_t onceToken;
@@ -46,6 +40,23 @@ static MDataUtil *instance = nil;
         return _accModel;
     }
 }
+-(NSMutableArray *)contacts
+{
+    if(_contacts== nil)
+    {
+        _contacts = [[NSMutableArray alloc] init];
+    }
+    return _contacts;
+}
+
+-(NSMutableArray *)sections
+{
+    if(_sections== nil)
+    {
+        _sections = [[NSMutableArray alloc] init];
+    }
+    return _sections;
+}
 
 #pragma mark - private methods
 - (MAccModel*)unArchiveUserModel
@@ -54,7 +65,21 @@ static MDataUtil *instance = nil;
     return _accModel;
 }
 
+- (void)loadAllContacts
+{
+    
+}
+
 #pragma mark - public methods
++(instancetype)shareInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[[self class ] alloc] init];
+    });
+    return instance;
+}
+
 - (void)archiveAccModel:(MAccModel*)accModel
 {
     _accModel = accModel;
@@ -72,5 +97,22 @@ static MDataUtil *instance = nil;
         });
     }
 }
+
+- (void)loadContactsWithBlock:(LoadContactsBlock)loadBlock
+{
+    ABAddressBookRef bookRef = ABAddressBookCreateWithOptions(NULL, NULL);;
+    ABAddressBookRequestAccessWithCompletion(bookRef, ^(bool granted, CFErrorRef error) {
+        HTLog(@"addressbook authorization is = %d",granted);
+    });
+    
+    NSString *sourceText=@"沈从文";
+    HanyuPinyinOutputFormat *outputFormat=[[HanyuPinyinOutputFormat alloc] init];
+    [outputFormat setToneType:ToneTypeWithoutTone];
+    [outputFormat setVCharType:VCharTypeWithV];
+    [outputFormat setCaseType:CaseTypeLowercase];
+    NSString *outputPinyin=[PinyinHelper toHanyuPinyinStringWithNSString:sourceText withHanyuPinyinOutputFormat:outputFormat withNSString:@" "];
+    HTLog(@"pinyin = %@",outputPinyin);
+}
+
 
 @end
