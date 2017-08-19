@@ -9,16 +9,21 @@
 #import "ContactsCell.h"
 #import "NSString+Extension.h"
 #import "PersonModel.h"
+#import "LoadImgOperation.h"
+
 
 @interface ContactsCell()
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (nonatomic,strong)NSOperationQueue *loadQueue;
 @end
 
 @implementation ContactsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.loadQueue = [[NSOperationQueue alloc] init];
+    self.loadQueue.maxConcurrentOperationCount = 1;
 }
 
 #pragma mark -  setter methods 
@@ -31,12 +36,22 @@
     }else{
         self.nameLabel.text = personModel.name;
     }
+    [self.loadQueue cancelAllOperations];
+    
+    //加载图片
+    __block typeof(self) blockSelf = self;
+    if (personModel.avatarData != nil) {
+        LoadImgOperation *imgOperation = [[LoadImgOperation alloc] initWithData:personModel.avatarData finishedBlock:^(UIImage *img) {
+            HTLog(@"current thread is = %@",[NSThread currentThread]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                blockSelf.avatarView.image = img;
+            });
+        }];
+        [self.loadQueue addOperation:imgOperation];
+    }
     
     UIImage *img;
-    if (personModel.avatarData != nil) {
-        img = [UIImage imageWithData:personModel.avatarData];
-    }else{
-        
+    if (personModel.avatarData == nil) {
         img = [UIImage imageNamed:@"icon_user_hd"];
     }
     self.avatarView.image = img;

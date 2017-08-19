@@ -26,6 +26,7 @@
 		BE3951B01F46D72900872662 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951AF1F46D72900872662 /* ContactsTableViewController.m */; };
 		BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B21F46D7CB00872662 /* ContactsCell.m */; };
 		BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3951B31F46D7CB00872662 /* ContactsCell.xib */; };
+		BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B71F47C5C100872662 /* LoadImgOperation.m */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
@@ -87,6 +88,8 @@
 		BE3951B11F46D7CB00872662 /* ContactsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsCell.h; sourceTree = "<group>"; };
 		BE3951B21F46D7CB00872662 /* ContactsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsCell.m; sourceTree = "<group>"; };
 		BE3951B31F46D7CB00872662 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
+		BE3951B61F47C5C100872662 /* LoadImgOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadImgOperation.h; sourceTree = "<group>"; };
+		BE3951B71F47C5C100872662 /* LoadImgOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadImgOperation.m; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 			children = (
 				BE39516D1F46C00A00872662 /* PersonModel.h */,
 				BE39516E1F46C00A00872662 /* PersonModel.m */,
+				BE3951B61F47C5C100872662 /* LoadImgOperation.h */,
+				BE3951B71F47C5C100872662 /* LoadImgOperation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -649,6 +654,7 @@
 				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
 				BE3951671F46BE0300872662 /* HanyuPinyinOutputFormat.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
+				BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */,
 				BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */,
 				BEF9FC571F41E15700469DB3 /* ChagneAccTableViewController.m in Sources */,
 				BEED88F51F43EE310068D948 /* MNetworkUtil.m in Sources */,
