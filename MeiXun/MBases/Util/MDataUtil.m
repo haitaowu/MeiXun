@@ -120,7 +120,7 @@ static MDataUtil *instance = nil;
         [personModels addObject:personModel];
         CFRelease(phones);
     }
-    HTLog(@"thread = %@",[NSThread currentThread]);
+//    HTLog(@"thread = %@",[NSThread currentThread]);
     
     CFRelease(addressBook);
     CFRelease(peopleArray);

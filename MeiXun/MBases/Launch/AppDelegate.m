@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "MDataUtil.h"
 #import "MTabbarController.h"
-
+#import "MDataManagerUtil.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -33,10 +33,14 @@
     MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
     [rootController setDelegate:self];
     self.window.rootViewController = rootController;
-    [self.window makeKeyAndVisible];
+//    [self.window makeKeyAndVisible];
     [[MDataUtil shareInstance] loadContactsWithBlock:^{
         
     }];
+    
+    NSString *locationStr = [[MDataManagerUtil shareInstance] locationForNumber:@"1806195"];
+    HTLog(@"location = %@",locationStr);
+    
     return YES;
 }
 

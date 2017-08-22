@@ -44,6 +44,8 @@
 		BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B8A1F408C0A00BAA66E /* AccSettingTableViewController.m */; };
 		BEED88F51F43EE310068D948 /* MNetworkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED88F41F43EE310068D948 /* MNetworkUtil.m */; };
 		BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED88F81F44254B0068D948 /* LoginViewModel.m */; };
+		BEF869AB1F4BBFF500F5E08F /* MDataManagerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF869AA1F4BBFF500F5E08F /* MDataManagerUtil.m */; };
+		BEF869AD1F4BDAD400F5E08F /* callHomeDB.db in Resources */ = {isa = PBXBuildFile; fileRef = BEF869AC1F4BDAD400F5E08F /* callHomeDB.db */; };
 		BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */; };
 		BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4D1F41DC5900469DB3 /* AboutUsViewController.m */; };
 		BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC501F41E04500469DB3 /* FeedbackTableViewController.m */; };
@@ -127,6 +129,9 @@
 		BEED88F41F43EE310068D948 /* MNetworkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNetworkUtil.m; sourceTree = "<group>"; };
 		BEED88F71F44254B0068D948 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
 		BEED88F81F44254B0068D948 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		BEF869A91F4BBFF500F5E08F /* MDataManagerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDataManagerUtil.h; sourceTree = "<group>"; };
+		BEF869AA1F4BBFF500F5E08F /* MDataManagerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDataManagerUtil.m; sourceTree = "<group>"; };
+		BEF869AC1F4BDAD400F5E08F /* callHomeDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = callHomeDB.db; sourceTree = "<group>"; };
 		BEF9FC491F41D8ED00469DB3 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
 		BEF9FC4C1F41DC5900469DB3 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
@@ -461,11 +466,14 @@
 		BEBD698D1F3EDBE50062AA36 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				BEF869AC1F4BDAD400F5E08F /* callHomeDB.db */,
 				BE2A77C61F432BB900FDD1BD /* MKeys.h */,
 				BEBD698E1F3EDC000062AA36 /* MColor.h */,
 				BEBD69901F3EDD510062AA36 /* MConstant.h */,
 				BEE23B831F40087200BAA66E /* MDataUtil.h */,
 				BEE23B841F40087200BAA66E /* MDataUtil.m */,
+				BEF869A91F4BBFF500F5E08F /* MDataManagerUtil.h */,
+				BEF869AA1F4BBFF500F5E08F /* MDataManagerUtil.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 				BE63E6FA1F3DF30A00E6CC48 /* Login.storyboard in Resources */,
 				BE63E6D31F3DEF8D00E6CC48 /* LaunchScreen.storyboard in Resources */,
 				BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */,
+				BEF869AD1F4BDAD400F5E08F /* callHomeDB.db in Resources */,
 				BE39516B1F46BE0300872662 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				BE2A77D11F433D6300FDD1BD /* MNumbers.xib in Resources */,
 				BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */,
@@ -639,6 +648,7 @@
 				BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */,
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
 				BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */,
+				BEF869AB1F4BBFF500F5E08F /* MDataManagerUtil.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
 				BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */,
