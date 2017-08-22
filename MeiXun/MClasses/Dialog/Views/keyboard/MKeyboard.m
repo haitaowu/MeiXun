@@ -26,6 +26,7 @@
     MNumbers  *mNumbers = [MNumbers keyboardNumbers];
     mNumbers.x = 0;
     mNumbers.y = SCREEN_HEIGHT - 49;
+    mNumbers.width = SCREEN_WIDTH;
     keyboard.mNumbers = mNumbers;
     keyboard.itemEnable = YES;
     [keyboard insertSubview:mNumbers belowSubview:keyboard.mTabbar];
