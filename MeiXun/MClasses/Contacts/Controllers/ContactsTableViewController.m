@@ -12,7 +12,8 @@
 
 static NSString *ContactsCellID = @"ContactsCellID";
 
-@interface ContactsTableViewController ()
+@interface ContactsTableViewController ()<UIActionSheetDelegate>
+@property (nonatomic,strong)PersonModel *selectedPerson;
 
 @end
 
@@ -30,6 +31,28 @@ static NSString *ContactsCellID = @"ContactsCellID";
     UINib *alertCellNib = [UINib nibWithNibName:@"ContactsCell" bundle:nil];
     [self.tableView registerNib:alertCellNib forCellReuseIdentifier:ContactsCellID];
     
+}
+
+#pragma mark - private methods
+- (void)showContactPhoneNumbersWithPerson:(PersonModel*)personModel
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"选择号码" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    for (NSString *phone in personModel.phoneNums) {
+        [actionSheet addButtonWithTitle:phone];
+    }
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIAction sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex > 0){
+        NSString *callPhone = self.selectedPerson.phoneNums[buttonIndex - 1];
+        HTLog(@"called number is %@",callPhone);
+        [[MDataUtil shareInstance] saveRecordWithContact:self.selectedPerson phone:callPhone];
+        
+    }
 }
 
 #pragma mark - Table view data source
@@ -76,6 +99,10 @@ static NSString *ContactsCellID = @"ContactsCellID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSArray *contacts = [[[MDataUtil shareInstance] contacts] objectAtIndex:indexPath.section];
+    PersonModel *model = contacts[indexPath.row];
+    self.selectedPerson = model;
+    [self showContactPhoneNumbersWithPerson:model];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -9,6 +9,7 @@
 #import "DialogTableViewController.h"
 #import "MKeyboard.h"
 
+
 @interface DialogTableViewController ()
 @property (nonatomic,strong)MKeyboard *keyboard;
 @end
@@ -25,6 +26,13 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSArray *records = [[MDataUtil shareInstance] records];
+    HTLog(@"records.count = %ld",[records count]);
 }
 
 - (void)dealloc

@@ -7,12 +7,16 @@
 //
 
 #import "MDataUtil.h"
+#import "NSString+Extension.h"
+#import "RecordModel.h"
 #import "PersonModel.h"
 #import <AddressBook/AddressBook.h>
 
 
+
 #define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
 #define kAccountInfoPath            [kLibPath stringByAppendingPathComponent:@"accountInfo.data"]
+#define kRecordsInfoPath            [kLibPath stringByAppendingPathComponent:@"recordInfos.data"]
 
 
 
@@ -36,6 +40,7 @@ static MDataUtil *instance = nil;
 }
 
 #pragma mark - lazy methods
+//登录用户模型
 -(MAccModel *)accModel
 {
     if (_accModel == nil) {
@@ -44,6 +49,16 @@ static MDataUtil *instance = nil;
         return _accModel;
     }
 }
+//通话记录数组
+-(NSMutableArray *)records
+{
+    if(_records == nil)
+    {
+        _records = [self unArchiveRecordsData];
+    }
+    return _records;
+}
+//联系人数组
 -(NSMutableArray *)contacts
 {
     if(_contacts== nil)
@@ -52,7 +67,7 @@ static MDataUtil *instance = nil;
     }
     return _contacts;
 }
-
+//分区数组
 -(NSMutableArray *)sections
 {
     if(_sections== nil)
@@ -72,12 +87,45 @@ static MDataUtil *instance = nil;
 }
 
 #pragma mark - private methods
+//查询该拨打号码是否已经在通话记录存在？
+- (RecordModel*)recordWithNumber:(NSString*)phone
+{
+    for (RecordModel *recordModel in self.records) {
+        if ([recordModel.phone isEqualToString:phone]) {
+            return recordModel;
+        }
+    }
+    return nil;
+}
+
+//从文件中读取已登录用户的信息
 - (MAccModel*)unArchiveUserModel
 {
     _accModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kAccountInfoPath];
     return _accModel;
 }
 
+//归档用户通话记录数据
+- (void)archiveRecordsData
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    if ([_records count] > 0) {
+        dispatch_async(queue, ^{
+            [NSKeyedArchiver archiveRootObject:_records toFile:kRecordsInfoPath];
+        });
+    }
+}
+
+//解档通话记录数据
+- (NSMutableArray*)unArchiveRecordsData
+{
+    NSArray *recordAray = [NSKeyedUnarchiver unarchiveObjectWithFile:kRecordsInfoPath];
+    if (recordAray != nil) {
+        return [NSMutableArray arrayWithArray:recordAray];
+    }else{
+        return [NSMutableArray array];;
+    }
+}
 
 - (NSMutableArray*)allRawContacts
 {
@@ -156,12 +204,14 @@ static MDataUtil *instance = nil;
     return instance;
 }
 
+//归档用户信息的数据1
 - (void)archiveAccModel:(MAccModel*)accModel
 {
     _accModel = accModel;
     [self archiveAccModel];
 }
 
+//归档用户信息的数据2
 - (void)archiveAccModel
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -174,6 +224,7 @@ static MDataUtil *instance = nil;
     }
 }
 
+
 - (void)loadContactsWithBlock:(LoadContactsBlock)loadBlock
 {
     ABAddressBookRef bookRef = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -184,8 +235,50 @@ static MDataUtil *instance = nil;
             loadBlock();
         }
     });
+}
+
+//用户在联系人界面拨打，将被拨打的联系人存储到通话记录数据中。
+- (void)saveRecordWithContact:(PersonModel*)personModel phone:(NSString*)phone
+{
+    RecordModel *recordModel = [self recordWithNumber:phone];
+    if(recordModel == nil){
+        recordModel = [[RecordModel alloc] init];
+        recordModel.phone = phone;
+        recordModel.name = personModel.name;
+        recordModel.avatarData = personModel.avatarData;
+        recordModel.count = @(1);
+        recordModel.dateStr = [NSString currentDateTime];
+        [self.records insertObject:recordModel atIndex:0];
+    }else{
+        recordModel.dateStr = [NSString currentDateTime];
+        NSInteger count = [recordModel.count integerValue];
+        recordModel.count = @(count + 1);
+    }
     
-   
+    if ([self.records count] >= 50) {
+        NSRange range = NSMakeRange(0, 50);
+        NSArray *array = [self.records subarrayWithRange:range];
+        self.records = [NSMutableArray arrayWithArray:array];
+    }
+    [self archiveRecordsData];
+}
+
+//用户点击通话记录进行拨打，将被拨打的通话记录进行存储
+- (void)saveRecordWithRecord:(RecordModel*)personModel phone:(NSString*)phone
+{
+    RecordModel *recordModel = [self recordWithNumber:phone];
+    recordModel.dateStr = [NSString currentDateTime];
+    NSInteger count = [recordModel.count integerValue];
+    recordModel.count = @(count + 1);
+    [self.records removeObject:recordModel];
+    [self.records insertObject:recordModel atIndex:0];
+    
+    if ([self.records count] >= 50) {
+        NSRange range = NSMakeRange(0, 50);
+        NSArray *array = [self.records subarrayWithRange:range];
+        self.records = [NSMutableArray arrayWithArray:array];
+    }
+    [self archiveRecordsData];
 }
 
 

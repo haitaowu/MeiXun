@@ -42,7 +42,6 @@
     __block typeof(self) blockSelf = self;
     if (personModel.avatarData != nil) {
         LoadImgOperation *imgOperation = [[LoadImgOperation alloc] initWithData:personModel.avatarData finishedBlock:^(UIImage *img) {
-            HTLog(@"current thread is = %@",[NSThread currentThread]);
             dispatch_async(dispatch_get_main_queue(), ^{
                 blockSelf.avatarView.image = img;
             });

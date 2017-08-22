@@ -1,14 +1,17 @@
 //
-//  MAccModel.m
+//  RecordModel.m
 //  MeiXun
 //
-//  Created by taotao on 2017/8/13.
+//  Created by taotao on 2017/8/22.
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
-#import "MAccModel.h"
+#import "RecordModel.h"
 #import <objc/runtime.h>
-@implementation MAccModel
+
+@implementation RecordModel
+
+#pragma mark - override methods
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     
     unsigned int count = 0;
@@ -33,14 +36,7 @@
     return self;
 }
 
-
 #pragma mark - private methods
-- (id)varValueFor:(Ivar)var
-{
-    id varValue = object_getIvar(self, var);
-    return varValue;
-}
-
 - (NSString*)varKeyWithIvar:(Ivar)var
 {
     const char *varType = ivar_getName(var);
@@ -48,4 +44,16 @@
     return varTypeStr;
 }
 
+- (id)varValueFor:(Ivar)var
+{
+    id varValue = object_getIvar(self, var);
+    return varValue;
+}
+
+#pragma mark - override methods
+- (NSString*)countStr
+{
+    NSString *countStr = [NSString stringWithFormat:@"(%@)",self.count];
+    return countStr;
+}
 @end

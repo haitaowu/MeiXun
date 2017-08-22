@@ -46,6 +46,7 @@
 		BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED88F81F44254B0068D948 /* LoginViewModel.m */; };
 		BEF869AB1F4BBFF500F5E08F /* MDataManagerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF869AA1F4BBFF500F5E08F /* MDataManagerUtil.m */; };
 		BEF869AD1F4BDAD400F5E08F /* callHomeDB.db in Resources */ = {isa = PBXBuildFile; fileRef = BEF869AC1F4BDAD400F5E08F /* callHomeDB.db */; };
+		BEF869B11F4BF9F800F5E08F /* RecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF869B01F4BF9F800F5E08F /* RecordModel.m */; };
 		BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */; };
 		BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC4D1F41DC5900469DB3 /* AboutUsViewController.m */; };
 		BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF9FC501F41E04500469DB3 /* FeedbackTableViewController.m */; };
@@ -132,6 +133,8 @@
 		BEF869A91F4BBFF500F5E08F /* MDataManagerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDataManagerUtil.h; sourceTree = "<group>"; };
 		BEF869AA1F4BBFF500F5E08F /* MDataManagerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDataManagerUtil.m; sourceTree = "<group>"; };
 		BEF869AC1F4BDAD400F5E08F /* callHomeDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = callHomeDB.db; sourceTree = "<group>"; };
+		BEF869AF1F4BF9F800F5E08F /* RecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordModel.h; sourceTree = "<group>"; };
+		BEF869B01F4BF9F800F5E08F /* RecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordModel.m; sourceTree = "<group>"; };
 		BEF9FC491F41D8ED00469DB3 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
 		BEF9FC4A1F41D8ED00469DB3 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
 		BEF9FC4C1F41DC5900469DB3 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 		BE2A77BC1F432AB400FDD1BD /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
+				BEF869AE1F4BF9ED00F5E08F /* Models */,
 				BE2A77BD1F432AB400FDD1BD /* Controllers */,
 				BE2A77BE1F432AB400FDD1BD /* Views */,
 			);
@@ -505,6 +509,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		BEF869AE1F4BF9ED00F5E08F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BEF869AF1F4BF9F800F5E08F /* RecordModel.h */,
+				BEF869B01F4BF9F800F5E08F /* RecordModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -662,6 +675,7 @@
 				BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */,
 				BE39516F1F46C00A00872662 /* PersonModel.m in Sources */,
 				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
+				BEF869B11F4BF9F800F5E08F /* RecordModel.m in Sources */,
 				BE3951671F46BE0300872662 /* HanyuPinyinOutputFormat.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
 				BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */,
