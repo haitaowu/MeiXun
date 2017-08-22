@@ -13,7 +13,7 @@
 
 
 
-#define     kBaseUrl                                        @"http://abase/mxc-api/rest/"
+#define     kBaseUrl                                        @"http://106.14.7.180/mxc-api/rest/"
 
 
 
