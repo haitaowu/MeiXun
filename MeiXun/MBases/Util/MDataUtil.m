@@ -268,7 +268,7 @@ static MDataUtil *instance = nil;
 //根据record model 更新当前 通话记录 数组。
 - (void)recordsDataUpdateWith:(RecordModel*)recordModel
 {
-    if ([self shouldAddRecordFor:recordModel]) {
+    if ([self shouldAddRecordFor:recordModel] == YES) {
         RecordModel *recordNew = [recordModel mutableCopy];
         recordNew.count = @1;
         recordNew.dateStr = [NSString currentDateTime];
@@ -329,10 +329,10 @@ static MDataUtil *instance = nil;
                 _contacts = contacts;
                 _sections = [self loadArchivedSectionTitles];
             }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                loadBlock();
-            });
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            loadBlock();
+        });
     });
 }
 

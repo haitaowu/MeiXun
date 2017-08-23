@@ -9,11 +9,13 @@
 #import "ContactsTableViewController.h"
 #import "ContactsCell.h"
 #import "PersonModel.h"
+#import "CallingViewController.h"
 
 static NSString *ContactsCellID = @"ContactsCellID";
 
 @interface ContactsTableViewController ()<UIActionSheetDelegate>
 @property (nonatomic,strong)PersonModel *selectedPerson;
+@property (nonatomic,strong)CallingViewController *callController;
 
 @end
 
@@ -23,6 +25,13 @@ static NSString *ContactsCellID = @"ContactsCellID";
     [super viewDidLoad];
     [self setupUI];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+}
+
 
 #pragma mark - setup ui
 - (void)setupUI
@@ -51,7 +60,12 @@ static NSString *ContactsCellID = @"ContactsCellID";
         NSString *callPhone = self.selectedPerson.phoneNums[buttonIndex - 1];
         HTLog(@"called number is %@",callPhone);
         [[MDataUtil shareInstance] saveRecordWithContact:self.selectedPerson phone:callPhone];
-        
+        CallingViewController *callController = [[CallingViewController alloc] init];
+        self.callController = callController;
+        __block typeof(self) blockSelf = self;
+        [callController showViewWithModel:self.selectedPerson phone:callPhone cancel:^{
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        }];
     }
 }
 

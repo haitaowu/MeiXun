@@ -10,6 +10,7 @@
 #import "MKeyboard.h"
 #import "RecordCell.h"
 #import "RecordModel.h"
+#import "CallingViewController.h"
 
 
 static NSString *RecordCellID = @"RecordCellID";
@@ -17,6 +18,8 @@ static NSString *RecordCellID = @"RecordCellID";
 @interface DialogTableViewController ()<UIActionSheetDelegate>
 @property (nonatomic,strong)RecordModel *selectedRecord;
 @property (nonatomic,strong)MKeyboard *keyboard;
+@property (nonatomic,strong)CallingViewController *callController;
+
 @end
 
 @implementation DialogTableViewController
@@ -98,6 +101,13 @@ static NSString *RecordCellID = @"RecordCellID";
         NSString *callPhone = self.selectedRecord.phone;
         HTLog(@"called number is %@",callPhone);
         [[MDataUtil shareInstance] saveRecordWithPhone:callPhone];
+        CallingViewController *callController = [[CallingViewController alloc] init];
+        __block typeof(self) blockSelf = self;
+        [callController showViewWithModel:self.selectedRecord phone:callPhone cancel:^{
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+            [blockSelf.tableView reloadData];
+        }];
+        self.callController = callController;
     }
 }
 
