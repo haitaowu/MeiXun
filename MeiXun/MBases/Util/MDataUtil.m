@@ -44,10 +44,9 @@ static MDataUtil *instance = nil;
 -(MAccModel *)accModel
 {
     if (_accModel == nil) {
-        return [self unArchiveUserModel];
-    }else{
-        return _accModel;
+        _accModel = [self unArchiveUserModel];
     }
+    return _accModel;
 }
 //通话记录数组
 -(NSMutableArray *)records
@@ -232,7 +231,9 @@ static MDataUtil *instance = nil;
         HTLog(@"addressbook authorization is = %d",granted);
         if (granted == YES) {
             [self generaContactsAndSections];
-            loadBlock();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                loadBlock();
+            });
         }
     });
 }
@@ -281,5 +282,14 @@ static MDataUtil *instance = nil;
     [self archiveRecordsData];
 }
 
+//检查用户是否登录过
+- (BOOL)userIsLogin
+{
+    if (self.accModel == nil) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
 
 @end

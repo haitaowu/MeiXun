@@ -10,6 +10,7 @@
 #import "MDataUtil.h"
 #import "MTabbarController.h"
 #import "MDataManagerUtil.h"
+#import "ADViewController.h"
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
@@ -22,22 +23,34 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self setupNavigationBarUI];
-    //1.
-//    UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-//    UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
-//    self.window.rootViewController = rootController;
-//    [self.window makeKeyAndVisible];
+
+ 
+   
+    if([[MDataUtil shareInstance] userIsLogin] == NO){
+        //3.ad
+        ADViewController *rootController = [[ADViewController alloc] init];
+        self.window.rootViewController = rootController;
+        __block typeof(self) blockSelf = self;
+        [[MDataUtil shareInstance] loadContactsWithBlock:^{
+            //2.
+                UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
+                [rootController setDelegate:blockSelf];
+                blockSelf.window.rootViewController = rootController;
+        }];
+
+    }else{
+        //1.
+            UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+            UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
+            self.window.rootViewController = rootController;
+            [self.window makeKeyAndVisible];
+        
+    }
     
-   //2.
-    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
-    [rootController setDelegate:self];
-    self.window.rootViewController = rootController;
     [self.window makeKeyAndVisible];
     
-    [[MDataUtil shareInstance] loadContactsWithBlock:^{
-        
-    }];
+    
 //
 //    NSString *locationStr = [[MDataManagerUtil shareInstance] locationForNumber:@"1806195"];
 //    HTLog(@"location = %@",locationStr);
