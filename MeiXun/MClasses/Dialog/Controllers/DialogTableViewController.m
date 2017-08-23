@@ -36,7 +36,7 @@ static NSString *RecordCellID = @"RecordCellID";
 {
     [super viewWillAppear:animated];
     NSArray *records = [[MDataUtil shareInstance] records];
-    HTLog(@"records.count = %ld",[records count]);
+    [self.tableView reloadData];
 }
 
 - (void)dealloc

@@ -36,6 +36,17 @@
     return self;
 }
 
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    RecordModel *model = [[RecordModel allocWithZone:zone] init];
+    model.name = [self.name copy];
+    model.dateStr = [self.dateStr copy];
+    model.count = self.count;
+    model.avatarData = [self.avatarData copy];
+    model.phone = [self.phone copy];
+    return model;
+}
+
 #pragma mark - private methods
 - (NSString*)varKeyWithIvar:(Ivar)var
 {

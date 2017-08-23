@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RecordModel : NSObject
+@interface RecordModel : NSObject<NSMutableCopying>
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *phone;
 @property (nonatomic,copy) NSString *dateStr;

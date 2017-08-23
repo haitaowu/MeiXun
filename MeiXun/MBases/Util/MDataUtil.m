@@ -17,7 +17,9 @@
 #define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
 #define kAccountInfoPath            [kLibPath stringByAppendingPathComponent:@"accountInfo.data"]
 #define kRecordsInfoPath            [kLibPath stringByAppendingPathComponent:@"recordInfos.data"]
+#define kContactsInfoPath            [kLibPath stringByAppendingPathComponent:@"contacts.data"]
 
+#define kSectionTitleKey            @"sectionTitleKey"
 
 
 
@@ -110,7 +112,8 @@ static MDataUtil *instance = nil;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     if ([_records count] > 0) {
         dispatch_async(queue, ^{
-            [NSKeyedArchiver archiveRootObject:_records toFile:kRecordsInfoPath];
+            NSArray *deepCopiedRecords = [self deepMutableArray:_records];
+            [NSKeyedArchiver archiveRootObject:deepCopiedRecords toFile:kRecordsInfoPath];
         });
     }
 }
@@ -191,7 +194,54 @@ static MDataUtil *instance = nil;
     }
 }
 
+//加载已经归档的联系人数据。
+- (NSMutableArray*)loadArchivedContacts
+{
+   NSArray *contacts = [NSKeyedUnarchiver unarchiveObjectWithFile:kContactsInfoPath];
+    if (contacts == nil) {
+        return nil;
+    }else{
+        return [NSMutableArray arrayWithArray:contacts];
+    }
+}
 
+//section title 的数据 A B C D.....
+- (NSMutableArray*)loadArchivedSectionTitles
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSArray *array = [userDefault objectForKey:kSectionTitleKey];
+    return [NSMutableArray arrayWithArray:array];
+}
+
+//将联系人与section title 归档到本地。
+- (void)archiveContactsTitlesToLocal
+{
+    if (_contacts != nil) {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        dispatch_async(queue, ^{
+            NSArray *sections = [_sections mutableCopy];
+            [userDefault setObject:sections forKey:kSectionTitleKey];
+            NSArray *deepCopiedContacts = [self deepMutableArray:_contacts];
+            [NSKeyedArchiver archiveRootObject:deepCopiedContacts toFile:kContactsInfoPath];
+        });
+    }
+}
+
+//深拷贝容器类中的自定义类。
+- (NSMutableArray*)deepMutableArray:(NSArray*)array
+{
+    NSMutableArray *deepArray = [NSMutableArray array];
+    for (id obj in array) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            NSMutableArray *mutableArray = [self deepMutableArray:obj];
+            [deepArray addObject:mutableArray];
+        }else{
+            [deepArray addObject:[obj mutableCopy]];
+        }
+    }
+    return deepArray;
+}
 
 #pragma mark - public methods
 +(instancetype)shareInstance
@@ -223,14 +273,22 @@ static MDataUtil *instance = nil;
     }
 }
 
-
+//加载联系人
 - (void)loadContactsWithBlock:(LoadContactsBlock)loadBlock
 {
     ABAddressBookRef bookRef = ABAddressBookCreateWithOptions(NULL, NULL);
     ABAddressBookRequestAccessWithCompletion(bookRef, ^(bool granted, CFErrorRef error) {
         HTLog(@"addressbook authorization is = %d",granted);
         if (granted == YES) {
-            [self generaContactsAndSections];
+            NSMutableArray *contacts = [self loadArchivedContacts];
+            if (contacts == nil) {
+                //第一次加载通讯录里的联系人
+                [self generaContactsAndSections];
+                [self archiveContactsTitlesToLocal];
+            }else{
+                _contacts = contacts;
+                _sections = [self loadArchivedSectionTitles];
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
                 loadBlock();
             });

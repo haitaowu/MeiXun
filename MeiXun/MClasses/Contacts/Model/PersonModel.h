@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PersonModel : NSObject
+@interface PersonModel : NSObject<NSMutableCopying>
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *firstName;
 @property (nonatomic,copy) NSString *lastName;
