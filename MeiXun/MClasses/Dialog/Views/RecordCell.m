@@ -15,7 +15,9 @@
 @interface RecordCell()
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *localLabel;
 @property (nonatomic,strong)NSOperationQueue *loadQueue;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @end
 
 @implementation RecordCell
@@ -30,11 +32,20 @@
 - (void)setRecordModel:(RecordModel *)recordModel
 {
     _recordModel = recordModel;
-    if ([recordModel.name emptyStr]) {
+    if ((recordModel.name == nil) || ([recordModel.name emptyStr])) {
         self.nameLabel.text = recordModel.phone;
     }else{
         self.nameLabel.text = recordModel.name;
     }
+    
+    if ([recordModel.count integerValue] > 1) {
+        NSString *name = self.nameLabel.text;
+        name = [NSString stringWithFormat:@"%@%@",name,recordModel.countStr];
+        self.nameLabel.text = name;
+    }
+    
+    self.timeLabel.text = [recordModel.dateStr hhMMString];
+    
     [self.loadQueue cancelAllOperations];
     
     //加载图片

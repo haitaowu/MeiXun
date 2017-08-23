@@ -9,11 +9,13 @@
 #import "DialogTableViewController.h"
 #import "MKeyboard.h"
 #import "RecordCell.h"
+#import "RecordModel.h"
 
 
 static NSString *RecordCellID = @"RecordCellID";
 
-@interface DialogTableViewController ()
+@interface DialogTableViewController ()<UIActionSheetDelegate>
+@property (nonatomic,strong)RecordModel *selectedRecord;
 @property (nonatomic,strong)MKeyboard *keyboard;
 @end
 
@@ -35,7 +37,6 @@ static NSString *RecordCellID = @"RecordCellID";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSArray *records = [[MDataUtil shareInstance] records];
     [self.tableView reloadData];
 }
 
@@ -73,6 +74,14 @@ static NSString *RecordCellID = @"RecordCellID";
     
 }
 
+//显示可以拨打的电话号码。
+- (void)showPhoneNumberWithRecord:(RecordModel*)recordModel
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"选择号码" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+    [actionSheet addButtonWithTitle:recordModel.phone];
+    [actionSheet showInView:self.view];
+}
+
 
 #pragma mark - selectors
 - (void)tabbarSelecteItem
@@ -80,6 +89,16 @@ static NSString *RecordCellID = @"RecordCellID";
     HTLog(@"select dialog item tabbar ");
 //    MKeyboard *keyboard = [MKeyboard showMKeyboard];
     [self.keyboard showView];
+}
+
+#pragma mark - UIAction sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex > 0){
+        NSString *callPhone = self.selectedRecord.phone;
+        HTLog(@"called number is %@",callPhone);
+        [[MDataUtil shareInstance] saveRecordWithPhone:callPhone];
+    }
 }
 
 
@@ -109,8 +128,10 @@ static NSString *RecordCellID = @"RecordCellID";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    NSArray *contacts = [[[MDataUtil shareInstance] contacts] objectAtIndex:indexPath.section];
-//    PersonModel *model = contacts[indexPath.row];
-//    self.selectedPerson = model;
+    NSArray *records = [[MDataUtil shareInstance] records];
+    RecordModel *model = records[indexPath.row];
+    self.selectedRecord = model;
+    [self showPhoneNumberWithRecord:model];
 //    [self showContactPhoneNumbersWithPerson:model];
 }
 

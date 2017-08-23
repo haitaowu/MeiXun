@@ -14,4 +14,19 @@
  当前时间的字符串格式 yyyy-MM-dd hh:mm:ss
  */
 + (NSString*)currentDateTime;
+
+
+/**
+ return NSDate object by date string
+ */
+- (NSDate*)dateForStr;
+
+
+/**
+ return hh:mm formate date string
+ */
+- (NSString*)hhMMString;
+
+
+
 @end

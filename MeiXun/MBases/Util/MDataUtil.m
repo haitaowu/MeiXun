@@ -155,6 +155,14 @@ static MDataUtil *instance = nil;
         for (int i = 0; i < phoneCount; i++) {
             // 2.获取电话号码
             NSString *phoneValue = (__bridge NSString *)ABMultiValueCopyValueAtIndex(phones, i);
+            phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"+" withString:@""];
+            phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            if (phoneValue.length == 13) {
+                NSInteger len = 11;
+                NSInteger loc = phoneValue.length - len;
+                NSRange range = NSMakeRange(loc, len);
+                phoneValue = [phoneValue substringWithRange:range];
+            }
             [numbers addObject:phoneValue];
         }
         //1.3取得联系人的头像
@@ -243,6 +251,37 @@ static MDataUtil *instance = nil;
     return deepArray;
 }
 
+//相同号码此次拨打距上次拨打的时间是否超出24小时。
+- (BOOL)shouldAddRecordFor:(RecordModel*)recordModel
+{
+    NSDate *recordDate = [recordModel.dateStr dateForStr];
+    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:recordDate];
+    NSTimeInterval maxInterval = 60 * 60 * 24;
+    if (interval < maxInterval) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+//根据record model 更新当前 通话记录 数组。
+- (void)recordsDataUpdateWith:(RecordModel*)recordModel
+{
+    if ([self shouldAddRecordFor:recordModel]) {
+        RecordModel *recordNew = [recordModel mutableCopy];
+        recordNew.count = @1;
+        recordNew.dateStr = [NSString currentDateTime];
+        [self.records insertObject:recordNew atIndex:0];
+    }else{
+        NSInteger count = [recordModel.count integerValue];
+        recordModel.count = @(count + 1);
+        recordModel.dateStr = [NSString currentDateTime];
+        [self.records removeObject:recordModel];
+        [self.records insertObject:recordModel atIndex:0];
+    }
+}
+
+
 #pragma mark - public methods
 +(instancetype)shareInstance
 {
@@ -309,11 +348,8 @@ static MDataUtil *instance = nil;
         recordModel.dateStr = [NSString currentDateTime];
         [self.records insertObject:recordModel atIndex:0];
     }else{
-        recordModel.dateStr = [NSString currentDateTime];
-        NSInteger count = [recordModel.count integerValue];
-        recordModel.count = @(count + 1);
+        [self recordsDataUpdateWith:recordModel];
     }
-    
     if ([self.records count] >= 50) {
         NSRange range = NSMakeRange(0, 50);
         NSArray *array = [self.records subarrayWithRange:range];
@@ -322,16 +358,14 @@ static MDataUtil *instance = nil;
     [self archiveRecordsData];
 }
 
+
+
+
 //用户点击通话记录进行拨打，将被拨打的通话记录进行存储
-- (void)saveRecordWithRecord:(RecordModel*)personModel phone:(NSString*)phone
+- (void)saveRecordWithPhone:(NSString*)phone
 {
     RecordModel *recordModel = [self recordWithNumber:phone];
-    recordModel.dateStr = [NSString currentDateTime];
-    NSInteger count = [recordModel.count integerValue];
-    recordModel.count = @(count + 1);
-    [self.records removeObject:recordModel];
-    [self.records insertObject:recordModel atIndex:0];
-    
+    [self recordsDataUpdateWith:recordModel];
     if ([self.records count] >= 50) {
         NSRange range = NSMakeRange(0, 50);
         NSArray *array = [self.records subarrayWithRange:range];

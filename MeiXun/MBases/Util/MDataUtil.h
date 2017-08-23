@@ -27,7 +27,7 @@ typedef void(^LoadContactsBlock)();
 - (void)saveRecordWithContact:(PersonModel*)personModel phone:(NSString*)phone;
 
 //用户点击通话记录进行拨打，将被拨打的通话记录进行存储
-- (void)saveRecordWithRecord:(RecordModel*)personModel phone:(NSString*)phone;
+- (void)saveRecordWithPhone:(NSString*)phone;
 
 //检查用户是否登录过
 - (BOOL)userIsLogin;
