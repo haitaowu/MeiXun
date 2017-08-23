@@ -8,6 +8,7 @@
 
 #import "RecordModel.h"
 #import <objc/runtime.h>
+#import "NSString+Extension.h"
 
 @implementation RecordModel
 
@@ -39,13 +40,24 @@
 - (id)mutableCopyWithZone:(NSZone *)zone
 {
     RecordModel *model = [[RecordModel allocWithZone:zone] init];
-    model.name = [self.name copy];
-    model.dateStr = [self.dateStr copy];
+    model.name = [self.name mutableCopy];
+    model.dateStr = [self.dateStr mutableCopy];
     model.count = self.count;
-    model.avatarData = [self.avatarData copy];
-    model.phone = [self.phone copy];
+    model.avatarData = [self.avatarData mutableCopy];
+    model.phone = [self.phone mutableCopy];
+    model.locStr = [self.locStr mutableCopy];
     return model;
 }
+
+- (NSString*)dateString;
+{
+    if ([self.dateStr dateStrIsToday] == YES) {
+        return [self.dateStr hhMMString];
+    }else{
+        return [self.dateStr YMDString];
+    }
+}
+
 
 #pragma mark - private methods
 - (NSString*)varKeyWithIvar:(Ivar)var

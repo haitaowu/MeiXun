@@ -28,5 +28,15 @@
 - (NSString*)hhMMString;
 
 
+/**
+ return whether date String is today
+ */
+- (BOOL)dateStrIsToday;
+
+/**
+ return yyyy/MM/dd formate date string
+ */
+- (NSString*)YMDString;
+
 
 @end

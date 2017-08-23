@@ -44,7 +44,8 @@
         self.nameLabel.text = name;
     }
     
-    self.timeLabel.text = [recordModel.dateStr hhMMString];
+    self.timeLabel.text = [recordModel dateString];
+    self.localLabel.text = recordModel.locStr;
     
     [self.loadQueue cancelAllOperations];
     

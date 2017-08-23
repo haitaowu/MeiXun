@@ -10,6 +10,7 @@
 #import "NSString+Extension.h"
 #import "RecordModel.h"
 #import "PersonModel.h"
+#import "MDataManagerUtil.h"
 #import <AddressBook/AddressBook.h>
 
 
@@ -346,6 +347,15 @@ static MDataUtil *instance = nil;
         recordModel.avatarData = personModel.avatarData;
         recordModel.count = @(1);
         recordModel.dateStr = [NSString currentDateTime];
+        NSString *locNumber = phone;
+        if (phone.length > 7) {
+            NSInteger len = 7;
+            NSInteger loc = 0;
+            NSRange range = NSMakeRange(loc, len);
+            locNumber = [phone substringWithRange:range];
+        }
+        recordModel.locStr = [[MDataManagerUtil shareInstance] locationForNumber:locNumber];
+        
         [self.records insertObject:recordModel atIndex:0];
     }else{
         [self recordsDataUpdateWith:recordModel];

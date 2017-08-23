@@ -12,9 +12,12 @@
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,copy) NSString *phone;
 @property (nonatomic,copy) NSString *dateStr;
+@property (nonatomic,copy) NSString *locStr;
 @property (nonatomic,assign) NSNumber *count;
 @property (nonatomic,strong) NSData *avatarData;
 
 //拨打次数显示字符
 - (NSString*)countStr;
+//返回对应格式日期的字符串
+- (NSString*)dateString;
 @end

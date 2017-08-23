@@ -53,4 +53,34 @@
 }
 
 
+/**
+ return yyyy/MM/dd formate date string
+ */
+- (NSString*)YMDString
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [dateFormatter dateFromString:self];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd"];
+    return [dateFormatter stringFromDate:date];
+}
+
+
+/**
+ return whether date String is today
+ */
+- (BOOL)dateStrIsToday
+{
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    NSDate *recordDate = [self dateForStr];
+    NSInteger unitFlags = NSCalendarUnitDay|kCFCalendarUnitMonth|kCFCalendarUnitYear;
+    NSDateComponents *cmps = [calender components:unitFlags fromDate:recordDate toDate:[NSDate date] options:0];
+    if ((cmps.year == 0) && (cmps.month == 0) && (cmps.day == 0)){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+
 @end

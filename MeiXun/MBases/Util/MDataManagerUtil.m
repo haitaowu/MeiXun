@@ -67,10 +67,10 @@ static MDataManagerUtil *instance = nil;
             [self.locationDB close];
             return locStr;
         }else{
-            return @"";
+            return @"本地";
         }
     }else{
-        return @"";
+        return @"本地";
     }
 }
 
