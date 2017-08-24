@@ -60,10 +60,7 @@
         [self.loadQueue addOperation:imgOperation];
     }
     
-    UIImage *img;
-    if (recordModel.avatarData == nil) {
-        img = [UIImage imageNamed:@"icon_user_hd"];
-    }
+    UIImage *img = [UIImage imageNamed:@"icon_user_hd"];
     self.avatarView.image = img;
 }
 

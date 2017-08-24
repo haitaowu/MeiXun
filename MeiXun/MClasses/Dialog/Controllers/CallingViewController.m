@@ -16,6 +16,7 @@
 @property (nonatomic,strong)id model;
 @property (nonatomic,copy)NSString* calledPhone;
 @property (nonatomic,copy) CancelBlock cancelBlock;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 
 @end
 
@@ -51,10 +52,18 @@
         PersonModel *person = (PersonModel*)model;
         self.nameLabel.text = person.name;
         self.phoneLabel.text = phone;
+        if (person.avatarData != nil) {
+            UIImage *image = [UIImage imageWithData:person.avatarData];
+            self.avatarView.image = image;
+        }
     }else if ([model isKindOfClass:[RecordModel class]]) {
         RecordModel *record = (RecordModel*)model;
         self.nameLabel.text = record.name;
         self.phoneLabel.text = phone;
+        if (record.avatarData != nil) {
+            UIImage *image = [UIImage imageWithData:record.avatarData];
+            self.avatarView.image = image;
+        }
     }else{
         self.nameLabel.text = phone;
         self.phoneLabel.text = phone;
