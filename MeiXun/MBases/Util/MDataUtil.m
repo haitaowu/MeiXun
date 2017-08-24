@@ -138,6 +138,19 @@ static MDataUtil *instance = nil;
         return [NSMutableArray array];;
     }
 }
+//除去 包含+86 、- 格式的手机号码，统一处理为11位的手机号码
+- (NSString*)elevenPhoneNumWithStr:(NSString*)phoneValue
+{
+    phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"+" withString:@""];
+    phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    if (phoneValue.length == 13) {
+        NSInteger len = 11;
+        NSInteger loc = phoneValue.length - len;
+        NSRange range = NSMakeRange(loc, len);
+        phoneValue = [phoneValue substringWithRange:range];
+    }
+    return phoneValue;
+}
 
 - (NSMutableArray*)allRawContacts
 {
@@ -165,14 +178,7 @@ static MDataUtil *instance = nil;
         for (int i = 0; i < phoneCount; i++) {
             // 2.获取电话号码
             NSString *phoneValue = (__bridge NSString *)ABMultiValueCopyValueAtIndex(phones, i);
-            phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"+" withString:@""];
-            phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
-            if (phoneValue.length == 13) {
-                NSInteger len = 11;
-                NSInteger loc = phoneValue.length - len;
-                NSRange range = NSMakeRange(loc, len);
-                phoneValue = [phoneValue substringWithRange:range];
-            }
+            phoneValue = [self elevenPhoneNumWithStr:phoneValue];
             [numbers addObject:phoneValue];
         }
         //1.3取得联系人的头像
@@ -183,6 +189,10 @@ static MDataUtil *instance = nil;
         }else{
             personModel.avatarData = nil;
         }
+        
+        //1.4加载联系人公司名称。
+        NSString *organization = (__bridge_transfer NSString *)ABRecordCopyValue(person, kABPersonOrganizationProperty);
+        personModel.organization = organization;
         
         personModel.phoneNums = numbers;
         [personModels addObject:personModel];

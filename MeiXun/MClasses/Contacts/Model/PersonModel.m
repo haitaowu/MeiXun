@@ -19,11 +19,12 @@
     PersonModel *model = [[PersonModel allocWithZone:zone] init];
     model.name = [self.name mutableCopy];
     model.firstName = [self.firstName mutableCopy];
-    model.lastName = [self.lastName copy];
-    model.pinYinName = [self.pinYinName copy];
-    model.nameFirstChar = [self.nameFirstChar copy];
-    model.avatarData = [self.avatarData copy];
-    model.phoneNums = [self.phoneNums copy];
+    model.lastName = [self.lastName mutableCopy];
+    model.pinYinName = [self.pinYinName mutableCopy];
+    model.nameFirstChar = [self.nameFirstChar mutableCopy];
+    model.avatarData = [self.avatarData mutableCopy];
+    model.phoneNums = [self.phoneNums mutableCopy];
+    model.organization = [self.organization mutableCopy];
     return model;
 }
 
@@ -57,6 +58,9 @@
     NSString *firstNam = _firstName == nil?@"":_firstName;
     NSString *lastNam = _lastName == nil?@"":_lastName;
     _name = [NSString stringWithFormat:@"%@%@",lastNam,firstNam];
+    if ((_name.length <= 0) && (_organization != nil)){
+        _name = _organization;
+    }
     return _name;
 }
 
