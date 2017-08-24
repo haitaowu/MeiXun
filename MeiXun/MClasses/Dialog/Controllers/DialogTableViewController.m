@@ -19,6 +19,8 @@ static NSString *RecordCellID = @"RecordCellID";
 @property (nonatomic,strong)RecordModel *selectedRecord;
 @property (nonatomic,strong)MKeyboard *keyboard;
 @property (nonatomic,strong)CallingViewController *callController;
+@property (nonatomic,assign) BOOL cellEditEnable;
+@property (nonatomic,strong)UIBarButtonItem *leftBarItem;
 
 @end
 
@@ -46,6 +48,14 @@ static NSString *RecordCellID = @"RecordCellID";
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+-(UIBarButtonItem *)leftBarItem
+{
+    if(_leftBarItem == nil)
+    {
+        _leftBarItem = [[UIBarButtonItem alloc] initWithTitle:@"清除" style:UIBarButtonItemStylePlain target:self action:@selector(tapLeftBarItem)];
+    }
+    return _leftBarItem;
 }
 
 -(MKeyboard *)keyboard
@@ -75,6 +85,10 @@ static NSString *RecordCellID = @"RecordCellID";
     UINib *alertCellNib = [UINib nibWithNibName:@"RecordCell" bundle:nil];
     [self.tableView registerNib:alertCellNib forCellReuseIdentifier:RecordCellID];
     
+    //2.2rightBarButtonItem set
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(tapRightBarItem)];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
+    
 }
 
 //显示可以拨打的电话号码。
@@ -94,20 +108,48 @@ static NSString *RecordCellID = @"RecordCellID";
     [self.keyboard showView];
 }
 
+- (void)tapLeftBarItem
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"清除所有通话记录" otherButtonTitles:nil];
+    actionSheet.tag = 99;
+    [actionSheet showInView:self.view];
+}
+
+- (void)tapRightBarItem
+{
+    self.cellEditEnable = !self.cellEditEnable;
+    [self.tableView setEditing:self.cellEditEnable animated:YES];
+    if (self.cellEditEnable == YES) {
+        self.navigationItem.leftBarButtonItem = self.leftBarItem;
+        self.navigationItem.rightBarButtonItem.title = @"完成";
+    }else{
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem.title = @"编辑";
+    }
+}
+
 #pragma mark - UIAction sheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(buttonIndex > 0){
-        NSString *callPhone = self.selectedRecord.phone;
-        HTLog(@"called number is %@",callPhone);
-        [[MDataUtil shareInstance] saveRecordWithPhone:callPhone];
-        CallingViewController *callController = [[CallingViewController alloc] init];
-        __block typeof(self) blockSelf = self;
-        [callController showViewWithModel:self.selectedRecord phone:callPhone cancel:^{
-            [[UIApplication sharedApplication] setStatusBarHidden:NO];
-            [blockSelf.tableView reloadData];
-        }];
-        self.callController = callController;
+    NSInteger tag = actionSheet.tag;
+    if (tag == 99) {
+       if(buttonIndex == 0){
+           HTLog(@"clear all record data");
+       }
+    }else{
+        if(buttonIndex > 0){
+            NSString *callPhone = self.selectedRecord.phone;
+            HTLog(@"called number is %@",callPhone);
+            [[MDataUtil shareInstance] saveRecordWithPhone:callPhone];
+            CallingViewController *callController = [[CallingViewController alloc] init];
+            __block typeof(self) blockSelf = self;
+            [callController showViewWithModel:self.selectedRecord phone:callPhone cancel:^{
+                [[UIApplication sharedApplication] setStatusBarHidden:NO];
+                [blockSelf.tableView reloadData];
+            }];
+            self.callController = callController;
+        }
+        
     }
 }
 
@@ -133,6 +175,19 @@ static NSString *RecordCellID = @"RecordCellID";
     
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        HTLog(@"commit tableviewcelleditingStyle delete ");
+    }
+}
+
+
 #pragma mark - UITableView --- Table view  delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -144,6 +199,7 @@ static NSString *RecordCellID = @"RecordCellID";
     [self showPhoneNumberWithRecord:model];
 //    [self showContactPhoneNumbersWithPerson:model];
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
