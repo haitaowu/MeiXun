@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^SelectItem) (NSInteger itemIdx);
+typedef void(^DialogNumberBlock) (NSString *phoneNum);
 
 @interface MKeyboard : UIView
 @property (nonatomic,copy) SelectItem selectItemBlock;
+@property (nonatomic,copy) DialogNumberBlock dialogBlock;
 + (MKeyboard*)showMKeyboard;
 - (void)showView;
 @end

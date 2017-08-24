@@ -362,8 +362,12 @@ static MDataUtil *instance = nil;
     if(recordModel == nil){
         recordModel = [[RecordModel alloc] init];
         recordModel.phone = phone;
-        recordModel.name = personModel.name;
-        recordModel.avatarData = personModel.avatarData;
+        if (personModel != nil) {
+            recordModel.name = personModel.name;
+            recordModel.avatarData = personModel.avatarData;
+        }else{
+            recordModel.name = phone;
+        }
         recordModel.count = @(1);
         recordModel.dateStr = [NSString currentDateTime];
         NSString *locNumber = phone;
@@ -407,6 +411,21 @@ static MDataUtil *instance = nil;
 -(void)updateRecordDataAfterDeleteRecord
 {
     [self archiveRecordsDataAfterDelete];
+}
+
+//根据手机号码查询联系人模型。
+- (PersonModel*)queryPersonWithPhone:(NSString*)phoneNum
+{
+    for (NSArray *contactArray in self.contacts) {
+        for (PersonModel *model in contactArray) {
+            for (NSString *phone in model.phoneNums) {
+                if ([phoneNum isEqualToString:phone]) {
+                    return model;
+                }
+            }
+        }
+    }
+    return  nil;
 }
 
 //检查用户是否登录过

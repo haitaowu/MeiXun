@@ -14,6 +14,7 @@
 @property (nonatomic,weak)MNumbers  *mNumbers;
 @property (weak, nonatomic) IBOutlet UIButton *dilogBtn;
 @property (nonatomic,assign) BOOL itemEnable;
+@property (nonatomic,copy) NSString *phoneNumber;
 @end
 @implementation MKeyboard
 #pragma mark - public methods
@@ -50,6 +51,7 @@
     if (self.mNumbers.phoneNumbBlock == nil) {
         self.mNumbers.phoneNumbBlock = ^(NSString *phoneNum) {
 //            NSLog(@"phon number dialoged = %@",phoneNum);
+            self.phoneNumber = phoneNum;
             if (phoneNum.length > 0) {
                 self.dilogBtn.hidden = NO;
             }else{
@@ -95,6 +97,13 @@
 #pragma mark - selectors
 - (IBAction)tapCoverBtn:(id)sender {
     [self disappearNumbersView];
+}
+
+//点击拨打按钮
+- (IBAction)tapDialogBtn:(id)sender {
+    if(self.dialogBlock != nil){
+        self.dialogBlock(self.phoneNumber);
+    }
 }
 
 #pragma mark - UITabBarDelegate

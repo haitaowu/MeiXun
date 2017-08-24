@@ -49,6 +49,16 @@ static NSString *RecordCellID = @"RecordCellID";
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+-(CallingViewController *)callController
+{
+    if(_callController == nil)
+    {
+        _callController = [[CallingViewController alloc] init];
+    }
+    return _callController;
+}
+
 -(UIBarButtonItem *)leftBarItem
 {
     if(_leftBarItem == nil)
@@ -67,11 +77,26 @@ static NSString *RecordCellID = @"RecordCellID";
         _keyboard.selectItemBlock = ^(NSInteger itemIdx) {
             blockSelf.tabBarController.selectedIndex = itemIdx;
         };
+        _keyboard.dialogBlock = ^(NSString *phoneNum) {
+            [blockSelf callPhoneNumber:phoneNum];
+        };
     }
     return _keyboard;
 }
 
-#pragma mark - setup UI 
+#pragma mark - private methods
+- (void)callPhoneNumber:(NSString*)phoneNum
+{
+    __block typeof(self) blockSelf = self;
+    PersonModel *model = [[MDataUtil shareInstance] queryPersonWithPhone:phoneNum];
+    [[MDataUtil shareInstance] saveRecordWithContact:model phone:phoneNum];
+    [self.callController showViewWithModel:model phone:phoneNum cancel:^{
+        [blockSelf.tableView reloadData];
+    }];
+    
+}
+
+#pragma mark - setup UI
 - (void)setupBase
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarSelecteItem) name:kFirstTabbarItemSelectedNotification object:nil];
@@ -157,13 +182,11 @@ static NSString *RecordCellID = @"RecordCellID";
             NSString *callPhone = self.selectedRecord.phone;
             HTLog(@"called number is %@",callPhone);
             [[MDataUtil shareInstance] saveRecordWithPhone:callPhone];
-            CallingViewController *callController = [[CallingViewController alloc] init];
             __block typeof(self) blockSelf = self;
-            [callController showViewWithModel:self.selectedRecord phone:callPhone cancel:^{
+            [self.callController showViewWithModel:self.selectedRecord phone:callPhone cancel:^{
                 [[UIApplication sharedApplication] setStatusBarHidden:NO];
                 [blockSelf.tableView reloadData];
             }];
-            self.callController = callController;
         }
         
     }

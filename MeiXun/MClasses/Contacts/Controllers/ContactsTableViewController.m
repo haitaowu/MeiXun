@@ -62,9 +62,7 @@ static NSString *ContactsCellID = @"ContactsCellID";
         [[MDataUtil shareInstance] saveRecordWithContact:self.selectedPerson phone:callPhone];
         CallingViewController *callController = [[CallingViewController alloc] init];
         self.callController = callController;
-        __block typeof(self) blockSelf = self;
         [callController showViewWithModel:self.selectedPerson phone:callPhone cancel:^{
-            [[UIApplication sharedApplication] setStatusBarHidden:NO];
         }];
     }
 }

@@ -20,6 +20,7 @@
 @end
 
 @implementation CallingViewController
+
 - (void)showViewWithModel:(id)model phone:(NSString*)phone cancel:(CancelBlock)cancelBlock
 {
     self.calledPhone = phone;
@@ -30,10 +31,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [self setupUIWithModel:self.model phone:self.calledPhone];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self setupUIWithModel:self.model phone:self.calledPhone];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
 #pragma mark - setup UI 
 - (void)setupUIWithModel:(id)model phone:(NSString*)phone
 {
@@ -51,10 +61,6 @@
     }
 }
 
-- (BOOL)prefersStatusBarHidden
-{
-    return YES;
-}
 
 #pragma mark - selectors
 - (IBAction)tapCancelBtn:(id)sender {
@@ -79,6 +85,7 @@
 
 - (void)disappearView
 {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [UIView animateWithDuration:0.1 animations:^{
         self.view.alpha = 0;
     } completion:^(BOOL finished) {

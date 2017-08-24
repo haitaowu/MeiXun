@@ -32,6 +32,9 @@ typedef void(^LoadContactsBlock)();
 //删除一个通话记录之后更新本地通话记录文档
 -(void)updateRecordDataAfterDeleteRecord;
 
+//根据手机号码查询联系人模型。
+- (PersonModel*)queryPersonWithPhone:(NSString*)phoneNum;
+
 //检查用户是否登录过
 - (BOOL)userIsLogin;
 @end
