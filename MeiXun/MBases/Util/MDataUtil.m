@@ -107,7 +107,7 @@ static MDataUtil *instance = nil;
     return _accModel;
 }
 
-//归档用户通话记录数据
+//添加记录之后归档用户通话记录数据
 - (void)archiveRecordsData
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -117,6 +117,15 @@ static MDataUtil *instance = nil;
             [NSKeyedArchiver archiveRootObject:deepCopiedRecords toFile:kRecordsInfoPath];
         });
     }
+}
+
+//删除记录之后归档用户通话记录数据
+- (void)archiveRecordsDataAfterDelete
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        [NSKeyedArchiver archiveRootObject:_records toFile:kRecordsInfoPath];
+    });
 }
 
 //解档通话记录数据
@@ -382,6 +391,12 @@ static MDataUtil *instance = nil;
         self.records = [NSMutableArray arrayWithArray:array];
     }
     [self archiveRecordsData];
+}
+
+//删除一个通话记录之后更新本地通话记录文档
+-(void)updateRecordDataAfterDeleteRecord
+{
+    [self archiveRecordsDataAfterDelete];
 }
 
 //检查用户是否登录过

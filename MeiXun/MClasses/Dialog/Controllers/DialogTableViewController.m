@@ -117,7 +117,16 @@ static NSString *RecordCellID = @"RecordCellID";
 
 - (void)tapRightBarItem
 {
+    NSArray *records = [[MDataUtil shareInstance] records];
+    if ([records count] <= 0) {
+            return;
+    }
     self.cellEditEnable = !self.cellEditEnable;
+    [self updateNavigationBarItemState];
+}
+
+- (void)updateNavigationBarItemState
+{
     [self.tableView setEditing:self.cellEditEnable animated:YES];
     if (self.cellEditEnable == YES) {
         self.navigationItem.leftBarButtonItem = self.leftBarItem;
@@ -135,6 +144,13 @@ static NSString *RecordCellID = @"RecordCellID";
     if (tag == 99) {
        if(buttonIndex == 0){
            HTLog(@"clear all record data");
+           NSMutableArray *records = [[MDataUtil shareInstance] records];
+           [records removeAllObjects];
+           [self.tableView reloadData];
+           [[MDataUtil shareInstance] updateRecordDataAfterDeleteRecord];
+//           [self tapRightBarItem];
+           self.cellEditEnable = NO;
+           [self updateNavigationBarItemState];
        }
     }else{
         if(buttonIndex > 0){
@@ -184,6 +200,14 @@ static NSString *RecordCellID = @"RecordCellID";
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         HTLog(@"commit tableviewcelleditingStyle delete ");
+        NSMutableArray *records = [[MDataUtil shareInstance] records];
+        [records removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+        [[MDataUtil shareInstance] updateRecordDataAfterDeleteRecord];
+        if ([records count] == 0) {
+            self.cellEditEnable = NO;
+            [self updateNavigationBarItemState];
+        }
     }
 }
 

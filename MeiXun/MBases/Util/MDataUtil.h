@@ -29,6 +29,9 @@ typedef void(^LoadContactsBlock)();
 //用户点击通话记录进行拨打，将被拨打的通话记录进行存储
 - (void)saveRecordWithPhone:(NSString*)phone;
 
+//删除一个通话记录之后更新本地通话记录文档
+-(void)updateRecordDataAfterDeleteRecord;
+
 //检查用户是否登录过
 - (BOOL)userIsLogin;
 @end
