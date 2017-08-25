@@ -12,7 +12,7 @@
 
 static NSDictionary *failMsg;
 
-#define kReqSuccess             @"S00001"
+#define kReqSuccess             @"S00000"
 #define kReqFail                @"F00000"
 
 @implementation MNetworkUtil
@@ -29,12 +29,12 @@ static NSDictionary *failMsg;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 18;
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSString *code = responseObject[@"code"];
+        NSString *code = responseObject[kReturnCode];
         if ([code isEqualToString:kReqSuccess]) {
-            id reqData = responseObject[@"data"];
+            id reqData = responseObject[kReturnData];
             success(reqData);
         }else {
-            NSString *msg = responseObject[@"msg"];
+            NSString *msg = responseObject[kReturnMsg];
             fail(msg);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -57,12 +57,12 @@ static NSDictionary *failMsg;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 18;
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSString *code = responseObject[@"code"];
+        NSString *code = responseObject[kReturnCode];
         if ([code isEqualToString:kReqSuccess]) {
-            id reqData = responseObject[@"data"];
+            id reqData = responseObject[kReturnData];
             success(reqData);
         }else {
-            NSString *msg = responseObject[@"msg"];
+            NSString *msg = responseObject[kReturnMsg];
             fail(msg);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

@@ -26,28 +26,25 @@
 
  
    
-    if([[MDataUtil shareInstance] userIsLogin] == NO){
+    if([[MDataUtil shareInstance] userIsLogin] == YES){
         //3.ad
         ADViewController *rootController = [[ADViewController alloc] init];
         self.window.rootViewController = rootController;
         __block typeof(self) blockSelf = self;
         [[MDataUtil shareInstance] loadContactsWithBlock:^{
             //2.
-                UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
-                [rootController setDelegate:blockSelf];
-                blockSelf.window.rootViewController = rootController;
+            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
+            [rootController setDelegate:blockSelf];
+            blockSelf.window.rootViewController = rootController;
         }];
-
     }else{
         //1.
-            UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-            UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
-            self.window.rootViewController = rootController;
-            [self.window makeKeyAndVisible];
-        
+        UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
+        self.window.rootViewController = rootController;
+        [self.window makeKeyAndVisible];
     }
-    
     [self.window makeKeyAndVisible];
     
     

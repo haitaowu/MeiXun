@@ -7,6 +7,7 @@
 //
 
 #import "AccTableVieController.h"
+#import "LoginViewModel.h"
 
 @interface AccTableVieController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *accField;
@@ -30,9 +31,32 @@
 - (IBAction)tapNextBtn:(id)sender {
     [self.view endEditing:YES];
 //    [self performSegueWithIdentifier:@"codeSegue" sender:nil];
-    [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
+//        [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
+    if([self validateFieldText]){
+        [self reqVaidatePhoneRegisterState];
+    }
 }
 
+- (BOOL)validateFieldText
+{
+    NSString *accTxt = self.accField.text;
+    if ([accTxt rightPhoneNumFormat] == NO) {
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+#pragma mark - requset server
+- (void)reqVaidatePhoneRegisterState
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *accTxt = self.accField.text;
+    params[kParamMobile] = accTxt;
+    [LoginViewModel ReqPhoneRegisterStateWithParams:params result:^(ReqResultType status, id data) {
+        HTLog(@"data = %@",data);
+    }];
+}
 
 #pragma mark - setup UI 
 - (void)setupAccViewUI

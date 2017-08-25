@@ -570,7 +570,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtS-VI-uaJ">
-                                                    <rect key="frame" x="305" y="29" width="54" height="28"/>
+                                                    <rect key="frame" x="305" y="26.5" width="54" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="忘记密码">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -580,9 +580,9 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeR-wk-l8H">
-                                                    <rect key="frame" x="16" y="28" width="30" height="30"/>
+                                                    <rect key="frame" x="10" y="28" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="98c-gG-AI6"/>
+                                                        <constraint firstAttribute="width" constant="25" id="98c-gG-AI6"/>
                                                         <constraint firstAttribute="width" secondItem="BeR-wk-l8H" secondAttribute="height" multiplier="1:1" id="RNU-5I-mTF"/>
                                                     </constraints>
                                                     <state key="normal" image="icon_backtrack_white"/>
@@ -592,7 +592,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="BeR-wk-l8H" firstAttribute="leading" secondItem="NSh-DG-f5V" secondAttribute="leading" constant="16" id="5Jc-Xk-gSD"/>
+                                                <constraint firstItem="BeR-wk-l8H" firstAttribute="leading" secondItem="NSh-DG-f5V" secondAttribute="leading" constant="10" id="5Jc-Xk-gSD"/>
                                                 <constraint firstItem="IQC-UB-Yu6" firstAttribute="leading" secondItem="NSh-DG-f5V" secondAttribute="leading" id="BY9-tJ-PcF"/>
                                                 <constraint firstItem="wtS-VI-uaJ" firstAttribute="centerY" secondItem="BeR-wk-l8H" secondAttribute="centerY" id="FGe-ZT-xfA"/>
                                                 <constraint firstAttribute="trailing" secondItem="IQC-UB-Yu6" secondAttribute="trailing" id="L97-8Y-uZq"/>
@@ -691,6 +691,6 @@
         <image name="logo_white" width="1240" height="888"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sjr-iz-tm4"/>
+        <segue reference="buc-Lj-Atx"/>
     </inferredMetricsTieBreakers>
 </document>

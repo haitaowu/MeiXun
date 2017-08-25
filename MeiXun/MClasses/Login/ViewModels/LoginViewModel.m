@@ -20,7 +20,7 @@
     [MNetworkUtil GETWithURL:kRegisterStateUrl params:params reqSuccess:^(id data) {
         result(ReqResultSuccType,data);
     } reqFail:^(NSString *msg) {
-        [SVProgressHUD showWithStatus:msg];
+        [SVProgressHUD showErrorWithStatus:msg];
         result(ReqResultFailType,msg);
     }];
 }
