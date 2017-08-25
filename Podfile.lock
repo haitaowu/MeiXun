@@ -17,18 +17,21 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - MJExtension (3.0.13)
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - FMDB (~> 2.6.2)
+  - MJExtension
   - SVProgressHUD (~> 2.1.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: fbcc9d8239f53d4e165df99e2c87621ca5010ff3
+PODFILE CHECKSUM: 5c6a16220900d0c233314b3572d8f83792c1ff92
 
 COCOAPODS: 1.1.1

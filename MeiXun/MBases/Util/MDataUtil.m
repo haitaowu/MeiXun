@@ -158,6 +158,7 @@ static MDataUtil *instance = nil;
     NSMutableArray *personModels = [NSMutableArray array];
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     CFArrayRef peopleArray = ABAddressBookCopyArrayOfAllPeople(addressBook);
+    
     CFIndex peopleCount = CFArrayGetCount(peopleArray);
     // 1.遍历所有的联系人
     for (int i = 0; i < peopleCount; i++) {

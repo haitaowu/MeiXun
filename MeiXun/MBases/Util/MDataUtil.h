@@ -39,5 +39,6 @@ typedef void(^LoadContactsBlock)();
 - (BOOL)userIsLogin;
 //对字符串进行aes加密
 + (NSString*)encryptStringWithStr:(NSString*)string;
+
 @end
        
