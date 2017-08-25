@@ -31,7 +31,6 @@
 - (IBAction)tapNextBtn:(id)sender {
     [self.view endEditing:YES];
 //    [self performSegueWithIdentifier:@"codeSegue" sender:nil];
-//        [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
     if([self validateFieldText]){
         [self reqVaidatePhoneRegisterState];
     }
@@ -55,6 +54,12 @@
     params[kParamMobile] = accTxt;
     [LoginViewModel ReqPhoneRegisterStateWithParams:params result:^(ReqResultType status, id data) {
         HTLog(@"data = %@",data);
+        if ([data isEqualToString:@"1"]) {
+            MAccModel *accModel = [[MAccModel alloc] init];
+            accModel.mobile = accTxt;
+            [MDataUtil shareInstance].accModel = accModel;
+            [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
+        }
     }];
 }
 

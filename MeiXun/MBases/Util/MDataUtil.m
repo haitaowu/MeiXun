@@ -358,11 +358,11 @@ static MDataUtil *instance = nil;
 - (void)archiveAccModel:(MAccModel*)accModel
 {
     _accModel = accModel;
-    [self archiveAccModel];
+    [self archiveAccModelToLocal];
 }
 
 //归档用户信息的数据2
-- (void)archiveAccModel
+- (void)archiveAccModelToLocal
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     if (_accModel == nil) {

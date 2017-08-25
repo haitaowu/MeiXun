@@ -44,6 +44,10 @@
     self.pwdField.leftViewMode = UITextFieldViewModeAlways;
     self.pwdField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 40)];
     
+    MAccModel *accModel = [MDataUtil shareInstance].accModel;
+    NSString *desTxt = self.accLabel.text;
+    desTxt = [NSString stringWithFormat:@"%@%@",accModel.mobile,desTxt];
+    self.accLabel.text = desTxt;
 }
 
 #pragma mark - UITableView --- Table view  delegate
