@@ -24,12 +24,16 @@ static NSString *ContactsCellID = @"ContactsCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupUI];
+    [MDataUtil shareInstance].reloadContactBlock = ^{
+        NSLog(@"reload finished ");
+        [self.tableView reloadData];
+    };
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[MDataUtil shareInstance] shouldSynchronizeAddressBookToLocalContacts];
 }
 
 

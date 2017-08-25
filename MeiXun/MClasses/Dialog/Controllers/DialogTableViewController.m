@@ -128,7 +128,6 @@ static NSString *RecordCellID = @"RecordCellID";
 #pragma mark - selectors
 - (void)tabbarSelecteItem
 {
-    HTLog(@"select dialog item tabbar ");
 //    MKeyboard *keyboard = [MKeyboard showMKeyboard];
     [self.keyboard showView];
 }

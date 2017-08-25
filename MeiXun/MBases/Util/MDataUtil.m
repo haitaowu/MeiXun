@@ -30,6 +30,7 @@ static MDataUtil *instance = nil;
 
 @interface MDataUtil()
 @property (nonatomic,strong)NSArray *sectionTitles;
+@property (nonatomic,assign) BOOL granted;
 @end
 
 @implementation MDataUtil
@@ -158,7 +159,6 @@ static MDataUtil *instance = nil;
     NSMutableArray *personModels = [NSMutableArray array];
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     CFArrayRef peopleArray = ABAddressBookCopyArrayOfAllPeople(addressBook);
-    
     CFIndex peopleCount = CFArrayGetCount(peopleArray);
     // 1.遍历所有的联系人
     for (int i = 0; i < peopleCount; i++) {
@@ -209,6 +209,8 @@ static MDataUtil *instance = nil;
 
 - (void)generaContactsAndSections
 {
+    [self.sections removeAllObjects];
+    [self.contacts removeAllObjects];
     NSMutableArray *rawContacts = [self allRawContacts];
     for (NSString *sectionTitle in self.sectionTitles) {
         NSMutableArray *sectionContacts = [NSMutableArray array];
@@ -243,14 +245,15 @@ static MDataUtil *instance = nil;
     return [NSMutableArray arrayWithArray:array];
 }
 
+
 //将联系人与section title 归档到本地。
-- (void)archiveContactsTitlesToLocal
+- (void)archiveToLocalForContacts:(NSMutableArray*) contacts titles:(NSMutableArray*) titles
 {
-    if (_contacts != nil) {
+    if (contacts != nil) {
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         dispatch_async(queue, ^{
-            NSArray *sections = [_sections mutableCopy];
+            NSArray *sections = [titles mutableCopy];
             [userDefault setObject:sections forKey:kSectionTitleKey];
             NSArray *deepCopiedContacts = [self deepMutableArray:_contacts];
             [NSKeyedArchiver archiveRootObject:deepCopiedContacts toFile:kContactsInfoPath];
@@ -306,9 +309,9 @@ static MDataUtil *instance = nil;
 //添加服务号
 - (void)addMeiServicePhoneNum
 {
-    NSString *name = @"";
-    NSString *num = @"2234";
-    NSString *label = @"serviceNumber";
+    NSString *name = @"美讯服务号";
+    NSString *num = @"028-69514101";
+    NSString *label = @"服务号";
     // 创建一条空的联系人
     ABRecordRef record = ABPersonCreate();
     CFErrorRef error;
@@ -318,20 +321,10 @@ static MDataUtil *instance = nil;
     ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABPersonPhoneProperty);
     ABMultiValueAddValueAndLabel(multi, (__bridge CFTypeRef)num, (__bridge CFTypeRef)label, NULL);
     ABRecordSetValue(record, kABPersonPhoneProperty, multi, &error);
-    
-    ABAddressBookRef addressBook = nil;
-   // 如果为iOS6以上系统，需要等待用户确认是否允许访问通讯录。
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 6.0)
-    {
-        addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-        //等待同意后向下执行
-        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error){
-            dispatch_semaphore_signal(sema);
-        });
-    }else{
-        addressBook = ABAddressBookCreate();
-    }
+    UIImage *image = [UIImage imageNamed:@"aboutusIcon"];
+    NSData *avatarData = UIImagePNGRepresentation(image);
+    ABPersonSetImageData(record, (__bridge CFDataRef)(avatarData), &error);
+    ABAddressBookRef addressBook = ABAddressBookCreate();
     // 将新建联系人记录添加如通讯录中
     ABAddressBookAddRecord(addressBook, record, &error);
     // 如果添加记录成功，保存更新到通讯录数据库中
@@ -339,6 +332,17 @@ static MDataUtil *instance = nil;
     CFRelease(addressBook);
     CFRelease(record);
 }
+
+//统计本地存储的联系人 数量。
+- (NSInteger)localContactsCount
+{
+    NSInteger count = 0;
+    for (NSArray *array in self.contacts) {
+        count = count + [array count];
+    }
+    return count;
+}
+
 
 #pragma mark - public methods
 +(instancetype)shareInstance
@@ -376,12 +380,15 @@ static MDataUtil *instance = nil;
     ABAddressBookRef bookRef = ABAddressBookCreateWithOptions(NULL, NULL);
     ABAddressBookRequestAccessWithCompletion(bookRef, ^(bool granted, CFErrorRef error) {
         HTLog(@"addressbook authorization is = %d",granted);
+        self.granted = granted;
         if (granted == YES) {
             NSMutableArray *contacts = [self loadArchivedContacts];
             if (contacts == nil) {
+                [self addMeiServicePhoneNum];
                 //第一次加载通讯录里的联系人
                 [self generaContactsAndSections];
-                [self archiveContactsTitlesToLocal];
+//                [self archiveContactsTitlesToLocal];
+                [self archiveToLocalForContacts:_contacts titles:_sections];
             }else{
                 _contacts = contacts;
                 _sections = [self loadArchivedSectionTitles];
@@ -390,6 +397,7 @@ static MDataUtil *instance = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             loadBlock();
         });
+        [self shouldSynchronizeAddressBookToLocalContacts];
     });
 }
 
@@ -482,6 +490,58 @@ static MDataUtil *instance = nil;
     NSString *leKey = @"20160520";
     NSString *encryptedStr = [SecurityUtil encryptAESBase64:string key:leKey];
     return encryptedStr;
+}
+
+//在通讯录联系人添加、删除之后重新读取通讯录并存储到本地。
+- (void)reloadAfterContactsModified
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSMutableArray *contactsArray = [NSMutableArray array];
+        NSMutableArray *sectionsArray = [NSMutableArray array];
+        NSMutableArray *rawContacts = [self allRawContacts];
+        for (NSString *sectionTitle in self.sectionTitles) {
+            NSMutableArray *sectionContacts = [NSMutableArray array];
+            for (PersonModel *person in rawContacts) {
+                if ([person.nameFirstChar isEqualToString:sectionTitle]) {
+                    [sectionContacts addObject:person];
+                }
+            }
+            if ([sectionContacts count] > 0) {
+                [sectionsArray addObject:sectionTitle];
+                [contactsArray addObject:sectionContacts];
+            }
+        }
+        _sections = sectionsArray;
+        _contacts = contactsArray;
+        [self archiveToLocalForContacts:contactsArray titles:sectionsArray];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (self.reloadContactBlock != nil) {
+                self.reloadContactBlock();
+            }
+        });
+    });
+}
+
+
+/**
+ 检索通讯录中联系人数量来确定是否需要同步到本地
+ */
+- (void)shouldSynchronizeAddressBookToLocalContacts
+{
+    if (self.granted == YES) {
+        ABAddressBookRef bookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+        CFIndex count = ABAddressBookGetPersonCount(bookRef);
+        NSInteger personCount = count;
+        if (personCount != [self localContactsCount]) {
+            HTLog(@"联系人数量不不一致");
+            [self reloadAfterContactsModified];
+//            [self generaContactsAndSections];
+//            [self archiveContactsTitlesToLocal];
+        }else{
+            HTLog(@"联系人数量没有变化");
+        }
+    }
 }
 
 @end

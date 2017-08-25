@@ -13,12 +13,15 @@
 
 
 typedef void(^LoadContactsBlock)();
+typedef void(^ReLoadContactsBlock)();
 
 @interface MDataUtil : NSObject
 @property (nonatomic,strong)MAccModel *accModel;
 @property (nonatomic,strong)NSMutableArray *contacts;
 @property (nonatomic,strong)NSMutableArray *sections;
 @property (nonatomic,strong)NSMutableArray *records;
+@property (nonatomic,copy) ReLoadContactsBlock reloadContactBlock;
+
 +(instancetype)shareInstance;
 - (void)archiveAccModel:(MAccModel*)accModel;
 - (void)archiveAccModel;
@@ -40,5 +43,9 @@ typedef void(^LoadContactsBlock)();
 //对字符串进行aes加密
 + (NSString*)encryptStringWithStr:(NSString*)string;
 
+/**
+ 检索通讯录中联系人数量来确定是否需要同步到本地
+ */
+- (void)shouldSynchronizeAddressBookToLocalContacts;
 @end
        
