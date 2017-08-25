@@ -12,6 +12,7 @@
 #import "PersonModel.h"
 #import "MDataManagerUtil.h"
 #import <AddressBook/AddressBook.h>
+#import "SecurityUtil.h"
 
 
 
@@ -301,6 +302,42 @@ static MDataUtil *instance = nil;
     }
 }
 
+//添加服务号
+- (void)addMeiServicePhoneNum
+{
+    NSString *name = @"";
+    NSString *num = @"2234";
+    NSString *label = @"serviceNumber";
+    // 创建一条空的联系人
+    ABRecordRef record = ABPersonCreate();
+    CFErrorRef error;
+    // 设置联系人的名字
+    ABRecordSetValue(record, kABPersonFirstNameProperty, (__bridge CFTypeRef)name, &error);
+    // 添加联系人电话号码以及该号码对应的标签名
+    ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABPersonPhoneProperty);
+    ABMultiValueAddValueAndLabel(multi, (__bridge CFTypeRef)num, (__bridge CFTypeRef)label, NULL);
+    ABRecordSetValue(record, kABPersonPhoneProperty, multi, &error);
+    
+    ABAddressBookRef addressBook = nil;
+   // 如果为iOS6以上系统，需要等待用户确认是否允许访问通讯录。
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 6.0)
+    {
+        addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+        //等待同意后向下执行
+        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error){
+            dispatch_semaphore_signal(sema);
+        });
+    }else{
+        addressBook = ABAddressBookCreate();
+    }
+    // 将新建联系人记录添加如通讯录中
+    ABAddressBookAddRecord(addressBook, record, &error);
+    // 如果添加记录成功，保存更新到通讯录数据库中
+    ABAddressBookSave(addressBook, &error);
+    CFRelease(addressBook);
+    CFRelease(record);
+}
 
 #pragma mark - public methods
 +(instancetype)shareInstance
@@ -436,6 +473,14 @@ static MDataUtil *instance = nil;
     }else{
         return YES;
     }
+}
+
+//对字符串进行aes加密
++ (NSString*)encryptStringWithStr:(NSString*)string
+{
+    NSString *leKey = @"20160520";
+    NSString *encryptedStr = [SecurityUtil encryptAESBase64:string key:leKey];
+    return encryptedStr;
 }
 
 @end

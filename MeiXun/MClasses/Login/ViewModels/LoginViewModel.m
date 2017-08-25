@@ -12,6 +12,20 @@
 
 @implementation LoginViewModel
 /**
+ *  发送一个GET请求
+ *  验证手机号码是否已经注册
+ */
++ (void)ReqPhoneRegisterStateWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil GETWithURL:kRegisterStateUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+/**
  *  发送一个POST请求
  *  请求登录
  */

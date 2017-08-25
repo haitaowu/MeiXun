@@ -38,5 +38,9 @@
  */
 - (NSString*)YMDString;
 
+/**
+ validate the phon number format
+ */
+- (BOOL)rightPhoneNumFormat;
 
 @end

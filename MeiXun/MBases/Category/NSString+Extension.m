@@ -82,5 +82,15 @@
     }
 }
 
+/**
+ validate the phon number format
+ */
+- (BOOL)rightPhoneNumFormat
+{
+    NSString *regex = @"^1[3|4|5|7|8][0-9]\\d{8}$";
+    NSPredicate *phonePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [phonePredicate evaluateWithObject:self];
+}
+
 
 @end

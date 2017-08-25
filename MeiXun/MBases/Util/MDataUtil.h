@@ -37,5 +37,7 @@ typedef void(^LoadContactsBlock)();
 
 //检查用户是否登录过
 - (BOOL)userIsLogin;
+//对字符串进行aes加密
++ (NSString*)encryptStringWithStr:(NSString*)string;
 @end
        

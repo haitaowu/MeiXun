@@ -22,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    [self setupNavigationBarUI];
+    [self setupAppearUI];
 
  
    
@@ -68,7 +68,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 }
 
-
+#pragma mark - UITabBarController delegate
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
 //    HTLog(@"tabbar controller selected index = %ld",tabBarController.selectedIndex);
@@ -77,13 +77,16 @@
     }
 }
 
-
 #pragma mark - private methods
-- (void)setupNavigationBarUI
+- (void)setupAppearUI
 {
+    //1.navigation bar appear
     [[UINavigationBar appearance] setTintColor:MNavBarColor];
     //未选中字体颜色
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:MNavBarColor} forState:UIControlStateSelected];
+    //2.SVProgressHUD appear
+    [SVProgressHUD setBackgroundColor:MRGBA(0, 0, 0, 0.5)];
+    [SVProgressHUD setForegroundColor:MRGBA(255, 255, 255, 1)];
 }
 
 @end

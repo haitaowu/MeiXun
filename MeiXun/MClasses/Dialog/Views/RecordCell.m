@@ -12,6 +12,7 @@
 #import "LoadImgOperation.h"
 
 
+
 @interface RecordCell()
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -54,13 +55,25 @@
     if (recordModel.avatarData != nil) {
         LoadImgOperation *imgOperation = [[LoadImgOperation alloc] initWithData:recordModel.avatarData finishedBlock:^(UIImage *img) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                blockSelf.avatarView.image = img;
+//                blockSelf.avatarView.image = img;
+                [blockSelf updateAvatarImageViewWith:img];
             });
         }];
         [self.loadQueue addOperation:imgOperation];
     }
     
     UIImage *img = [UIImage imageNamed:@"icon_user_hd"];
+    self.avatarView.image = img;
+}
+
+#pragma mark - private methods
+- (void)updateAvatarImageViewWith:(UIImage*)img
+{
+    CATransition *caTransition = [[CATransition alloc] init];
+    caTransition.duration = 0.0;
+    caTransition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    caTransition.type = kCATransitionFade;
+    [self.avatarView.layer addAnimation:caTransition forKey:@"animation"];
     self.avatarView.image = img;
 }
 

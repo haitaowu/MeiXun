@@ -55,6 +55,9 @@
         if (person.avatarData != nil) {
             UIImage *image = [UIImage imageWithData:person.avatarData];
             self.avatarView.image = image;
+        }else{
+            UIImage *img = [UIImage imageNamed:@"icon_user_hd"];
+            self.avatarView.image = img;
         }
     }else if ([model isKindOfClass:[RecordModel class]]) {
         RecordModel *record = (RecordModel*)model;
@@ -63,10 +66,15 @@
         if (record.avatarData != nil) {
             UIImage *image = [UIImage imageWithData:record.avatarData];
             self.avatarView.image = image;
+        }else{
+            UIImage *img = [UIImage imageNamed:@"icon_user_hd"];
+            self.avatarView.image = img;
         }
     }else{
         self.nameLabel.text = phone;
         self.phoneLabel.text = phone;
+        UIImage *img = [UIImage imageNamed:@"icon_user_hd"];
+        self.avatarView.image = img;
     }
 }
 

@@ -18,6 +18,12 @@ typedef void(^ReqReusltBlock)(ReqResultType status,id data);
 
 @interface LoginViewModel : NSObject
 /**
+ *  发送一个GET请求
+ *  验证手机号码是否已经注册
+ */
++ (void)ReqPhoneRegisterStateWithParams:(id)params result:(ReqReusltBlock)result;
+
+/**
  *  发送一个POST请求
  *  请求登录
  */

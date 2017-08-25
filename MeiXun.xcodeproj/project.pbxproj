@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6B93A1E07252B2FC99D6F25B /* libPods-MeiXun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */; };
+		BE14D5AA1F4FB5A10037F988 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A41F4FB5A10037F988 /* GTMBase64.m */; };
+		BE14D5AB1F4FB5A10037F988 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A71F4FB5A10037F988 /* NSData+AES.m */; };
+		BE14D5AC1F4FB5A10037F988 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A91F4FB5A10037F988 /* SecurityUtil.m */; };
 		BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */; };
 		BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */; };
 		BE2A77C91F43351100FDD1BD /* MKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2A77C81F43351100FDD1BD /* MKeyboard.xib */; };
@@ -63,6 +66,13 @@
 /* Begin PBXFileReference section */
 		4984CF8DB189A6F5E092B49C /* Pods-MeiXun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiXun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeiXun/Pods-MeiXun.debug.xcconfig"; sourceTree = "<group>"; };
 		A360D35DA78737F4678F2B94 /* Pods-MeiXun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiXun.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeiXun/Pods-MeiXun.release.xcconfig"; sourceTree = "<group>"; };
+		BE14D5A31F4FB5A10037F988 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		BE14D5A41F4FB5A10037F988 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		BE14D5A51F4FB5A10037F988 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		BE14D5A61F4FB5A10037F988 /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		BE14D5A71F4FB5A10037F988 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
+		BE14D5A81F4FB5A10037F988 /* SecurityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
+		BE14D5A91F4FB5A10037F988 /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
 		BE2A77BF1F432AE900FDD1BD /* DialogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTableViewController.h; sourceTree = "<group>"; };
 		BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTableViewController.m; sourceTree = "<group>"; };
 		BE2A77C31F432B6A00FDD1BD /* MTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTabbarController.h; sourceTree = "<group>"; };
@@ -192,6 +202,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BE14D5A11F4FB5A10037F988 /* AES */ = {
+			isa = PBXGroup;
+			children = (
+				BE14D5A21F4FB5A10037F988 /* GTMBase64 */,
+				BE14D5A61F4FB5A10037F988 /* NSData+AES.h */,
+				BE14D5A71F4FB5A10037F988 /* NSData+AES.m */,
+				BE14D5A81F4FB5A10037F988 /* SecurityUtil.h */,
+				BE14D5A91F4FB5A10037F988 /* SecurityUtil.m */,
+			);
+			path = AES;
+			sourceTree = "<group>";
+		};
+		BE14D5A21F4FB5A10037F988 /* GTMBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				BE14D5A31F4FB5A10037F988 /* GTMBase64.h */,
+				BE14D5A41F4FB5A10037F988 /* GTMBase64.m */,
+				BE14D5A51F4FB5A10037F988 /* GTMDefines.h */,
+			);
+			path = GTMBase64;
+			sourceTree = "<group>";
+		};
 		BE2A77BC1F432AB400FDD1BD /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +293,7 @@
 		BE3951451F46BB2A00872662 /* Librarry */ = {
 			isa = PBXGroup;
 			children = (
+				BE14D5A11F4FB5A10037F988 /* AES */,
 				BE3951571F46BE0300872662 /* PinYin4Objc */,
 			);
 			name = Librarry;
@@ -685,6 +718,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE39516A1F46BE0300872662 /* PinyinHelper.m in Sources */,
+				BE14D5AA1F4FB5A10037F988 /* GTMBase64.m in Sources */,
 				BEF6ADF61F4DD75900F7A2E6 /* CallingViewController.m in Sources */,
 				BE96502C1F4CF0BC004395D2 /* ADViewController.m in Sources */,
 				BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */,
@@ -694,6 +728,7 @@
 				BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */,
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
 				BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */,
+				BE14D5AB1F4FB5A10037F988 /* NSData+AES.m in Sources */,
 				BE3951681F46BE0300872662 /* NSString+PinYin4Cocoa.m in Sources */,
 				BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */,
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
@@ -705,6 +740,7 @@
 				BE3951691F46BE0300872662 /* PinyinFormatter.m in Sources */,
 				BE2A77CC1F43363400FDD1BD /* MKeyboard.m in Sources */,
 				BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */,
+				BE14D5AC1F4FB5A10037F988 /* SecurityUtil.m in Sources */,
 				BEE23B821F4006A800BAA66E /* MAccModel.m in Sources */,
 				BE2A77D01F433D6300FDD1BD /* MNumbers.m in Sources */,
 				BEF9FC4E1F41DC5900469DB3 /* AboutUsViewController.m in Sources */,
