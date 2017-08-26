@@ -6,8 +6,13 @@
 //  Copyright © 2017年 taotao. All rights reserved.
 //
 
+
 //parameters
-#define      kParamMobile                 @"mobile"
+#define      kParamClientTypeiOS                   @"2"
+#define      kParamMobile                   @"mobile"
+#define      kParamUserName                 @"userName"
+#define      kParamPassword                 @"password"
+#define      kParamClientType               @"clientType"
 
 
 //request server return data key
@@ -29,7 +34,7 @@
 
 //登录中心的路径
 //登录
-#define     kLoginUrl                   [NSString stringWithFormat:@"%@%@",kBaseUrl,kBaseUrl]
+#define     kLoginUrl                   [NSString stringWithFormat:@"%@%@",kBaseUrl,kLoginSubUrl]
 #define     kLoginSubUrl                @"userService/login"
 //注册
 #define     kRegisterUrl                [NSString stringWithFormat:@"%@%@",kBaseUrl,kRegisterSubUrl]

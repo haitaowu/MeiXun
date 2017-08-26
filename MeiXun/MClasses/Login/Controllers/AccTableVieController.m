@@ -15,7 +15,7 @@
 @end
 
 @implementation AccTableVieController
-
+#pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupAccViewUI];
@@ -36,6 +36,7 @@
     }
 }
 
+#pragma mark - private methods
 - (BOOL)validateFieldText
 {
     NSString *accTxt = self.accField.text;
@@ -53,7 +54,6 @@
     NSString *accTxt = self.accField.text;
     params[kParamMobile] = accTxt;
     [LoginViewModel ReqPhoneRegisterStateWithParams:params result:^(ReqResultType status, id data) {
-        HTLog(@"data = %@",data);
         if ([data isEqualToString:@"1"]) {
             MAccModel *accModel = [[MAccModel alloc] init];
             accModel.mobile = accTxt;

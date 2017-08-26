@@ -488,8 +488,12 @@ static MDataUtil *instance = nil;
 + (NSString*)encryptStringWithStr:(NSString*)string
 {
     NSString *leKey = @"20160520";
-    NSString *encryptedStr = [SecurityUtil encryptAESBase64:string key:leKey];
-    return encryptedStr;
+    NSString *encryptedStr128 = [SecurityUtil encryptAESBase64:string key:leKey];
+    NSString *encryptedStr256 = [SecurityUtil encryptAESData:string];
+    HTLog(@"128 = %@ , 256 = %@",encryptedStr128,encryptedStr256);
+    NSString *str = @"3f66299552658aa6";
+    
+    return str;
 }
 
 //在通讯录联系人添加、删除之后重新读取通讯录并存储到本地。

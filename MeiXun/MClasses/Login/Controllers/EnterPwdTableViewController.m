@@ -7,6 +7,7 @@
 //
 
 #import "EnterPwdTableViewController.h"
+#import "LoginViewModel.h"
 
 @interface EnterPwdTableViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;
@@ -30,12 +31,32 @@
 #pragma mark - selectors
 - (IBAction)tapNextBtn:(id)sender {
     [self.view endEditing:YES];
+    NSString *pwdTxt = self.pwdField.text;
+    if ([pwdTxt emptyStr] == YES) {
+        [SVProgressHUD showInfoWithStatus:@"请输入登录密码"];
+    }else{
+        [self reqLoginAccWithPwd:pwdTxt];
+    }
+    
 //    [self performSegueWithIdentifier:@"codeSegue" sender:nil];
 //    [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
 }
 
 - (IBAction)clickBackBtn:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - requset server
+- (void)reqLoginAccWithPwd:(NSString*)pwdTxt
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *encryptPwd = [MDataUtil encryptStringWithStr:pwdTxt];
+    params[kParamUserName] = [MDataUtil shareInstance].accModel.mobile;
+    params[kParamPassword] = encryptPwd;
+    params[kParamClientType] = kParamClientTypeiOS;
+    [LoginViewModel ReqLoginWithParams:params result:^(ReqResultType status, id data) {
+        HTLog(@"login data = %@",data);
+    }];
 }
 
 #pragma mark - setup UI 

@@ -14,7 +14,7 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import "GTMBase64.h"
 
-#define gkey			@"1234567890123456" //自行修改
+#define gkey			@"20160520" //自行修改
 #define gIv             @"" //自行修改
 
 @implementation NSData (Encryption)

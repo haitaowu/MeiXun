@@ -84,6 +84,7 @@
     //2.SVProgressHUD appear
     [SVProgressHUD setBackgroundColor:MRGBA(0, 0, 0, 0.5)];
     [SVProgressHUD setForegroundColor:MRGBA(255, 255, 255, 1)];
+    [SVProgressHUD setMinimumDismissTimeInterval:0.1];
 }
 
 @end

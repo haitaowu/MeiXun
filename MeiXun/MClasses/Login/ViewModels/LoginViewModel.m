@@ -34,7 +34,7 @@
     [MNetworkUtil POSTWithURL:kLoginUrl params:params reqSuccess:^(id data) {
         result(ReqResultSuccType,data);
     } reqFail:^(NSString *msg) {
-        [SVProgressHUD showWithStatus:msg];
+        [SVProgressHUD showErrorWithStatus:msg];
         result(ReqResultFailType,msg);
     }];
 }
@@ -48,7 +48,7 @@
     [MNetworkUtil GETWithURL:kGetCodeUrl params:params reqSuccess:^(id data) {
         result(ReqResultSuccType,data);
     } reqFail:^(NSString *msg) {
-        [SVProgressHUD showWithStatus:msg];
+        [SVProgressHUD showErrorWithStatus:msg];
         result(ReqResultFailType,msg);
     }];
 }
@@ -62,7 +62,7 @@
     [MNetworkUtil POSTWithURL:kRegisterUrl params:params reqSuccess:^(id data) {
         result(ReqResultSuccType,data);
     } reqFail:^(NSString *msg) {
-        [SVProgressHUD showWithStatus:msg];
+        [SVProgressHUD showErrorWithStatus:msg];
         result(ReqResultFailType,msg);
     }];
 }
