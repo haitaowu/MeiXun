@@ -8,6 +8,7 @@
 
 #import "EnterPwdTableViewController.h"
 #import "LoginViewModel.h"
+#import "LoginCodeTableViewController.h"
 
 
 @interface EnterPwdTableViewController ()<UITextFieldDelegate>
@@ -27,6 +28,14 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"codeSegue"]) {
+        LoginCodeTableViewController *destinationControl = segue.destinationViewController;
+        destinationControl.reqType = @"1";
+    }
 }
 
 #pragma mark - selectors
@@ -73,8 +82,8 @@
     NSString *desTxt = self.accLabel.text;
     desTxt = [NSString stringWithFormat:@"%@%@",accModel.mobile,desTxt];
     self.accLabel.text = desTxt;
-    
 }
+
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

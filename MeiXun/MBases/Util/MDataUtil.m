@@ -479,7 +479,7 @@ static MDataUtil *instance = nil;
 //检查用户是否登录过
 - (BOOL)userIsLogin
 {
-    return NO;
+//    return NO;
     
     if (self.accModel == nil) {
         return NO;

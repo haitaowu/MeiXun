@@ -11,6 +11,7 @@
 		BE14D5AA1F4FB5A10037F988 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A41F4FB5A10037F988 /* GTMBase64.m */; };
 		BE14D5AB1F4FB5A10037F988 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A71F4FB5A10037F988 /* NSData+AES.m */; };
 		BE14D5AC1F4FB5A10037F988 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A91F4FB5A10037F988 /* SecurityUtil.m */; };
+		BE1A3D851F57E00E008D74F7 /* MProductButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1A3D841F57E00E008D74F7 /* MProductButton.m */; };
 		BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */; };
 		BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A77C41F432B6A00FDD1BD /* MTabbarController.m */; };
 		BE2A77C91F43351100FDD1BD /* MKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE2A77C81F43351100FDD1BD /* MKeyboard.xib */; };
@@ -38,6 +39,8 @@
 		BE63E6FA1F3DF30A00E6CC48 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6F91F3DF30A00E6CC48 /* Login.storyboard */; };
 		BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */; };
 		BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */; };
+		BE8E0B3D1F57E54D00E4B86A /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B3C1F57E54D00E4B86A /* UIImage+Extension.m */; };
+		BE8E0B401F57F28200E4B86A /* IAPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B3F1F57F28200E4B86A /* IAPTableViewController.m */; };
 		BE96502C1F4CF0BC004395D2 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96502A1F4CF0BC004395D2 /* ADViewController.m */; };
 		BE96502D1F4CF0BC004395D2 /* ADViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96502B1F4CF0BC004395D2 /* ADViewController.xib */; };
 		BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */; };
@@ -73,6 +76,8 @@
 		BE14D5A71F4FB5A10037F988 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		BE14D5A81F4FB5A10037F988 /* SecurityUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurityUtil.h; sourceTree = "<group>"; };
 		BE14D5A91F4FB5A10037F988 /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
+		BE1A3D831F57E00E008D74F7 /* MProductButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MProductButton.h; sourceTree = "<group>"; };
+		BE1A3D841F57E00E008D74F7 /* MProductButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MProductButton.m; sourceTree = "<group>"; };
 		BE2A77BF1F432AE900FDD1BD /* DialogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTableViewController.h; sourceTree = "<group>"; };
 		BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTableViewController.m; sourceTree = "<group>"; };
 		BE2A77C31F432B6A00FDD1BD /* MTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTabbarController.h; sourceTree = "<group>"; };
@@ -122,6 +127,10 @@
 		BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccTableVieController.m; sourceTree = "<group>"; };
 		BE82B9671F40A040000DE786 /* ModifyPwdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPwdTableViewController.h; sourceTree = "<group>"; };
 		BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdTableViewController.m; sourceTree = "<group>"; };
+		BE8E0B3B1F57E54D00E4B86A /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		BE8E0B3C1F57E54D00E4B86A /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		BE8E0B3E1F57F28200E4B86A /* IAPTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPTableViewController.h; sourceTree = "<group>"; };
+		BE8E0B3F1F57F28200E4B86A /* IAPTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPTableViewController.m; sourceTree = "<group>"; };
 		BE9650291F4CF0BC004395D2 /* ADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADViewController.h; sourceTree = "<group>"; };
 		BE96502A1F4CF0BC004395D2 /* ADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewController.m; sourceTree = "<group>"; };
 		BE96502B1F4CF0BC004395D2 /* ADViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADViewController.xib; sourceTree = "<group>"; };
@@ -224,6 +233,15 @@
 			path = GTMBase64;
 			sourceTree = "<group>";
 		};
+		BE1A3D821F57DFDB008D74F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BE1A3D831F57E00E008D74F7 /* MProductButton.h */,
+				BE1A3D841F57E00E008D74F7 /* MProductButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BE2A77BC1F432AB400FDD1BD /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +300,8 @@
 		BE2A77D21F433DFA00FDD1BD /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				BE8E0B3B1F57E54D00E4B86A /* UIImage+Extension.h */,
+				BE8E0B3C1F57E54D00E4B86A /* UIImage+Extension.m */,
 				BE2A77D31F433E0400FDD1BD /* UIView+PositionExt.h */,
 				BE2A77D41F433E0400FDD1BD /* UIView+PositionExt.m */,
 				BE3951701F46C22E00872662 /* NSString+Extension.h */,
@@ -392,6 +412,7 @@
 		BE63E6E71F3DF28F00E6CC48 /* MBases */ = {
 			isa = PBXGroup;
 			children = (
+				BE1A3D821F57DFDB008D74F7 /* Views */,
 				BEED88F21F43EE160068D948 /* Network */,
 				BE2A77D21F433DFA00FDD1BD /* Category */,
 				BE2A77C21F432B3E00FDD1BD /* Controllers */,
@@ -511,6 +532,8 @@
 				BEF9FC531F41E11300469DB3 /* BindingAccTableViewController.m */,
 				BEF9FC551F41E15700469DB3 /* ChagneAccTableViewController.h */,
 				BEF9FC561F41E15700469DB3 /* ChagneAccTableViewController.m */,
+				BE8E0B3E1F57F28200E4B86A /* IAPTableViewController.h */,
+				BE8E0B3F1F57F28200E4B86A /* IAPTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -729,8 +752,10 @@
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
 				BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */,
 				BE14D5AB1F4FB5A10037F988 /* NSData+AES.m in Sources */,
+				BE1A3D851F57E00E008D74F7 /* MProductButton.m in Sources */,
 				BE3951681F46BE0300872662 /* NSString+PinYin4Cocoa.m in Sources */,
 				BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */,
+				BE8E0B3D1F57E54D00E4B86A /* UIImage+Extension.m in Sources */,
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
 				BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */,
 				BEF869AB1F4BBFF500F5E08F /* MDataManagerUtil.m in Sources */,
@@ -757,6 +782,7 @@
 				BEF9FC571F41E15700469DB3 /* ChagneAccTableViewController.m in Sources */,
 				BEED88F51F43EE310068D948 /* MNetworkUtil.m in Sources */,
 				BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */,
+				BE8E0B401F57F28200E4B86A /* IAPTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

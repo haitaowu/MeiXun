@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginCodeTableViewController : UITableViewController
+@property (nonatomic,copy) NSString *reqType;
 
 @end

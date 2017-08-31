@@ -7,6 +7,7 @@
 //
 
 #import "AccTableVieController.h"
+#import "LoginCodeTableViewController.h"
 #import "LoginViewModel.h"
 
 @interface AccTableVieController ()<UITextFieldDelegate>
@@ -25,6 +26,13 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+   if ([segue.identifier isEqualToString:@"codeSegue"]) {
+        LoginCodeTableViewController *destinationControl = segue.destinationViewController;
+        destinationControl.reqType = @"2";
+    }
 }
 
 #pragma mark - selectors
@@ -60,7 +68,6 @@
             accModel.mobile = accTxt;
             [MDataUtil shareInstance].accModel = accModel;
             if ([data isEqualToString:@"1"]) {
-                
                 [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
             }else{
                 [self performSegueWithIdentifier:@"codeSegue" sender:nil];
