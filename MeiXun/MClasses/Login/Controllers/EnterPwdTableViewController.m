@@ -9,6 +9,7 @@
 #import "EnterPwdTableViewController.h"
 #import "LoginViewModel.h"
 
+
 @interface EnterPwdTableViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *pwdField;
 @property (weak, nonatomic) IBOutlet UILabel *accLabel;
@@ -56,6 +57,9 @@
     params[kParamClientType] = kParamClientTypeiOS;
     [LoginViewModel ReqLoginWithParams:params result:^(ReqResultType status, id data) {
         HTLog(@"login data = %@",data);
+//        [MDataUtil shareInstance].accModel = data;
+        [[MDataUtil shareInstance] archiveAccModel:data];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
     }];
 }
 
@@ -69,6 +73,7 @@
     NSString *desTxt = self.accLabel.text;
     desTxt = [NSString stringWithFormat:@"%@%@",accModel.mobile,desTxt];
     self.accLabel.text = desTxt;
+    
 }
 
 #pragma mark - UITableView --- Table view  delegate

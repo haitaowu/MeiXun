@@ -24,7 +24,6 @@ typedef void(^ReLoadContactsBlock)();
 
 +(instancetype)shareInstance;
 - (void)archiveAccModel:(MAccModel*)accModel;
-- (void)archiveAccModel;
 - (void)loadContactsWithBlock:(LoadContactsBlock)loadBlock;
 //用户在联系人界面拨打，将被拨打的联系人存储到通话记录数据中。
 - (void)saveRecordWithContact:(PersonModel*)personModel phone:(NSString*)phone;

@@ -30,9 +30,10 @@
 #pragma mark - selectors
 - (IBAction)tapNextBtn:(id)sender {
     [self.view endEditing:YES];
-//    [self performSegueWithIdentifier:@"codeSegue" sender:nil];
     if([self validateFieldText]){
         [self reqVaidatePhoneRegisterState];
+    }else{
+        [SVProgressHUD showInfoWithStatus:@"手机号码格式错误"];
     }
 }
 
@@ -54,11 +55,16 @@
     NSString *accTxt = self.accField.text;
     params[kParamMobile] = accTxt;
     [LoginViewModel ReqPhoneRegisterStateWithParams:params result:^(ReqResultType status, id data) {
-        if ([data isEqualToString:@"1"]) {
+        if (status == ReqResultSuccType) {
             MAccModel *accModel = [[MAccModel alloc] init];
             accModel.mobile = accTxt;
             [MDataUtil shareInstance].accModel = accModel;
-            [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
+            if ([data isEqualToString:@"1"]) {
+                
+                [self performSegueWithIdentifier:@"enterPwdSegue" sender:nil];
+            }else{
+                [self performSegueWithIdentifier:@"codeSegue" sender:nil];
+            }
         }
     }];
 }

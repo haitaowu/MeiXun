@@ -393,11 +393,13 @@ static MDataUtil *instance = nil;
                 _contacts = contacts;
                 _sections = [self loadArchivedSectionTitles];
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                loadBlock();
+            });
+            [self shouldSynchronizeAddressBookToLocalContacts];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"需要授权通讯录才可以使用本应用"];
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            loadBlock();
-        });
-        [self shouldSynchronizeAddressBookToLocalContacts];
     });
 }
 
@@ -477,6 +479,8 @@ static MDataUtil *instance = nil;
 //检查用户是否登录过
 - (BOOL)userIsLogin
 {
+    return NO;
+    
     if (self.accModel == nil) {
         return NO;
     }else{
@@ -491,6 +495,7 @@ static MDataUtil *instance = nil;
     NSString *encryptedStr128 = [SecurityUtil encryptAESBase64:string key:leKey];
     NSString *encryptedStr256 = [SecurityUtil encryptAESData:string];
     HTLog(@"128 = %@ , 256 = %@",encryptedStr128,encryptedStr256);
+    
     NSString *str = @"3f66299552658aa6";
     
     return str;

@@ -23,27 +23,11 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self setupAppearUI];
-
- 
    
     if([[MDataUtil shareInstance] userIsLogin] == YES){
-        //3.ad
-        ADViewController *rootController = [[ADViewController alloc] init];
-        self.window.rootViewController = rootController;
-        __block typeof(self) blockSelf = self;
-        [[MDataUtil shareInstance] loadContactsWithBlock:^{
-            //2.
-            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
-            [rootController setDelegate:blockSelf];
-            blockSelf.window.rootViewController = rootController;
-        }];
+        [self setupLoginedViews];
     }else{
-        //1.
-        UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-        UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
-        self.window.rootViewController = rootController;
-        [self.window makeKeyAndVisible];
+        [self setupUnLoginUI];
     }
     [self.window makeKeyAndVisible];
     
@@ -63,6 +47,39 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+}
+
+#pragma mark - setup  UI 
+//显示登录之后的主界面。
+- (void)showMainTabView
+{
+    UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
+    [rootController setDelegate:self];
+    self.window.rootViewController = rootController;
+}
+
+- (void)setupLoginedViews
+{
+    //3.ad
+    ADViewController *rootController = [[ADViewController alloc] init];
+    self.window.rootViewController = rootController;
+    __block typeof(self) blockSelf = self;
+    [[MDataUtil shareInstance] loadContactsWithBlock:^{
+        //2.
+        [blockSelf showMainTabView];
+    }];
+}
+
+- (void)setupUnLoginUI
+{
+    [[MDataUtil shareInstance] loadContactsWithBlock:^{
+    }];
+    //1.
+    UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
+    self.window.rootViewController = rootController;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kLoginSuccessNotification object:nil];
 }
 
 #pragma mark - UITabBarController delegate
@@ -85,6 +102,12 @@
     [SVProgressHUD setBackgroundColor:MRGBA(0, 0, 0, 0.5)];
     [SVProgressHUD setForegroundColor:MRGBA(255, 255, 255, 1)];
     [SVProgressHUD setMinimumDismissTimeInterval:0.1];
+}
+
+- (void)loginSuccess
+{
+    [self showMainTabView];
+ 
 }
 
 @end

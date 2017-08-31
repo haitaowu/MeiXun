@@ -8,11 +8,16 @@
 
 #import "LoginCodeTableViewController.h"
 
+#define  kCountingNum               6
+
 @interface LoginCodeTableViewController ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *enterLabels;
 @property (weak, nonatomic) IBOutlet UITextField *enterField;
 @property (weak, nonatomic) IBOutlet UIView *againEnterView;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UIButton *reqCodeBtn;
+@property (nonatomic,strong) NSTimer *timer;
+@property (nonatomic,assign) NSInteger count;
 
 @end
 
@@ -20,6 +25,7 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.count = kCountingNum;
     [self setupViewUI];
 }
 
@@ -29,15 +35,25 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self stopCountingTimer];
+}
+
 #pragma mark - selectors
 //提交验证码
 - (IBAction)tapSubmitBtn:(id)sender {
     HTLog(@"sumit ");
     [self performSegueWithIdentifier:@"pwdSegue" sender:nil];
 }
+
 //发送验证码
 - (IBAction)tapCodeBtn:(id)sender {
     HTLog(@"get code btn clicked ");
+    self.countLabel.hidden = NO;
+    self.reqCodeBtn.hidden = YES;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startCountingDown) userInfo:nil repeats:YES];
 }
 
 //再次发送验证码
@@ -45,9 +61,36 @@
     HTLog(@"reget code btn clicked ");
 }
 
+- (void)startCountingDown
+{
+    self.count = self.count - 1;
+    if (self.count <= 0) {
+        [self stopCountingTimer];
+    }else{
+        NSString *countStr = [NSString stringWithFormat:@"%ldS",self.count];
+        HTLog(@"counting Down str ====== %@",countStr);
+        [self.countLabel setText:countStr];
+    }
+}
+
+#pragma mark - private methods
+- (void)stopCountingTimer
+{
+    if (self.timer != nil) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    self.againEnterView.hidden = NO;
+    self.countLabel.hidden = YES;
+}
+
 #pragma mark - setup UI 
 - (void)setupViewUI
 {
+    self.againEnterView.hidden = YES;
+    self.countLabel.hidden = YES;
+    self.reqCodeBtn.hidden = NO;
+    
     for (UILabel *label in self.enterLabels) {
         label.layer.borderWidth = 1;
         label.layer.borderColor = [UIColor grayColor].CGColor;

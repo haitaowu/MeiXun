@@ -32,7 +32,8 @@
 + (void)ReqLoginWithParams:(id)params result:(ReqReusltBlock)result
 {
     [MNetworkUtil POSTWithURL:kLoginUrl params:params reqSuccess:^(id data) {
-        result(ReqResultSuccType,data);
+        MAccModel *model = [MAccModel mj_objectWithKeyValues:data];
+        result(ReqResultSuccType,model);
     } reqFail:^(NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];
         result(ReqResultFailType,msg);

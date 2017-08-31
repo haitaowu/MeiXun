@@ -25,6 +25,8 @@
 #define     kClickTabbarItemNotification                    @"ClickTabbarItemNotification"
 #define     kFirstTabbarItemSelectedNotification            @"kFirstTabbarItemSelectedNotification"
 
+#define     kLoginSuccessNotification                       @"kLoginSuccessNotification"
+
 
 
 

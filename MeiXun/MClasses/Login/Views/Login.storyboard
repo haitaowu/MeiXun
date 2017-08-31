@@ -278,6 +278,7 @@
                         <outlet property="againEnterView" destination="xlV-9p-aQa" id="Kog-aX-RiP"/>
                         <outlet property="countLabel" destination="vcD-WW-6I5" id="Rxh-xh-pOq"/>
                         <outlet property="enterField" destination="RyA-qR-Ihx" id="qsc-lh-0y1"/>
+                        <outlet property="reqCodeBtn" destination="no8-RS-vC2" id="PQV-JC-v38"/>
                         <outletCollection property="enterLabels" destination="s0u-rk-fVP" id="r0h-Vi-qST"/>
                         <outletCollection property="enterLabels" destination="4Di-GA-IEA" id="pBe-p4-JUP"/>
                         <outletCollection property="enterLabels" destination="umv-ys-p9K" id="Z1I-p3-3mR"/>
@@ -691,6 +692,6 @@
         <image name="logo_white" width="1240" height="888"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sjr-iz-tm4"/>
+        <segue reference="buc-Lj-Atx"/>
     </inferredMetricsTieBreakers>
 </document>

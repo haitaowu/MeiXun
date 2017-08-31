@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MJExtension.h"
+
 
 @interface MAccModel : NSObject
 @property (nonatomic,copy) NSString *userId;
@@ -15,6 +17,7 @@
 @property (nonatomic,copy) NSString *nickName;
 @property (nonatomic,copy) NSString *headUrl;
 @property (nonatomic,copy) NSString *sex;
+@property (nonatomic,copy) NSString *sexName;
 @property (nonatomic,copy) NSString *detils;
 @property (nonatomic,copy) NSString *balance;
 @property (nonatomic,copy) NSString *netAge;
@@ -23,6 +26,7 @@
 @property (nonatomic,copy) NSString *companyName;
 @property (nonatomic,copy) NSString *workTitle;
 @property (nonatomic,copy) NSString *token;
+
 
 
 @end
