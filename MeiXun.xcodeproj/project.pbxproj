@@ -41,6 +41,7 @@
 		BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */; };
 		BE8E0B3D1F57E54D00E4B86A /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B3C1F57E54D00E4B86A /* UIImage+Extension.m */; };
 		BE8E0B401F57F28200E4B86A /* IAPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B3F1F57F28200E4B86A /* IAPTableViewController.m */; };
+		BE8E0B441F5910C800E4B86A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8E0B431F5910C800E4B86A /* StoreKit.framework */; };
 		BE96502C1F4CF0BC004395D2 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96502A1F4CF0BC004395D2 /* ADViewController.m */; };
 		BE96502D1F4CF0BC004395D2 /* ADViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96502B1F4CF0BC004395D2 /* ADViewController.xib */; };
 		BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */; };
@@ -131,6 +132,7 @@
 		BE8E0B3C1F57E54D00E4B86A /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		BE8E0B3E1F57F28200E4B86A /* IAPTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPTableViewController.h; sourceTree = "<group>"; };
 		BE8E0B3F1F57F28200E4B86A /* IAPTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPTableViewController.m; sourceTree = "<group>"; };
+		BE8E0B431F5910C800E4B86A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BE9650291F4CF0BC004395D2 /* ADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADViewController.h; sourceTree = "<group>"; };
 		BE96502A1F4CF0BC004395D2 /* ADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewController.m; sourceTree = "<group>"; };
 		BE96502B1F4CF0BC004395D2 /* ADViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADViewController.xib; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B93A1E07252B2FC99D6F25B /* libPods-MeiXun.a in Frameworks */,
+				BE8E0B441F5910C800E4B86A /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +209,7 @@
 		9066E30743DC5E1FB6663117 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE8E0B431F5910C800E4B86A /* StoreKit.framework */,
 				D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */,
 			);
 			name = Frameworks;
@@ -642,6 +646,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = UY8D3JBH69;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -922,7 +931,7 @@
 				INFOPLIST_FILE = MeiXun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mei.MeiXunCal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mei.MeiXunCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -937,7 +946,7 @@
 				INFOPLIST_FILE = MeiXun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mei.MeiXunCal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mei.MeiXunCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

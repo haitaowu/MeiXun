@@ -110,7 +110,7 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
     NSInteger idx = [tabBar.items indexOfObject:item];
-    HTLog(@"didSelectItem index = %ld",idx);
+//    HTLog(@"didSelectItem index = %ld",idx);
     if(idx == 0){
         self.itemEnable = NO;
         [self disappearNumbersView];

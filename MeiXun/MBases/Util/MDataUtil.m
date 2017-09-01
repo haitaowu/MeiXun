@@ -17,7 +17,7 @@
 
 
 #define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
-#define kAccountInfoPath            [kLibPath stringByAppendingPathComponent:@"accountInfo.data"]
+#define kAccountInfoPath            [kLibPath stringByAppendingPathComponent:@"accInfo.data"]
 #define kRecordsInfoPath            [kLibPath stringByAppendingPathComponent:@"recordInfos.data"]
 #define kContactsInfoPath            [kLibPath stringByAppendingPathComponent:@"contacts.data"]
 
@@ -543,12 +543,12 @@ static MDataUtil *instance = nil;
         CFIndex count = ABAddressBookGetPersonCount(bookRef);
         NSInteger personCount = count;
         if (personCount != [self localContactsCount]) {
-            HTLog(@"联系人数量不不一致");
+//            HTLog(@"联系人数量不不一致");
             [self reloadAfterContactsModified];
 //            [self generaContactsAndSections];
 //            [self archiveContactsTitlesToLocal];
         }else{
-            HTLog(@"联系人数量没有变化");
+//            HTLog(@"联系人数量没有变化");
         }
     }
 }
