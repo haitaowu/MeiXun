@@ -8,9 +8,11 @@
 
 #import "MProductButton.h"
 #import "UIImage+Extension.h"
+#import <StoreKit/StoreKit.h>
 
 
-#define kPriceRatio         0.3
+
+#define kPriceRatio         0.5
 
 
 @interface MProductButton()
@@ -64,14 +66,43 @@
 #pragma mark -  setter methods
 - (void)setProductData:(id)productData
 {
+    SKProduct *pro = (SKProduct*) productData;
     _productData = productData;
-    NSString *nameStr = [NSString stringWithFormat:@"%@",productData];
-    self.nameLabel.text = nameStr;
-    NSString *priceStr = [NSString stringWithFormat:@"%@",productData];
+    NSString *keyStr = [self numberStrWith:[pro localizedTitle]];
+    NSString *nameStr = [NSString stringWithFormat:@"%@",[pro localizedTitle]];
+    NSAttributedString* attriText = [self attriStringWithStr:nameStr keyword:keyStr];
+    self.nameLabel.attributedText = attriText;
+    //2.price label set up
+    NSString *priceStr = [NSString stringWithFormat:@"售价%@.00元",[pro price]];
     self.priceLabel.text = priceStr;
 }
 
+
+- (NSString*)numberStrWith:(NSString*)string
+{
+//    NSString *str = @"98741235你好00";
+    NSScanner *scanner = [NSScanner scannerWithString:string];
+    [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:nil];
+    int number;
+    [scanner scanInt:&number];
+    return [NSString stringWithFormat:@"%d",number];
+    
+}
+
 #pragma mark - private methods
+- (NSAttributedString*)attriStringWithStr:(NSString*)string keyword:(NSString*)keyword
+{
+    NSMutableAttributedString *attriStrName = [[NSMutableAttributedString alloc] initWithString:string];
+    if (keyword == nil) {
+        return attriStrName;
+    }else{
+        NSRange range = [string rangeOfString:keyword];
+        NSDictionary *attris = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:25],NSFontAttributeName, nil];
+        [attriStrName setAttributes:attris range:range];
+        return attriStrName;
+    }
+}
+
 - (void)setSelectedTitleColor
 {
     self.nameLabel.textColor = [UIColor whiteColor];
@@ -87,14 +118,23 @@
 - (void)setupBase
 {
     //init label
-    UILabel *priceLabel = [[UILabel alloc] init];
-    [self addSubview:priceLabel];
-    self.priceLabel = priceLabel;
-    
     UILabel *nameLabel = [[UILabel alloc] init];
     [self addSubview:nameLabel];
     self.nameLabel= nameLabel;
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    nameLabel.font = [UIFont systemFontOfSize:18];
+//    nameLabel.backgroundColor = [UIColor grayColor];
     
+    UILabel *priceLabel = [[UILabel alloc] init];
+    [self addSubview:priceLabel];
+    self.priceLabel = priceLabel;
+    priceLabel.textAlignment = NSTextAlignmentCenter;
+    priceLabel.font = [UIFont systemFontOfSize:14];
+//    priceLabel.backgroundColor = [UIColor redColor];
+    
+    
+    
+    [self setNormalTitleColor];
     
     self.layer.borderColor = MNavBarColor.CGColor;
     self.layer.borderWidth = 1;

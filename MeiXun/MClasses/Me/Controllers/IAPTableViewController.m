@@ -42,11 +42,22 @@
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 
+#pragma mark - setup UI 
+- (void)setupProductsViewWithArray:(NSArray*)productsArras
+{
+    [self.products enumerateObjectsUsingBlock:^(MProductButton  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx < productsArras.count) {
+            SKProduct *productObj = productsArras[idx];
+            [obj setProductData:productObj];
+        }
+    }];
+}
 
 #pragma mark - private methods
 //请求苹果商品
 - (void)requestAppleProductList
 {
+    [SVProgressHUD showWithStatus:@"加载产品信息中..."];
     // 7.这里的com.mei.myi就对应着苹果后台的商品ID,他们是通过这个ID进行联系的。
     NSArray *product = @[@"com.mei.mer",@"com.mei.myi"];
     NSSet *nsset = [NSSet setWithArray:product];
@@ -57,45 +68,54 @@
     [request start];
 }
 
+// 14.交易结束,当交易结束后还要去appstore上验证支付信息是否都正确,只有所有都正确后,我们就可以给用户方法我们的虚拟物品了。
+- (void)completeTransaction:(SKPaymentTransaction *)transaction
+{
+    NSString * str=[[NSString alloc]initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
+    
+    // 验证凭据，获取到苹果返回的交易凭据
+    // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
+    NSURL *receiptURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    // 从沙盒中获取到购买凭据
+    NSData *receiptData = [NSData dataWithContentsOfURL:receiptURL];
+    /**
+     20      BASE64 常用的编码方案，通常用于数据传输，以及加密算法的基础算法，传输过程中能够保证数据传输的稳定性
+     21      BASE64是可以编码和解码的
+     22      */
+    NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    
+    
+    //此方法为将这一次操作上传给我本地服务器,记得在上传成功过后一定要记得销毁本次操作。调用
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
 
 
 #pragma mark - SKProductsRequestDelegate
 // 10.接收到产品的返回信息,然后用返回的商品信息
 - (void) productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
+    [SVProgressHUD dismiss];
     NSArray *products = response.products;
     //如果服务器没有产品
     if([products count] == 0){
         NSLog(@"nothing");
         return;
     }
+    products = [[products reverseObjectEnumerator] allObjects];
+    [self setupProductsViewWithArray:products];
     
-//    SKProduct *requestProduct = nil;
-    for (SKProduct *pro in products) {
-        NSLog(@"%@", [pro description]);
-        NSLog(@"%@", [pro localizedTitle]);
-        NSLog(@"%@", [pro localizedDescription]);
-        NSLog(@"%@", [pro price]);
-        NSLog(@"%@", [pro productIdentifier]);
-        // 11.如果后台消费条目的ID与我这里需要请求的一样（用于确保订单的正确性）
-        if([pro.productIdentifier isEqualToString:@"com.mei.mer"]){
-            HTLog(@"com.mei.mer");
-        }
-    }
-    
-    // 12.发送购买请求
-//    SKPayment *payment = [SKPayment paymentWithProduct:requestProduct];
-//    [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
 
 #pragma mark - SKRequestDelegate 
 //请求失败
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
+    [SVProgressHUD dismiss];
     NSLog(@"error:%@", error);
 }
 
 //反馈请求的产品信息结束后
 - (void)requestDidFinish:(SKRequest *)request{
+    [SVProgressHUD dismiss];
     NSLog(@"信息反馈结束");
 }
 
@@ -129,6 +149,18 @@
 
 
 #pragma mark - selectors
+- (IBAction)tapConfirmBtn:(id)sender {
+    if (self.selectedProduct == nil) {
+        [SVProgressHUD showInfoWithStatus:@"选择充值卡先"];
+        return;
+    }
+    // 12.发送购买请求
+    SKProduct *requestProduct = (SKProduct*)self.selectedProduct.productData;
+    SKPayment *payment = [SKPayment paymentWithProduct:requestProduct];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+
 - (IBAction)tapProduct:(MProductButton*)sender
 {
     if (sender.selected == NO) {
@@ -145,7 +177,7 @@
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.001;
+    return 20;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
