@@ -49,6 +49,7 @@
 		BE8E0B4A1F5AB8BA00E4B86A /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B491F5AB8BA00E4B86A /* ChargeListTableViewController.m */; };
 		BE96502C1F4CF0BC004395D2 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96502A1F4CF0BC004395D2 /* ADViewController.m */; };
 		BE96502D1F4CF0BC004395D2 /* ADViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96502B1F4CF0BC004395D2 /* ADViewController.xib */; };
+		BEA696D21F5C444A00F4D7A9 /* DialogViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA696D11F5C444A00F4D7A9 /* DialogViewModel.m */; };
 		BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */; };
 		BEBD69951F3EE0270062AA36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEBD69971F3EE0270062AA36 /* InfoPlist.strings */; };
 		BECC6DAC1F5BDFC600D9ED37 /* MeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC6DAB1F5BDFC600D9ED37 /* MeViewModel.m */; };
@@ -151,6 +152,8 @@
 		BE9650291F4CF0BC004395D2 /* ADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADViewController.h; sourceTree = "<group>"; };
 		BE96502A1F4CF0BC004395D2 /* ADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewController.m; sourceTree = "<group>"; };
 		BE96502B1F4CF0BC004395D2 /* ADViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADViewController.xib; sourceTree = "<group>"; };
+		BEA696D01F5C444A00F4D7A9 /* DialogViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogViewModel.h; sourceTree = "<group>"; };
+		BEA696D11F5C444A00F4D7A9 /* DialogViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogViewModel.m; sourceTree = "<group>"; };
 		BEBD698A1F3ED9610062AA36 /* LoginCodeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCodeTableViewController.h; sourceTree = "<group>"; };
 		BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCodeTableViewController.m; sourceTree = "<group>"; };
 		BEBD698E1F3EDC000062AA36 /* MColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MColor.h; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 		BE2A77BC1F432AB400FDD1BD /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
+				BEA696CF1F5C444A00F4D7A9 /* ViewModels */,
 				BEF869AE1F4BF9ED00F5E08F /* Models */,
 				BE2A77BD1F432AB400FDD1BD /* Controllers */,
 				BE2A77BE1F432AB400FDD1BD /* Views */,
@@ -594,6 +598,15 @@
 			path = ADView;
 			sourceTree = "<group>";
 		};
+		BEA696CF1F5C444A00F4D7A9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BEA696D01F5C444A00F4D7A9 /* DialogViewModel.h */,
+				BEA696D11F5C444A00F4D7A9 /* DialogViewModel.m */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		BEBD698D1F3EDBE50062AA36 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -795,6 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE39516A1F46BE0300872662 /* PinyinHelper.m in Sources */,
+				BEA696D21F5C444A00F4D7A9 /* DialogViewModel.m in Sources */,
 				BE5E9FEA1F5BE9A800B31681 /* ChargeCell.m in Sources */,
 				BE14D5AA1F4FB5A10037F988 /* GTMBase64.m in Sources */,
 				BE8E0B4A1F5AB8BA00E4B86A /* ChargeListTableViewController.m in Sources */,

@@ -19,13 +19,23 @@
 + (void)ReqCharegeWithResult:(ReqReusltBlock)result;
 
 
-
-
 /**
  *  发送一个GET请求
- *  验证手机号码是否已经注册
+ *  获取用基本信息 - 网龄 + 余额
  */
-+ (void)ReqPhoneRegisterStateWithParams:(id)params result:(ReqReusltBlock)result;
++ (void)ReqUserInfoWithParams:(id)params result:(ReqReusltBlock)result;
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
  *  发送一个GET请求

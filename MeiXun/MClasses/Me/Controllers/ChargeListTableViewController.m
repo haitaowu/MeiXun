@@ -29,7 +29,7 @@ static NSString *ChargeCellID = @"ChargeCellID";
     [super viewDidLoad];
     [self.tableView registerClass:[MchargeListHeader class] forHeaderFooterViewReuseIdentifier:kReuseHeader];
     [self setupUI];
-    [SVProgressHUD showWithStatus:@"加载产品数据中..."];
+    [SVProgressHUD showWithStatus:@"加载数据中..."];
     [MeViewModel ReqCharegeWithResult:^(ReqResultType status, id data) {
         [SVProgressHUD dismiss];
         if (status == ReqResultSuccType) {

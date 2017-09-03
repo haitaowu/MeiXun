@@ -9,6 +9,8 @@
 #import "CallingViewController.h"
 #import "PersonModel.h"
 #import "RecordModel.h"
+#import "DialogViewModel.h"
+
 
 @interface CallingViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -28,6 +30,7 @@
     self.cancelBlock = cancelBlock;
     self.model = model;
     [self showView];
+    [self callPhoneNumber:phone];
 }
 
 - (void)viewDidLoad {
@@ -45,6 +48,7 @@
 {
     [super viewWillDisappear:animated];
 }
+
 #pragma mark - setup UI 
 - (void)setupUIWithModel:(id)model phone:(NSString*)phone
 {
@@ -78,6 +82,29 @@
     }
 }
 
+#pragma mark - request  server
+- (void)callPhoneNumber:(NSString*)phoneNum
+{
+    NSString *token = [MDataUtil shareInstance].accModel.token;
+    NSString *userId = [MDataUtil shareInstance].accModel.userId;
+    NSString *callingPhone = [MDataUtil shareInstance].accModel.mobile;
+    NSDictionary *params = @{kParamTokenType:token,kParamUserIdType:userId,kParamCallingMobile:callingPhone,kParamCalledMobile:phoneNum};
+    [DialogViewModel ReqDialogWithParams:params result:^(ReqResultType status, id data) {
+        //现在返回的结果是
+#warning ---    被叫号码格式错误
+        /**
+         callingMobile = 18061955875;
+         token = B209D542774709B5;
+         userId = "9632cab1-272c-11e7-aa66-00163e1aa2b0";
+         */
+        HTLog(@"request success response data = %@",data);
+        if (status == ReqResultSuccType) {
+            
+        }else{
+            [self disappearView];
+        }
+    }];
+}
 
 #pragma mark - selectors
 - (IBAction)tapCancelBtn:(id)sender {

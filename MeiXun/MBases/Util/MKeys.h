@@ -15,6 +15,10 @@
 #define      kParamClientType               @"clientType"
 #define      kParamUserIdType               @"userId"
 #define      kParamTokenType                @"token"
+//主叫号码    主叫号码要和userI的对应的号码一致
+#define      kParamCallingMobile            @"callingMobile"
+//被叫号码
+#define      kParamCalledMobile            @"calledMobile"
 
 
 //request server return data key
@@ -71,6 +75,14 @@
 //充值明细
 #define     kChargeUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kChargeSubUrl]
 #define     kChargeSubUrl           @"cardService/rechargeDetail"
+
+//用户的基本信息
+#define     kUserInfoUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kUserInfoSubUrl]
+#define     kUserInfoSubUrl           @"userService/getUserInfo"
+
+//拨打电话
+#define     kDialogUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kDialogSubUrl]
+#define     kDialogSubUrl           @"callService/callThirdParty"
 
 
 

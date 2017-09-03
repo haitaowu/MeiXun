@@ -34,53 +34,61 @@
 }
 
  
- 
 /**
  *  发送一个GET请求
- *  验证手机号码是否已经注册
+ *  获取用基本信息 - 网龄 + 余额
  */
-+ (void)ReqPhoneRegisterStateWithParams:(id)params result:(ReqReusltBlock)result
++ (void)ReqUserInfoWithParams:(id)params result:(ReqReusltBlock)result
 {
-    [MNetworkUtil GETWithURL:kRegisterStateUrl params:params reqSuccess:^(id data) {
-        result(ReqResultSuccType,data);
+    [MNetworkUtil GETWithURL:kUserInfoUrl params:params reqSuccess:^(id data) {
+        MAccModel *model = [MAccModel mj_objectWithKeyValues:data];
+        result(ReqResultSuccType,model);
     } reqFail:^(NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];
         result(ReqResultFailType,msg);
     }];
 }
+
+
+
+
+
 
 /*
  *  发送一个GET请求
  *  请求验证码
  */
-+ (void)ReqPhoneCodeWithParams:(id)params result:(ReqReusltBlock)result
-{
-    [MNetworkUtil GETWithURL:kGetCodeUrl params:params reqSuccess:^(id data) {
-        result(ReqResultSuccType,data);
-    } reqFail:^(NSString *msg) {
-        [SVProgressHUD showErrorWithStatus:msg];
-        result(ReqResultFailType,msg);
-    }];
-}
+//
+//+ (void)ReqPhoneCodeWithParams:(id)params result:(ReqReusltBlock)result
+//{
+//    [MNetworkUtil GETWithURL:kGetCodeUrl params:params reqSuccess:^(id data) {
+//        result(ReqResultSuccType,data);
+//    } reqFail:^(NSString *msg) {
+//        [SVProgressHUD showErrorWithStatus:msg];
+//        result(ReqResultFailType,msg);
+//    }];
+//}
 
 /**
  *  发送一个POST请求
  *  请求注册
  */
-+ (void)ReqRegisterWithParams:(id)params result:(ReqReusltBlock)result
-{
-    [MNetworkUtil POSTWithURL:kRegisterUrl params:params reqSuccess:^(id data) {
-        result(ReqResultSuccType,data);
-    } reqFail:^(NSString *msg) {
-        [SVProgressHUD showErrorWithStatus:msg];
-        result(ReqResultFailType,msg);
-    }];
-}
+//+ (void)ReqRegisterWithParams:(id)params result:(ReqReusltBlock)result
+//{
+//    [MNetworkUtil POSTWithURL:kRegisterUrl params:params reqSuccess:^(id data) {
+//        result(ReqResultSuccType,data);
+//    } reqFail:^(NSString *msg) {
+//        [SVProgressHUD showErrorWithStatus:msg];
+//        result(ReqResultFailType,msg);
+//    }];
+//}
 
 /**
  *  发送一个POST请求
  *  找回密码
  */
+
+/*
 + (void)ReqPwdBackWithParams:(id)params result:(ReqReusltBlock)result
 {
     [MNetworkUtil POSTWithURL:kGetPwdBackUrl params:params reqSuccess:^(id data) {
@@ -90,6 +98,6 @@
         result(ReqResultFailType,msg);
     }];
 }
-
+*/
 
 @end
