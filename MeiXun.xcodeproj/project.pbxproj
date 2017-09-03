@@ -32,6 +32,8 @@
 		BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3951B31F46D7CB00872662 /* ContactsCell.xib */; };
 		BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B71F47C5C100872662 /* LoadImgOperation.m */; };
 		BE5E9FE61F5BE55100B31681 /* ChargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9FE51F5BE55100B31681 /* ChargeModel.m */; };
+		BE5E9FEA1F5BE9A800B31681 /* ChargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9FE81F5BE9A800B31681 /* ChargeCell.m */; };
+		BE5E9FEB1F5BE9A800B31681 /* ChargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5E9FE91F5BE9A800B31681 /* ChargeCell.xib */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
@@ -121,6 +123,9 @@
 		BE3951B71F47C5C100872662 /* LoadImgOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadImgOperation.m; sourceTree = "<group>"; };
 		BE5E9FE41F5BE55100B31681 /* ChargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeModel.h; sourceTree = "<group>"; };
 		BE5E9FE51F5BE55100B31681 /* ChargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeModel.m; sourceTree = "<group>"; };
+		BE5E9FE71F5BE9A800B31681 /* ChargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeCell.h; sourceTree = "<group>"; };
+		BE5E9FE81F5BE9A800B31681 /* ChargeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeCell.m; sourceTree = "<group>"; };
+		BE5E9FE91F5BE9A800B31681 /* ChargeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChargeCell.xib; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -570,6 +575,9 @@
 		BE63E6F51F3DF2F000E6CC48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE5E9FE71F5BE9A800B31681 /* ChargeCell.h */,
+				BE5E9FE81F5BE9A800B31681 /* ChargeCell.m */,
+				BE5E9FE91F5BE9A800B31681 /* ChargeCell.xib */,
 				BE8E0B451F5AB80400E4B86A /* MchargeListHeader.h */,
 				BE8E0B461F5AB80500E4B86A /* MchargeListHeader.m */,
 			);
@@ -721,6 +729,7 @@
 				BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */,
 				BEF869AD1F4BDAD400F5E08F /* callHomeDB.db in Resources */,
 				BE39516B1F46BE0300872662 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				BE5E9FEB1F5BE9A800B31681 /* ChargeCell.xib in Resources */,
 				BEF6ADF71F4DD75900F7A2E6 /* CallingViewController.xib in Resources */,
 				BE2A77D11F433D6300FDD1BD /* MNumbers.xib in Resources */,
 				BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */,
@@ -786,6 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE39516A1F46BE0300872662 /* PinyinHelper.m in Sources */,
+				BE5E9FEA1F5BE9A800B31681 /* ChargeCell.m in Sources */,
 				BE14D5AA1F4FB5A10037F988 /* GTMBase64.m in Sources */,
 				BE8E0B4A1F5AB8BA00E4B86A /* ChargeListTableViewController.m in Sources */,
 				BEF6ADF61F4DD75900F7A2E6 /* CallingViewController.m in Sources */,

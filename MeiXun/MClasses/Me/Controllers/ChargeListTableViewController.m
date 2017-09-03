@@ -9,8 +9,14 @@
 #import "ChargeListTableViewController.h"
 #import "MchargeListHeader.h"
 #import "MeViewModel.h"
+#import "ChargeCell.h"
+
+
 
 #define    kReuseHeader  @"reuseHeader"
+static NSString *ChargeCellID = @"ChargeCellID";
+
+
 
 @interface ChargeListTableViewController ()
 @property (nonatomic,strong)NSArray *dataArray;
@@ -22,8 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerClass:[MchargeListHeader class] forHeaderFooterViewReuseIdentifier:kReuseHeader];
-    
+    [self setupUI];
+    [SVProgressHUD showWithStatus:@"加载产品数据中..."];
     [MeViewModel ReqCharegeWithResult:^(ReqResultType status, id data) {
+        [SVProgressHUD dismiss];
         if (status == ReqResultSuccType) {
             self.dataArray = data;
             [self.tableView reloadData];
@@ -31,6 +39,20 @@
     }];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
+#pragma mark - setup ui
+- (void)setupUI
+{
+    // setup tableView cell
+    UINib *alertCellNib = [UINib nibWithNibName:@"ChargeCell" bundle:nil];
+    [self.tableView registerNib:alertCellNib forCellReuseIdentifier:ChargeCellID];
+    
+}
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -41,20 +63,19 @@
     return 1;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    ChargeCell *cell = [tableView dequeueReusableCellWithIdentifier:ChargeCellID];
+    ChargeModel *model = self.dataArray[indexPath.section];
+    cell.chargeModel = model;
     return cell;
 }
+
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 130;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

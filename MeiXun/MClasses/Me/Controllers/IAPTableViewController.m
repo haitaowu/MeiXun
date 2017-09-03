@@ -14,6 +14,7 @@
 @interface IAPTableViewController ()<SKPaymentTransactionObserver,SKProductsRequestDelegate>
 @property(nonatomic,strong) IBOutletCollection(MProductButton) NSArray* products;
 @property (nonatomic,strong)MProductButton *selectedProduct;
+@property (nonatomic,strong)SKProductsRequest *request;
 @end
 
 @implementation IAPTableViewController
@@ -40,7 +41,10 @@
 {
     [super viewWillDisappear:animated];
     [SVProgressHUD dismiss];
+    [self.request cancel];
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
+
 //结束后一定要销毁
 - (void)dealloc
 {
@@ -71,6 +75,7 @@
     request.delegate = self;
     // 9.开始请求
     [request start];
+    self.request = request;
 }
 
 // 14.交易结束,当交易结束后还要去appstore上验证支付信息是否都正确,只有所有都正确后,我们就可以给用户方法我们的虚拟物品了。
