@@ -9,8 +9,18 @@
 #import <Foundation/Foundation.h>
 
 
+typedef enum{
+    ReqResultSuccType = 0,             //成功
+    ReqResultFailType = 1,             //失败
+}ReqResultType;
+
+
+
+
 typedef void(^ReqSucess)(id data);
 typedef void(^ReqFail)(NSString* msg);
+
+typedef void(^ReqReusltBlock)(ReqResultType status,id data);
 
 
 

@@ -31,6 +31,7 @@
 		BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B21F46D7CB00872662 /* ContactsCell.m */; };
 		BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3951B31F46D7CB00872662 /* ContactsCell.xib */; };
 		BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B71F47C5C100872662 /* LoadImgOperation.m */; };
+		BE5E9FE61F5BE55100B31681 /* ChargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9FE51F5BE55100B31681 /* ChargeModel.m */; };
 		BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6C41F3DEF8D00E6CC48 /* main.m */; };
 		BE63E6CE1F3DEF8D00E6CC48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CC1F3DEF8D00E6CC48 /* Main.storyboard */; };
 		BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6CF1F3DEF8D00E6CC48 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		BE96502D1F4CF0BC004395D2 /* ADViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96502B1F4CF0BC004395D2 /* ADViewController.xib */; };
 		BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */; };
 		BEBD69951F3EE0270062AA36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEBD69971F3EE0270062AA36 /* InfoPlist.strings */; };
+		BECC6DAC1F5BDFC600D9ED37 /* MeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BECC6DAB1F5BDFC600D9ED37 /* MeViewModel.m */; };
 		BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B7D1F3FF70F00BAA66E /* EnterPwdTableViewController.m */; };
 		BEE23B821F4006A800BAA66E /* MAccModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B811F4006A800BAA66E /* MAccModel.m */; };
 		BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE23B841F40087200BAA66E /* MDataUtil.m */; };
@@ -117,6 +119,8 @@
 		BE3951B31F46D7CB00872662 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
 		BE3951B61F47C5C100872662 /* LoadImgOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadImgOperation.h; sourceTree = "<group>"; };
 		BE3951B71F47C5C100872662 /* LoadImgOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadImgOperation.m; sourceTree = "<group>"; };
+		BE5E9FE41F5BE55100B31681 /* ChargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeModel.h; sourceTree = "<group>"; };
+		BE5E9FE51F5BE55100B31681 /* ChargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeModel.m; sourceTree = "<group>"; };
 		BE63E6C01F3DEF8D00E6CC48 /* MeiXun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiXun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE63E6C41F3DEF8D00E6CC48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE63E6CD1F3DEF8D00E6CC48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 		BEBD69961F3EE0270062AA36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEBD69981F3EE02B0062AA36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEBD69991F3EE02C0062AA36 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		BECC6DAA1F5BDFC600D9ED37 /* MeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewModel.h; sourceTree = "<group>"; };
+		BECC6DAB1F5BDFC600D9ED37 /* MeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewModel.m; sourceTree = "<group>"; };
 		BEE23B7C1F3FF70F00BAA66E /* EnterPwdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterPwdTableViewController.h; sourceTree = "<group>"; };
 		BEE23B7D1F3FF70F00BAA66E /* EnterPwdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterPwdTableViewController.m; sourceTree = "<group>"; };
 		BEE23B801F4006A800BAA66E /* MAccModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAccModel.h; sourceTree = "<group>"; };
@@ -376,6 +382,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BE5E9FE31F5BE53F00B31681 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE5E9FE41F5BE55100B31681 /* ChargeModel.h */,
+				BE5E9FE51F5BE55100B31681 /* ChargeModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		BE63E6B71F3DEF8D00E6CC48 = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +532,8 @@
 		BE63E6F31F3DF2F000E6CC48 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				BE5E9FE31F5BE53F00B31681 /* Models */,
+				BECC6DA91F5BDFC600D9ED37 /* ViewModels */,
 				BE63E6F41F3DF2F000E6CC48 /* Controllers */,
 				BE63E6F51F3DF2F000E6CC48 /* Views */,
 			);
@@ -582,6 +599,15 @@
 				BEF869AA1F4BBFF500F5E08F /* MDataManagerUtil.m */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		BECC6DA91F5BDFC600D9ED37 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BECC6DAA1F5BDFC600D9ED37 /* MeViewModel.h */,
+				BECC6DAB1F5BDFC600D9ED37 /* MeViewModel.m */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		BEE23B7F1F40069500BAA66E /* Model */ = {
@@ -767,6 +793,7 @@
 				BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */,
 				BE3951B01F46D72900872662 /* ContactsTableViewController.m in Sources */,
 				BEE23B8B1F408C0A00BAA66E /* AccSettingTableViewController.m in Sources */,
+				BE5E9FE61F5BE55100B31681 /* ChargeModel.m in Sources */,
 				BE3951661F46BE0300872662 /* ChineseToPinyinResource.m in Sources */,
 				BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */,
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
@@ -783,6 +810,7 @@
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
 				BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */,
 				BE3951691F46BE0300872662 /* PinyinFormatter.m in Sources */,
+				BECC6DAC1F5BDFC600D9ED37 /* MeViewModel.m in Sources */,
 				BE2A77CC1F43363400FDD1BD /* MKeyboard.m in Sources */,
 				BEF9FC511F41E04500469DB3 /* FeedbackTableViewController.m in Sources */,
 				BE14D5AC1F4FB5A10037F988 /* SecurityUtil.m in Sources */,

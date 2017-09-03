@@ -8,10 +8,12 @@
 
 #import "ChargeListTableViewController.h"
 #import "MchargeListHeader.h"
+#import "MeViewModel.h"
 
 #define    kReuseHeader  @"reuseHeader"
 
 @interface ChargeListTableViewController ()
+@property (nonatomic,strong)NSArray *dataArray;
 
 @end
 
@@ -20,12 +22,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerClass:[MchargeListHeader class] forHeaderFooterViewReuseIdentifier:kReuseHeader];
+    
+    [MeViewModel ReqCharegeWithResult:^(ReqResultType status, id data) {
+        if (status == ReqResultSuccType) {
+            self.dataArray = data;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return [self.dataArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -49,7 +58,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 40;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -59,8 +68,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    ChargeModel *model = self.dataArray[section];
     MchargeListHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kReuseHeader];
-    [header setData:@"2017-06-19"];
+    [header setData:model];
     return header;
 }
 @end

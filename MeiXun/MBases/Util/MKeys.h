@@ -13,6 +13,8 @@
 #define      kParamUserName                 @"userName"
 #define      kParamPassword                 @"password"
 #define      kParamClientType               @"clientType"
+#define      kParamUserIdType               @"userId"
+#define      kParamTokenType                @"token"
 
 
 //request server return data key
@@ -62,6 +64,18 @@
 //找回密码
 #define     kGetPwdBackUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kGetPwdBackSubUrl]
 #define     kGetPwdBackSubUrl           @"userService/retrievePassword"
+
+
+
+//我
+//充值明细
+#define     kChargeUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kChargeSubUrl]
+#define     kChargeSubUrl           @"cardService/rechargeDetail"
+
+
+
+
+
 
 
 

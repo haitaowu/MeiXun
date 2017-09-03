@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChargeModel.h"
+
+
 
 @interface MchargeListHeader : UITableViewHeaderFooterView
 

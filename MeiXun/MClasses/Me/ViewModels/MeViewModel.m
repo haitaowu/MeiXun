@@ -1,0 +1,95 @@
+//
+//  MeViewModel.m
+//  MeiXun
+//
+//  Created by taotao on 2017/8/16.
+//  Copyright © 2017年 taotao. All rights reserved.
+//
+
+#import "MeViewModel.h"
+#import <SVProgressHUD/SVProgressHUD.h>
+#import "ChargeModel.h"
+
+@implementation MeViewModel
+
+
+/**
+ *  发送一个POST请求
+ *  查询充值明细
+ */
++ (void)ReqCharegeWithResult:(ReqReusltBlock)result;
+{
+    NSString *token = [MDataUtil shareInstance].accModel.token;
+    NSString *userId = [MDataUtil shareInstance].accModel.userId;
+    NSDictionary *params = @{kParamTokenType:token,kParamUserIdType:userId};
+    [MNetworkUtil GETWithURL:kChargeUrl params:params reqSuccess:^(id data) {
+        if ([data count] > 0) {
+            NSArray *array = [ChargeModel mj_objectArrayWithKeyValuesArray:data];
+            result(ReqResultSuccType,array);
+        }
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+ 
+ 
+/**
+ *  发送一个GET请求
+ *  验证手机号码是否已经注册
+ */
++ (void)ReqPhoneRegisterStateWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil GETWithURL:kRegisterStateUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+/*
+ *  发送一个GET请求
+ *  请求验证码
+ */
++ (void)ReqPhoneCodeWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil GETWithURL:kGetCodeUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+/**
+ *  发送一个POST请求
+ *  请求注册
+ */
++ (void)ReqRegisterWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil POSTWithURL:kRegisterUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+/**
+ *  发送一个POST请求
+ *  找回密码
+ */
++ (void)ReqPwdBackWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil POSTWithURL:kGetPwdBackUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+
+@end

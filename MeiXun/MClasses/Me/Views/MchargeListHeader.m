@@ -43,11 +43,25 @@
     label.textAlignment = NSTextAlignmentCenter;
 }
 
-#pragma mark -  setter and getter methods 
+
+/**
+ amount = "5.0";
+ cardNo = 2068200003;
+ minute = "<null>";
+ rechargeMode = 3;
+ usedDate = "2017-05-11";
+ */
+
+#pragma mark -  setter and getter methods
 - (void)setData:(id)data
 {
     _data = data;
-    self.dateLabel.text = [NSString stringWithFormat:@"%@",data];
+    if (data != nil) {
+        ChargeModel *model = data;
+        self.dateLabel.text = model.usedDate;
+    }else{
+        self.dateLabel.text = @"";
+    }
 }
 
 
