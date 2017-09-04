@@ -46,6 +46,7 @@ static NSString *RecordCellID = @"RecordCellID";
     [self.tableView reloadData];
 }
 
+#warning 为什么将rootViewController 设置为登录界面时不调用此方法，但是登录成功之后（会重置rootViewController）调用了此方法4次
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
