@@ -29,7 +29,6 @@ static NSString *RecordCellID = @"RecordCellID";
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupBase];
     [self setupUI];
     [self.keyboard showView];
 }
@@ -37,17 +36,20 @@ static NSString *RecordCellID = @"RecordCellID";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self setupBase];
     [self.tableView reloadData];
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    HTLog(@"dialog controller  dealloc ....");
 }
 
 -(CallingViewController *)callController

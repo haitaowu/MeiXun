@@ -67,8 +67,10 @@
     [LoginViewModel ReqLoginWithParams:params result:^(ReqResultType status, id data) {
         HTLog(@"login data = %@",data);
 //        [MDataUtil shareInstance].accModel = data;
-        [[MDataUtil shareInstance] archiveAccModel:data];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+        if (ReqResultSuccType == status) {
+            [[MDataUtil shareInstance] archiveAccModel:data];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+        }
     }];
 }
 
