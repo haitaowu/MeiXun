@@ -65,7 +65,7 @@
         NSString *beginStr = [NSString stringWithFormat:@"已发送(%dS)",kCountingNum];
         [self.codeBtn setTitle:beginStr forState:UIControlStateSelected];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startCounting) userInfo:nil repeats:YES];
-//        [self reqBindingValidateCode];
+        [self reqBindingValidateCode];
     }
 }
 
@@ -82,14 +82,23 @@
         return;
     }
     
-    NSString *codeTxt = self.bindingAccField.text;
+    NSString *codeTxt = self.codeField.text;
     if(codeTxt.length <= 0){
         [SVProgressHUD showInfoWithStatus:@"输入验证码"];
         return;
     }
     
-    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *token = [MDataUtil shareInstance].accModel.token;
+    NSString *userId = [MDataUtil shareInstance].accModel.userId;
+    params[kParamOldMobile] = oldAccTxt;
+    params[kParamNewMobile] = bindingAccTxt;
+    params[kParamVariCode] = codeTxt;
+    params[kParamUserIdType] = userId;
+    params[kParamTokenType] = token;
+    [self submitServerWithParams:params];
 }
+
 
 #pragma mark - requset server
 - (void)submitServerWithParams:(NSDictionary*)params

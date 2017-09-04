@@ -494,6 +494,9 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-kw-bKL" userLabel="coverBtn">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <connections>
+                                                        <action selector="tapLogoutBtn:" destination="1QL-xc-eIg" eventType="touchUpInside" id="FHi-Z4-wt4"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

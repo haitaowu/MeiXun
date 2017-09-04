@@ -15,6 +15,9 @@
 #define      kParamClientType               @"clientType"
 #define      kParamUserIdType               @"userId"
 #define      kParamTokenType                @"token"
+#define      kParamOldMobile                @"oldMobile"
+#define      kParamNewMobile                @"newMobile"
+#define      kParamVariCode                @"variCode"
 /**
  *0，注册  1，登录    2，修改手机号    3，忘记密码
  */
@@ -39,6 +42,7 @@
 #define     kLoginSuccessNotification                       @"kLoginSuccessNotification"
 
 #define     kRebindingSuccessNotification                   @"kRebindingSuccessNotification"
+#define     kLogoutNotification                             @"kLogoutNotification"
 
 
 

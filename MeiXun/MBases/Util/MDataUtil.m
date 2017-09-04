@@ -499,7 +499,7 @@ static MDataUtil *instance = nil;
     HTLog(@"128 = %@ , 256 = %@",encryptedStr128,encryptedStr256);
     
     NSString *str = @"3f66299552658aa6";
-    NSString *encryptStr = [self encodingDES:string];
+    NSString *encryptStr = [MDataUtil encodingDES:string];
     if([str isEqualToString:encryptStr]){
         HTLog(@"des encrypt succes  23333....");
     }
@@ -563,7 +563,7 @@ static const NSString *kBZDESKey = @"20160520";
 /**
  des加密
  */
-- (NSString *) encodingDES:(NSString *) desString{
++ (NSString *) encodingDES:(NSString *) desString{
     
     NSStringEncoding stringEncoding = NSUTF8StringEncoding;
     NSMutableData *desData = [[desString dataUsingEncoding:stringEncoding] mutableCopy];

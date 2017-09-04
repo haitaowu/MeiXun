@@ -24,6 +24,11 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+#pragma mark - selectors
+- (IBAction)tapLogoutBtn:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLogoutNotification object:nil];
+}
+
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

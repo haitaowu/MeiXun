@@ -60,6 +60,7 @@
     [rootController setDelegate:self];
     self.window.rootViewController = rootController;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rebindingSuccess) name:kRebindingSuccessNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutSuccess) name:kLogoutNotification object:nil];
 }
 
 //登录之后的界面设置。
@@ -82,7 +83,7 @@
     UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
     self.window.rootViewController = rootController;
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kLoginSuccessNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kLoginSuccessNotification object:nil];
 }
 
 #pragma mark - UITabBarController delegate
@@ -108,6 +109,12 @@
 }
 
 //重新绑定切换手机号码成功
+- (void)logoutSuccess
+{
+    [[MDataUtil shareInstance] archiveAccModel:nil];
+    [self setupUnLoginUI];
+}
+
 - (void)rebindingSuccess
 {
     [[MDataUtil shareInstance] archiveAccModel:nil];
