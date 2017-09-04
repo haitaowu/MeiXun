@@ -52,22 +52,19 @@
 
 
 
-
-
-/*
- *  发送一个GET请求
- *  请求验证码
- */
-//
-//+ (void)ReqPhoneCodeWithParams:(id)params result:(ReqReusltBlock)result
-//{
-//    [MNetworkUtil GETWithURL:kGetCodeUrl params:params reqSuccess:^(id data) {
-//        result(ReqResultSuccType,data);
-//    } reqFail:^(NSString *msg) {
-//        [SVProgressHUD showErrorWithStatus:msg];
-//        result(ReqResultFailType,msg);
-//    }];
-//}
+/**
+*  发送一个POST
+*  请求修改手机号 - 绑定手机号
+*/
++ (void)ReqRebindingWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil POSTWithURL:kRebindingUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
 
 /**
  *  发送一个POST请求

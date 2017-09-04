@@ -15,6 +15,11 @@
 #define      kParamClientType               @"clientType"
 #define      kParamUserIdType               @"userId"
 #define      kParamTokenType                @"token"
+/**
+ *0，注册  1，登录    2，修改手机号    3，忘记密码
+ */
+#define      kParamSendType                 @"sendType"
+
 //主叫号码    主叫号码要和userI的对应的号码一致
 #define      kParamCallingMobile            @"callingMobile"
 //被叫号码
@@ -32,6 +37,8 @@
 #define     kFirstTabbarItemSelectedNotification            @"kFirstTabbarItemSelectedNotification"
 
 #define     kLoginSuccessNotification                       @"kLoginSuccessNotification"
+
+#define     kRebindingSuccessNotification                   @"kRebindingSuccessNotification"
 
 
 
@@ -84,6 +91,10 @@
 #define     kDialogUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kDialogSubUrl]
 #define     kDialogSubUrl           @"callService/callThirdParty"
 
+
+//重新绑定手机号
+#define     kRebindingUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kRebindingSubUrl]
+#define     kRebindingSubUrl           @"userService/modifyMobile"
 
 
 

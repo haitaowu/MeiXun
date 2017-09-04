@@ -46,5 +46,10 @@ typedef void(^ReLoadContactsBlock)();
  检索通讯录中联系人数量来确定是否需要同步到本地
  */
 - (void)shouldSynchronizeAddressBookToLocalContacts;
+
+/**
+ des加密
+ */
++ (NSString *) encodingDES:(NSString *) desString;
 @end
        

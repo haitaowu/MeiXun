@@ -954,14 +954,13 @@
                                                         <constraint firstAttribute="height" constant="0.5" id="4Qt-AT-9mA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2J-eX-CKM">
-                                                    <rect key="frame" x="277" y="7" width="90" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2J-eX-CKM">
+                                                    <rect key="frame" x="272" y="7" width="95" height="30"/>
                                                     <color key="backgroundColor" red="0.43529411759999997" green="0.72156862749999995" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="Fl0-nG-A8N"/>
+                                                        <constraint firstAttribute="width" constant="95" id="Fl0-nG-A8N"/>
                                                         <constraint firstAttribute="height" constant="30" id="etm-yL-meP"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <state key="normal" title="发送验证码">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -969,7 +968,11 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapRequestCodeBtn:" destination="vUZ-YC-fxr" eventType="touchUpInside" id="wZb-KY-9Yk"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1040,6 +1043,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapConfirmBtn:" destination="vUZ-YC-fxr" eventType="touchUpInside" id="57r-SH-cmg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1081,6 +1087,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="绑定账号" id="o6C-8m-deC"/>
+                    <connections>
+                        <outlet property="bindingAccField" destination="GIf-ah-mOS" id="CLg-lk-bTz"/>
+                        <outlet property="codeBtn" destination="z2J-eX-CKM" id="mYk-Yt-hj7"/>
+                        <outlet property="codeField" destination="4Pf-Md-17W" id="tI5-6D-cPg"/>
+                        <outlet property="oldAccField" destination="iqZ-O7-rHL" id="CPk-gt-aNz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAI-gA-usY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

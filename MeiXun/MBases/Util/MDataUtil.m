@@ -13,6 +13,8 @@
 #import "MDataManagerUtil.h"
 #import <AddressBook/AddressBook.h>
 #import "SecurityUtil.h"
+//#import "GTMBase64.h"
+#import <CommonCrypto/CommonCryptor.h>
 
 
 
@@ -497,8 +499,11 @@ static MDataUtil *instance = nil;
     HTLog(@"128 = %@ , 256 = %@",encryptedStr128,encryptedStr256);
     
     NSString *str = @"3f66299552658aa6";
-    
-    return str;
+    NSString *encryptStr = [self encodingDES:string];
+    if([str isEqualToString:encryptStr]){
+        HTLog(@"des encrypt succes  23333....");
+    }
+    return encryptStr;
 }
 
 //在通讯录联系人添加、删除之后重新读取通讯录并存储到本地。
@@ -553,4 +558,47 @@ static MDataUtil *instance = nil;
     }
 }
 
+
+static const NSString *kBZDESKey = @"20160520";
+/**
+ des加密
+ */
+- (NSString *) encodingDES:(NSString *) desString{
+    
+    NSStringEncoding stringEncoding = NSUTF8StringEncoding;
+    NSMutableData *desData = [[desString dataUsingEncoding:stringEncoding] mutableCopy];
+    NSMutableData *desKey = [[kBZDESKey dataUsingEncoding:stringEncoding] mutableCopy];
+    [desKey setLength:kCCBlockSizeDES];
+    
+    uint8_t *dataOut = NULL;
+    size_t dataOutAvailable = 0;
+    size_t dataOutMoved = 0;
+    Byte iv[] = {2,0,1,6,0,5,2,0};
+    
+    dataOutAvailable = ([desString length] + kCCKeySizeDES) & ~(kCCKeySizeDES -1);
+    dataOut = malloc(dataOutAvailable * sizeof(uint8_t));
+    memset((void *)dataOut, 0x00, dataOutAvailable);
+    
+    CCCrypt(kCCEncrypt,             // CCOperation op
+            kCCAlgorithmDES,        // CCAlgorithm alg
+            kCCOptionPKCS7Padding,  // CCOptions options
+            [desKey bytes],         // const void *key
+            [desKey length],        // size_t keyLength
+            iv,                     // const void *iv
+            [desData bytes],        // const void *dataIn
+            [desData length],       // size_t dataInLength
+            (void*)dataOut,         // void *dataOut
+            dataOutAvailable,       // size_t dataOutAvailable
+            &dataOutMoved);         // size_t *dataOutMoved
+    
+    NSData *dataResult = [NSData dataWithBytes:dataOut length:dataOutMoved];
+    NSUInteger          len = [dataResult length];
+    char *              chars = (char *)[dataResult bytes];
+    NSMutableString *  hexString = [[NSMutableString alloc] init];
+    
+    for(NSUInteger i = 0; i < len; i++ ){
+        [hexString appendString:[NSString stringWithFormat:@"%0.2hhx", chars[i]]];
+    }
+    return hexString;
+}
 @end

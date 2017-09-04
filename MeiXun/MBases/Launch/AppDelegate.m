@@ -27,6 +27,8 @@
     if([[MDataUtil shareInstance] userIsLogin] == YES){
         [self setupLoginedViews];
     }else{
+        [[MDataUtil shareInstance] loadContactsWithBlock:^{
+        }];
         [self setupUnLoginUI];
     }
     [self.window makeKeyAndVisible];
@@ -50,15 +52,17 @@
 }
 
 #pragma mark - setup  UI 
-//显示登录之后的主界面。
+//显示主界面。
 - (void)showMainTabView
 {
     UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MTabbarController *rootController = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MTabbarController"];
     [rootController setDelegate:self];
     self.window.rootViewController = rootController;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rebindingSuccess) name:kRebindingSuccessNotification object:nil];
 }
 
+//登录之后的界面设置。
 - (void)setupLoginedViews
 {
     //3.ad
@@ -71,15 +75,14 @@
     }];
 }
 
+//显示未登录界面
 - (void)setupUnLoginUI
 {
-    [[MDataUtil shareInstance] loadContactsWithBlock:^{
-    }];
     //1.
     UIStoryboard *login = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
     UIViewController *rootController = [login instantiateViewControllerWithIdentifier:@"LoginNavController"];
     self.window.rootViewController = rootController;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kLoginSuccessNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:kLoginSuccessNotification object:nil];
 }
 
 #pragma mark - UITabBarController delegate
@@ -104,6 +107,14 @@
     [SVProgressHUD setMinimumDismissTimeInterval:0.1];
 }
 
+//重新绑定切换手机号码成功
+- (void)rebindingSuccess
+{
+    [[MDataUtil shareInstance] archiveAccModel:nil];
+    [self setupUnLoginUI];
+}
+
+//登录成功
 - (void)loginSuccess
 {
     [self showMainTabView];

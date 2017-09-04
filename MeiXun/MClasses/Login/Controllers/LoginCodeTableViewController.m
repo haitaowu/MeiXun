@@ -7,6 +7,7 @@
 //
 
 #import "LoginCodeTableViewController.h"
+#import "LoginViewModel.h"
 
 #define  kCountingNum               6
 
@@ -54,6 +55,7 @@
     self.countLabel.hidden = NO;
     self.reqCodeBtn.hidden = YES;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startCountingDown) userInfo:nil repeats:YES];
+    [self reqValidateCode];
 }
 
 //再次发送验证码
@@ -120,10 +122,24 @@
             obj.text = @"";
         }
     }];
-    
     HTLog(@"textField text = %@",sender.text);
 }
 
+#pragma mark - requset server
+/**
+ *请求验证码
+ *0，注册  1，登录    2，修改手机号    3，忘记密码
+ */
+- (void)reqValidateCode
+{
+    NSString *mobile = [MDataUtil shareInstance].accModel.mobile;
+    NSDictionary *params = @{kParamMobile:mobile,kParamSendType:@"0"};
+    [LoginViewModel ReqPhoneCodeWithParams:params result:^(ReqResultType status, id data) {
+        if (status == ReqResultSuccType) {
+            [SVProgressHUD showInfoWithStatus:@"请求验证码成功，请耐心等待"];
+        }
+    }];
+}
 #pragma mark - UIScrollView delegate 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {

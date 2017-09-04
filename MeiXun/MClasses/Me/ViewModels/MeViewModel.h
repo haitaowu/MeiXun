@@ -38,10 +38,10 @@
 
 
 /**
- *  发送一个GET请求
- *  请求验证码
+ *  发送一个POST
+ *  请求修改手机号
  */
-+ (void)ReqPhoneCodeWithParams:(id)params result:(ReqReusltBlock)result;
++ (void)ReqRebindingWithParams:(id)params result:(ReqReusltBlock)result;
 
 
 /**
