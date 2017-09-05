@@ -66,6 +66,7 @@
     [LoginViewModel ReqPwdBackWithParams:params result:^(ReqResultType status, id data) {
         HTLog(@"login data = %@",data);
         if (status == ReqResultSuccType) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
             HTLog(@"get pwd back success");
         }
         //        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
