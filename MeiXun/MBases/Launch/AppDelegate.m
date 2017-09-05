@@ -61,6 +61,7 @@
     self.window.rootViewController = rootController;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rebindingSuccess) name:kRebindingSuccessNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutSuccess) name:kLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutSuccess) name:kModifyPwdSuccNotification object:nil];
 }
 
 //登录之后的界面设置。

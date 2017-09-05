@@ -12,6 +12,8 @@
 #define      kParamMobile                   @"mobile"
 #define      kParamUserName                 @"userName"
 #define      kParamPassword                 @"password"
+#define      kParamOldPassword              @"oldPassword"
+#define      kParamNewPassword              @"newPassword"
 #define      kParamClientType               @"clientType"
 #define      kParamUserIdType               @"userId"
 #define      kParamTokenType                @"token"
@@ -43,6 +45,7 @@
 
 #define     kRebindingSuccessNotification                   @"kRebindingSuccessNotification"
 #define     kLogoutNotification                             @"kLogoutNotification"
+#define     kModifyPwdSuccNotification                      @"kModifyPwdSuccNotification"
 
 
 
@@ -99,7 +102,6 @@
 //重新绑定手机号
 #define     kRebindingUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kRebindingSubUrl]
 #define     kRebindingSubUrl           @"userService/modifyMobile"
-
 
 
 

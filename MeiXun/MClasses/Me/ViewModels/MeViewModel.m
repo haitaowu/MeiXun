@@ -68,17 +68,17 @@
 
 /**
  *  发送一个POST请求
- *  请求注册
+ *  请求修改密码
  */
-//+ (void)ReqRegisterWithParams:(id)params result:(ReqReusltBlock)result
-//{
-//    [MNetworkUtil POSTWithURL:kRegisterUrl params:params reqSuccess:^(id data) {
-//        result(ReqResultSuccType,data);
-//    } reqFail:^(NSString *msg) {
-//        [SVProgressHUD showErrorWithStatus:msg];
-//        result(ReqResultFailType,msg);
-//    }];
-//}
++ (void)ReqModifyPwdWithParams:(id)params result:(ReqReusltBlock)result;
+{
+    [MNetworkUtil POSTWithURL:kModifyPwdUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
 
 /**
  *  发送一个POST请求

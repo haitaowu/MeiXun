@@ -46,9 +46,9 @@
 
 /**
  *  发送一个POST请求
- *  请求注册
+ *  请求修改密码
  */
-+ (void)ReqRegisterWithParams:(id)params result:(ReqReusltBlock)result;
++ (void)ReqModifyPwdWithParams:(id)params result:(ReqReusltBlock)result;
 
 /**
  *  发送一个POST请求
