@@ -648,7 +648,7 @@
                                                     <rect key="frame" x="65" y="12" width="294" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -682,6 +682,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapConfirmBtn:" destination="23f-6d-KLg" eventType="touchUpInside" id="sGz-CS-TSI"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -701,6 +704,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="切换账号" id="pB8-3P-uTT"/>
+                    <connections>
+                        <outlet property="accField" destination="z3I-zo-kHL" id="pkF-kg-uuH"/>
+                        <outlet property="pwdField" destination="8Lb-nF-dxe" id="6Vc-kD-0CF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcP-4L-U39" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

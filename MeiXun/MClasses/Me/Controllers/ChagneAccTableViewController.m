@@ -22,7 +22,7 @@
 }
 
 #pragma mark - selectors
-- (IBAction)tapNextBtn:(id)sender {
+- (IBAction)tapConfirmBtn:(id)sender {
     [self.view endEditing:YES];
     NSString *pwdTxt = self.pwdField.text;
     if ([pwdTxt emptyStr] == YES) {
@@ -35,7 +35,7 @@
         return;
     }
     
-    [self reqLoginAccWithPwd:pwdTxt phone:@"phone"];
+    [self reqLoginAccWithPwd:pwdTxt phone:accTxt];
 }
 
 #pragma mark - requset server
@@ -48,8 +48,12 @@
     params[kParamClientType] = kParamClientTypeiOS;
     [LoginViewModel ReqLoginWithParams:params result:^(ReqResultType status, id data) {
         HTLog(@"login data = %@",data);
-        //        [MDataUtil shareInstance].accModel = data;
-        [[MDataUtil shareInstance] archiveAccModel:data];
+        if (status == ReqResultSuccType) {
+            [SVProgressHUD showSuccessWithStatus:@"切换账号成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            [MDataUtil shareInstance].accModel = data;
+            [[MDataUtil shareInstance] archiveAccModel:data];
+        }
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
     }];
 }
