@@ -27,7 +27,12 @@
 
 
 
+/**
+ *  发送一个POST请求
+ *  提交意见反馈
+ */
 
++ (void)submitFeedBackWithParams:(id)params result:(ReqReusltBlock)result;
 
 
 
@@ -55,4 +60,6 @@
  *  找回密码
  */
 + (void)ReqPwdBackWithParams:(id)params result:(ReqReusltBlock)result;
+
+
 @end

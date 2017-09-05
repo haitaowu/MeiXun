@@ -1317,7 +1317,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b5C-1d-BGf">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b5C-1d-BGf" customClass="CustomTextView">
                                                     <rect key="frame" x="20" y="0.0" width="335" height="120"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1355,6 +1355,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapSubmitBtn:" destination="R4m-gw-2pv" eventType="touchUpInside" id="Hb7-cg-rc3"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1374,6 +1377,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="意见反馈" id="DjN-Gb-ybp"/>
+                    <connections>
+                        <outlet property="accField" destination="fby-U0-pxm" id="fBz-nz-oY1"/>
+                        <outlet property="contentTxtView" destination="b5C-1d-BGf" id="E1U-hQ-1v9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEg-Xw-YDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

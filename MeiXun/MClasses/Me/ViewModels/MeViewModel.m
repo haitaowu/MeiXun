@@ -82,19 +82,17 @@
 
 /**
  *  发送一个POST请求
- *  找回密码
+ *  提交意见反馈
  */
 
-/*
-+ (void)ReqPwdBackWithParams:(id)params result:(ReqReusltBlock)result
++ (void)submitFeedBackWithParams:(id)params result:(ReqReusltBlock)result
 {
-    [MNetworkUtil POSTWithURL:kGetPwdBackUrl params:params reqSuccess:^(id data) {
+    [MNetworkUtil POSTWithURL:kFeedbackUrl params:params reqSuccess:^(id data) {
         result(ReqResultSuccType,data);
     } reqFail:^(NSString *msg) {
         [SVProgressHUD showWithStatus:msg];
         result(ReqResultFailType,msg);
     }];
 }
-*/
 
 @end

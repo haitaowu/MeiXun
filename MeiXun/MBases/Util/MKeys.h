@@ -20,6 +20,7 @@
 #define      kParamOldMobile                @"oldMobile"
 #define      kParamNewMobile                @"newMobile"
 #define      kParamVariCode                @"variCode"
+#define      kParamFeedback                @"feedback"
 /**
  *0，注册  1，登录    2，修改手机号    3，忘记密码
  */
@@ -104,6 +105,9 @@
 #define     kRebindingSubUrl           @"userService/modifyMobile"
 
 
+//意见反馈
+#define     kFeedbackUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kFeedbackSubUrl]
+#define     kFeedbackSubUrl           @"userService/giveFeedback"
 
 
 
