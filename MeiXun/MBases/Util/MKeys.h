@@ -75,7 +75,7 @@
 #define     kRegisterStateUrl           [NSString stringWithFormat:@"%@%@",kBaseUrl,kRegisterStateSubUrl]
 #define     kRegisterStateSubUrl        @"userService/isRegisterMobile"
 //验证手机验证码
-#define     kValidateCodeUrl            [NSString stringWithFormat:@"%@%@",kBaseUrl,kRegisterSubUrl]
+#define     kValidateCodeUrl            [NSString stringWithFormat:@"%@%@",kBaseUrl,kValidateCodeSubUrl]
 #define     kValidateCodeSubUrl         @"userService/validateVariCode"
 //获取用基本信息
 #define     kAccInfoUrl                 [NSString stringWithFormat:@"%@%@",kBaseUrl,kValidateCodeSubUrl]

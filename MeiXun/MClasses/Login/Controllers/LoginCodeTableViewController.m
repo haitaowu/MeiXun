@@ -8,8 +8,11 @@
 
 #import "LoginCodeTableViewController.h"
 #import "LoginViewModel.h"
+#import "SetPwdTableViewController.h"
 
 #define  kCountingNum               6
+
+
 
 @interface LoginCodeTableViewController ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *enterLabels;
@@ -26,7 +29,6 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.count = kCountingNum;
     [self setupViewUI];
 }
 
@@ -36,6 +38,15 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pwdSegue"]) {
+        SetPwdTableViewController *destinationControl = segue.destinationViewController;
+        destinationControl.variCode = self.enterField.text;
+        destinationControl.reqType = self.reqType;
+    }
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -43,24 +54,48 @@
 }
 
 #pragma mark - selectors
-//提交验证码
+- (IBAction)tapEnterBtn:(id)sender {
+    [self.enterField becomeFirstResponder];
+}
+
+//提交检证验证码
 - (IBAction)tapSubmitBtn:(id)sender {
+    NSString *codeStr = self.enterField.text;
+    if ([codeStr emptyStr] == YES) {
+        [SVProgressHUD showInfoWithStatus:@"请输入验证码"];
+        return;
+    }
     HTLog(@"sumit ");
-    [self performSegueWithIdentifier:@"pwdSegue" sender:nil];
+    NSString *mobile = [MDataUtil shareInstance].accModel.mobile;
+    NSDictionary *params = @{kParamMobile:mobile,kParamSendType:self.reqType,kParamVariCode:self.enterField.text};
+    [self reqValidatePhoneWith:params];
+//    [self performSegueWithIdentifier:@"pwdSegue" sender:nil];
 }
 
 //发送验证码
 - (IBAction)tapCodeBtn:(id)sender {
     HTLog(@"get code btn clicked ");
-    self.countLabel.hidden = NO;
-    self.reqCodeBtn.hidden = YES;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startCountingDown) userInfo:nil repeats:YES];
+    [self prepareForCountingDown];
     [self reqValidateCode];
 }
 
 //再次发送验证码
 - (IBAction)tapReCodeBtn:(id)sender {
     HTLog(@"reget code btn clicked ");
+    [self prepareForCountingDown];
+    [self reqValidateCode];
+}
+
+//初始化 NSTImer 设置倒计时显示的view
+- (void)prepareForCountingDown
+{
+    self.count = kCountingNum;
+    self.countLabel.hidden = NO;
+    self.againEnterView.hidden = YES;
+    self.reqCodeBtn.hidden = YES;
+    NSString *countStr = [NSString stringWithFormat:@"%ldS",self.count];
+    [self.countLabel setText:countStr];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(startCountingDown) userInfo:nil repeats:YES];
 }
 
 - (void)startCountingDown
@@ -86,6 +121,8 @@
     self.countLabel.hidden = YES;
 }
 
+
+
 #pragma mark - setup UI 
 - (void)setupViewUI
 {
@@ -100,10 +137,6 @@
     [self.enterField addTarget:self action:@selector(txtStrDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
-#pragma mark - selectors
-- (IBAction)tapEnterBtn:(id)sender {
-    [self.enterField becomeFirstResponder];
-}
 
 - (void)txtStrDidChange:(UITextField*)sender
 {
@@ -126,6 +159,17 @@
 }
 
 #pragma mark - requset server
+- (void)reqValidatePhoneWith:(NSDictionary*)params
+{
+    [LoginViewModel ReqValidatePhoneCodeWithParams:params result:^(ReqResultType status, id data) {
+        HTLog(@"login data = %@",data);
+        if (status == ReqResultSuccType) {
+            [self performSegueWithIdentifier:@"pwdSegue" sender:nil];
+        }
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];
+    }];
+}
+
 /**
  *请求验证码
  *0，注册  1，登录    2，修改手机号    3，忘记密码
@@ -133,8 +177,9 @@
 - (void)reqValidateCode
 {
     NSString *mobile = [MDataUtil shareInstance].accModel.mobile;
-    NSDictionary *params = @{kParamMobile:mobile,kParamSendType:@"0"};
-    [LoginViewModel ReqPhoneCodeWithParams:params result:^(ReqResultType status, id data) {
+    NSDictionary *params = @{kParamMobile:mobile,kParamSendType:self.reqType};
+    NSLog(@"request validate code params = %@",params);
+    [LoginViewModel ReqPhoneCodeWithParams:params result:^(ReqResultType status, id data){
         if (status == ReqResultSuccType) {
             [SVProgressHUD showInfoWithStatus:@"请求验证码成功，请耐心等待"];
         }

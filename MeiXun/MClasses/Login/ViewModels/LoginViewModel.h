@@ -42,4 +42,10 @@
  *  找回密码
  */
 + (void)ReqPwdBackWithParams:(id)params result:(ReqReusltBlock)result;
+
+/**
+ *  发送一个GET请求
+ *  验证手机验证码
+ */
++ (void)ReqValidatePhoneCodeWithParams:(id)params result:(ReqReusltBlock)result;
 @end

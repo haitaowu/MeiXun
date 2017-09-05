@@ -32,6 +32,7 @@
 		BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3951B31F46D7CB00872662 /* ContactsCell.xib */; };
 		BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B71F47C5C100872662 /* LoadImgOperation.m */; };
 		BE58D11B1F5E40130090E17F /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58D11A1F5E40130090E17F /* CustomTextView.m */; };
+		BE58D11E1F5E89C50090E17F /* SetPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58D11D1F5E89C50090E17F /* SetPwdTableViewController.m */; };
 		BE5E9FE61F5BE55100B31681 /* ChargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9FE51F5BE55100B31681 /* ChargeModel.m */; };
 		BE5E9FEA1F5BE9A800B31681 /* ChargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9FE81F5BE9A800B31681 /* ChargeCell.m */; };
 		BE5E9FEB1F5BE9A800B31681 /* ChargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5E9FE91F5BE9A800B31681 /* ChargeCell.xib */; };
@@ -125,6 +126,8 @@
 		BE3951B71F47C5C100872662 /* LoadImgOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadImgOperation.m; sourceTree = "<group>"; };
 		BE58D1191F5E40130090E17F /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		BE58D11A1F5E40130090E17F /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
+		BE58D11C1F5E89C50090E17F /* SetPwdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPwdTableViewController.h; sourceTree = "<group>"; };
+		BE58D11D1F5E89C50090E17F /* SetPwdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPwdTableViewController.m; sourceTree = "<group>"; };
 		BE5E9FE41F5BE55100B31681 /* ChargeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeModel.h; sourceTree = "<group>"; };
 		BE5E9FE51F5BE55100B31681 /* ChargeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeModel.m; sourceTree = "<group>"; };
 		BE5E9FE71F5BE9A800B31681 /* ChargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeCell.h; sourceTree = "<group>"; };
@@ -531,6 +534,8 @@
 				BEBD698B1F3ED9610062AA36 /* LoginCodeTableViewController.m */,
 				BEE23B7C1F3FF70F00BAA66E /* EnterPwdTableViewController.h */,
 				BEE23B7D1F3FF70F00BAA66E /* EnterPwdTableViewController.m */,
+				BE58D11C1F5E89C50090E17F /* SetPwdTableViewController.h */,
+				BE58D11D1F5E89C50090E17F /* SetPwdTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -852,6 +857,7 @@
 				BE2A77D51F433E0400FDD1BD /* UIView+PositionExt.m in Sources */,
 				BEE23B851F40087200BAA66E /* MDataUtil.m in Sources */,
 				BE39516F1F46C00A00872662 /* PersonModel.m in Sources */,
+				BE58D11E1F5E89C50090E17F /* SetPwdTableViewController.m in Sources */,
 				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
 				BEF869B11F4BF9F800F5E08F /* RecordModel.m in Sources */,
 				BE3951671F46BE0300872662 /* HanyuPinyinOutputFormat.m in Sources */,

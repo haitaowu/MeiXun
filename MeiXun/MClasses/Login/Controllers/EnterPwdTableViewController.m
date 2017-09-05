@@ -32,9 +32,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //*0，注册  1，登录    2，修改手机号    3，忘记密码
     if ([segue.identifier isEqualToString:@"codeSegue"]) {
         LoginCodeTableViewController *destinationControl = segue.destinationViewController;
-        destinationControl.reqType = @"1";
+        destinationControl.reqType = @"3";
     }
 }
 

@@ -83,4 +83,19 @@
 }
 
 
+/**
+ *  发送一个GET请求
+ *  验证手机验证码
+ */
++ (void)ReqValidatePhoneCodeWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil GETWithURL:kValidateCodeUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+
 @end

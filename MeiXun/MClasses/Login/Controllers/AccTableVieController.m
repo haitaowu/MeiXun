@@ -27,11 +27,13 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-   if ([segue.identifier isEqualToString:@"codeSegue"]) {
+    //*0，注册  1，登录    2，修改手机号    3，忘记密码
+    if ([segue.identifier isEqualToString:@"codeSegue"]) {
         LoginCodeTableViewController *destinationControl = segue.destinationViewController;
-        destinationControl.reqType = @"2";
+        destinationControl.reqType = @"0";
     }
 }
 

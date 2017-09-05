@@ -422,7 +422,7 @@
         <!--设置密码-->
         <scene sceneID="aqz-me-qyS">
             <objects>
-                <tableViewController id="6LT-In-80K" sceneMemberID="viewController">
+                <tableViewController id="6LT-In-80K" customClass="SetPwdTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="0if-e5-br3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -441,7 +441,7 @@
                                                     <rect key="frame" x="16" y="12" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Of-JS-8aa">
                                                     <rect key="frame" x="0.0" y="43" width="375" height="1"/>
@@ -472,7 +472,7 @@
                                                     <rect key="frame" x="16" y="12" width="343" height="20"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -525,6 +525,9 @@
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapConfirmBtn:" destination="6LT-In-80K" eventType="touchUpInside" id="VLu-T6-YoH"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -544,6 +547,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="设置密码" id="ojw-Ka-7lH"/>
+                    <connections>
+                        <outlet property="pwdAgainField" destination="brd-NC-yiV" id="Psq-T4-6SY"/>
+                        <outlet property="pwdField" destination="SIj-B4-vuK" id="qg9-3d-IkR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lg6-qd-gVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
