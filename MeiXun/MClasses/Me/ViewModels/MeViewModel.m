@@ -26,6 +26,9 @@
         if ([data count] > 0) {
             NSArray *array = [ChargeModel mj_objectArrayWithKeyValuesArray:data];
             result(ReqResultSuccType,array);
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"暂无数据"];
+            result(ReqResultFailType,@"暂无数据");
         }
     } reqFail:^(NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];

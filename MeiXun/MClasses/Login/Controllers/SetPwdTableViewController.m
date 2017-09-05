@@ -49,8 +49,7 @@
     params[kParamClientType] = kParamClientTypeiOS;
     
     if ([self.reqType isEqualToString:@"0"]) {
-        HTLog(@"register new account");
-        return;
+        HTLog(@"register new account params = %@",params);
         [self reqRegisterAccWith:params];
     }
     
@@ -79,6 +78,7 @@
     [LoginViewModel ReqRegisterWithParams:params result:^(ReqResultType status, id data) {
         HTLog(@"login data = %@",data);
         if (status == ReqResultSuccType) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
             HTLog(@" register account success");
         }
         //        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccessNotification object:nil];

@@ -12,6 +12,7 @@
 @interface MeTableViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *leftMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *netAgeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *accLabel;
 
 @end
 
@@ -52,6 +53,8 @@
     CGFloat balance = [accModel.balance floatValue];
     NSString *balanceStr = [NSString stringWithFormat:@"%.2f美讯卡",balance];
     self.leftMoneyLabel.text = balanceStr;
+    
+    self.accLabel.text = accModel.mobile;
 }
 
 

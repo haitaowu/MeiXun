@@ -359,6 +359,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="我" id="SSP-yc-ZKL"/>
                     <connections>
+                        <outlet property="accLabel" destination="SnJ-b5-sO6" id="igN-no-19B"/>
                         <outlet property="leftMoneyLabel" destination="nCz-Yf-kSk" id="xLT-xt-epk"/>
                         <outlet property="netAgeLabel" destination="J3d-Tg-kYc" id="fPE-tU-qmx"/>
                     </connections>
