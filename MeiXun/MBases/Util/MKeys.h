@@ -21,6 +21,8 @@
 #define      kParamNewMobile                @"newMobile"
 #define      kParamVariCode                @"variCode"
 #define      kParamFeedback                @"feedback"
+#define      kParamQuota                   @"quota"
+#define      kParamReceipt                 @"receipt"
 /**
  *0，注册  1，登录    2，修改手机号    3，忘记密码
  */
@@ -109,6 +111,9 @@
 #define     kFeedbackUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kFeedbackSubUrl]
 #define     kFeedbackSubUrl           @"userService/giveFeedback"
 
+//在线充值
+#define     kReceiptkUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kReceiptSubUrl]
+#define     kReceiptSubUrl           @"cardService/rechargeOnline"
 
 
 

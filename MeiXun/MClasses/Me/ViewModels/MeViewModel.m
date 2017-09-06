@@ -98,4 +98,20 @@
     }];
 }
 
+/**
+ *  发送一个POST请求
+ *  提交内购凭证
+ */
+
++ (void)submitIAPReceiptWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil POSTWithURL:kReceiptkUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+
 @end

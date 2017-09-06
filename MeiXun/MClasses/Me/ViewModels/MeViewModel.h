@@ -36,7 +36,12 @@
 
 
 
+/**
+ *  发送一个POST请求
+ *  提交内购凭证
+ */
 
++ (void)submitIAPReceiptWithParams:(id)params result:(ReqReusltBlock)result;
 
 
 
@@ -59,7 +64,7 @@
  *  发送一个POST请求
  *  找回密码
  */
-+ (void)ReqPwdBackWithParams:(id)params result:(ReqReusltBlock)result;
+//+ (void)ReqPwdBackWithParams:(id)params result:(ReqReusltBlock)result;
 
 
 @end

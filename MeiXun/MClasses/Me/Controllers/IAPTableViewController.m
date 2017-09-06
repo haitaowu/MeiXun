@@ -9,6 +9,7 @@
 #import "IAPTableViewController.h"
 #import "MProductButton.h"
 #import <StoreKit/StoreKit.h>
+#import "MeViewModel.h"
 
 
 @interface IAPTableViewController ()<SKPaymentTransactionObserver,SKProductsRequestDelegate>
@@ -81,7 +82,7 @@
 // 14.交易结束,当交易结束后还要去appstore上验证支付信息是否都正确,只有所有都正确后,我们就可以给用户方法我们的虚拟物品了。
 - (void)completeTransaction:(SKPaymentTransaction *)transaction
 {
-    NSString * str=[[NSString alloc]initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
+//    NSString * str=[[NSString alloc]initWithData:transaction.transactionReceipt encoding:NSUTF8StringEncoding];
     
     // 验证凭据，获取到苹果返回的交易凭据
     // appStoreReceiptURL iOS7.0增加的，购买交易完成后，会将凭据存放在该地址
@@ -94,9 +95,32 @@
      22      */
     NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     
+    [self submitReceiptWith:encodeStr];
     
     //此方法为将这一次操作上传给我本地服务器,记得在上传成功过后一定要记得销毁本次操作。调用
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+#pragma mark - requset server
+- (void)submitReceiptWith:(NSString*)receipt
+{
+    NSString *token = [MDataUtil shareInstance].accModel.token;
+    NSString *userId = [MDataUtil shareInstance].accModel.userId;
+    NSString *mobile = [MDataUtil shareInstance].accModel.mobile;
+    SKProduct *pro = (SKProduct*)self.selectedProduct.productData;
+    NSString *quota = [NSString stringWithFormat:@"%@.00",[pro price]];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kParamQuota] = quota;
+    params[kParamMobile] = mobile;
+    params[kParamUserIdType] = userId;
+    params[kParamTokenType] = token;
+    params[kParamReceipt] = receipt;
+    [MeViewModel submitIAPReceiptWithParams:params result:^(ReqResultType status, id data) {
+        if (status == ReqResultSuccType) {
+            [SVProgressHUD showInfoWithStatus:@"充值成功"];
+        }
+    }];
 }
 
 
