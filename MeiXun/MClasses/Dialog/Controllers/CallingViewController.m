@@ -39,6 +39,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillBecomeInActive) name:kAppWillBecomeInActiveNoti object:nil];
     [super viewWillAppear:animated];
     [self setupUIWithModel:self.model phone:self.calledPhone];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
@@ -47,6 +48,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - setup UI 
@@ -112,6 +114,12 @@
     if (self.cancelBlock != nil) {
         self.cancelBlock();
     }
+}
+
+//程序回到后台。
+- (void)appWillBecomeInActive
+{
+    [self tapCancelBtn:nil];
 }
 
 #pragma mark - public methods

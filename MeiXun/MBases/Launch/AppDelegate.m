@@ -42,10 +42,12 @@
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAppWillBecomeInActiveNoti object:nil];
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAppWillEnterForegroundNoti object:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

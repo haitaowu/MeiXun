@@ -103,6 +103,7 @@ static NSString *RecordCellID = @"RecordCellID";
 - (void)setupBase
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabbarSelecteItem) name:kFirstTabbarItemSelectedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillBecomForeg) name:kAppWillEnterForegroundNoti object:nil];
 //    MKeyboard *keyboard = [MKeyboard showMKeyboard];
 }
 
@@ -122,13 +123,19 @@ static NSString *RecordCellID = @"RecordCellID";
 //显示可以拨打的电话号码。
 - (void)showPhoneNumberWithRecord:(RecordModel*)recordModel
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"选择号码" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+    NSString *name = recordModel.name == nil?@"":recordModel.name;
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:name delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
     [actionSheet addButtonWithTitle:recordModel.phone];
     [actionSheet showInView:self.view];
 }
 
 
 #pragma mark - selectors
+- (void)appWillBecomForeg
+{
+    [self.tableView reloadData];
+}
+
 - (void)tabbarSelecteItem
 {
 //    MKeyboard *keyboard = [MKeyboard showMKeyboard];

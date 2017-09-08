@@ -50,6 +50,9 @@
 #define     kLogoutNotification                             @"kLogoutNotification"
 #define     kModifyPwdSuccNotification                      @"kModifyPwdSuccNotification"
 
+#define     kAppWillBecomeInActiveNoti                      @"kAppWillBecomeInActiveNoti"
+#define     kAppWillEnterForegroundNoti                     @"kAppWillEnterForegroundNoti"
+
 
 
 

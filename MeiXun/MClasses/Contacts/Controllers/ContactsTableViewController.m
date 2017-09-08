@@ -49,7 +49,8 @@ static NSString *ContactsCellID = @"ContactsCellID";
 #pragma mark - private methods
 - (void)showContactPhoneNumbersWithPerson:(PersonModel*)personModel
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"选择号码" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+    NSString *name = personModel.name == nil?@"":personModel.name;
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:name delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
     
     for (NSString *phone in personModel.phoneNums) {
         [actionSheet addButtonWithTitle:phone];
