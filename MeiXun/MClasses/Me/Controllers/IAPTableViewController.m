@@ -10,12 +10,15 @@
 #import "MProductButton.h"
 #import <StoreKit/StoreKit.h>
 #import "MeViewModel.h"
+#import "UIImage+Extension.h"
 
 
 @interface IAPTableViewController ()<SKPaymentTransactionObserver,SKProductsRequestDelegate>
 @property(nonatomic,strong) IBOutletCollection(MProductButton) NSArray* products;
 @property (nonatomic,strong)MProductButton *selectedProduct;
+@property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (nonatomic,strong)SKProductsRequest *request;
+@property (nonatomic,strong)NSArray *appleProducts;
 @end
 
 @implementation IAPTableViewController
@@ -24,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    [self.confirmBtn setBackgroundImage:[UIImage imageWithColor:MNavBarColor] forState:UIControlStateNormal];
+    [self.confirmBtn setBackgroundImage:[UIImage imageWithColor:[UIColor grayColor]] forState:UIControlStateDisabled];
     
     if([SKPaymentQueue canMakePayments]){
         [self requestAppleProductList];
@@ -136,6 +141,7 @@
         return;
     }
     products = [[products reverseObjectEnumerator] allObjects];
+    self.appleProducts = products;
     [self setupProductsViewWithArray:products];
     
 }
@@ -161,7 +167,8 @@
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"交易完成");
-                
+                self.confirmBtn.enabled = YES;
+                [self completeTransaction:tran];
                 break;
             case SKPaymentTransactionStatePurchasing:
                 NSLog(@"商品添加进列表");
@@ -173,9 +180,11 @@
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"交易失败");
+                self.confirmBtn.enabled = YES;
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             default:
+                self.confirmBtn.enabled = YES;
                 break;
         }
     }
@@ -188,6 +197,13 @@
         [SVProgressHUD showInfoWithStatus:@"选择充值卡先"];
         return;
     }
+    
+    if([self.appleProducts count] <= 0){
+        return;
+    }
+    [SVProgressHUD showInfoWithStatus:@"购买中..."];
+//    [self.confirmBtn setTitle:@"hello" forState:UIControlStateNormal];
+    self.confirmBtn.enabled = NO;
     // 12.发送购买请求
     SKProduct *requestProduct = (SKProduct*)self.selectedProduct.productData;
     SKPayment *payment = [SKPayment paymentWithProduct:requestProduct];
