@@ -87,6 +87,7 @@
 #pragma mark - request  server
 - (void)callPhoneNumber:(NSString*)phoneNum
 {
+    phoneNum = [phoneNum elevenPhoneNumFormat];
     NSString *token = [MDataUtil shareInstance].accModel.token;
     NSString *userId = [MDataUtil shareInstance].accModel.userId;
     NSString *callingPhone = [MDataUtil shareInstance].accModel.mobile;

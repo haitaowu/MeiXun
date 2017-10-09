@@ -7,15 +7,18 @@
 //
 
 #import "ContactsTableViewController.h"
+#import "ContactsSearchController.h"
 #import "ContactsCell.h"
 #import "PersonModel.h"
 #import "CallingViewController.h"
 
 static NSString *ContactsCellID = @"ContactsCellID";
 
-@interface ContactsTableViewController ()<UIActionSheetDelegate>
+@interface ContactsTableViewController ()<UIActionSheetDelegate,UISearchBarDelegate>
 @property (nonatomic,strong)PersonModel *selectedPerson;
 @property (nonatomic,strong)CallingViewController *callController;
+@property (nonatomic,strong)UISearchController *searchControl;
+@property (nonatomic,strong)ContactsSearchController *resultController;
 
 @end
 
@@ -44,11 +47,34 @@ static NSString *ContactsCellID = @"ContactsCellID";
     UINib *alertCellNib = [UINib nibWithNibName:@"ContactsCell" bundle:nil];
     [self.tableView registerNib:alertCellNib forCellReuseIdentifier:ContactsCellID];
     
+    __block typeof(self) blockSelf = self;
+    ContactsSearchController *resultController = [[ContactsSearchController alloc] init];
+    resultController.selectedPersonBlock = ^(PersonModel *model) {
+        [blockSelf showContactPhoneNumbersWithPerson:model];
+    };
+    self.definesPresentationContext = true;
+    self.resultController = resultController;
+    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:resultController];
+    //取消字 颜色
+//    searchController.searchBar.tintColor = kMainBackgroundColor;
+    searchController.searchBar.placeholder = @"输入关键字搜索";
+    // 颜色
+    //    searchController.searchBar.barTintColor = kMainBackgroundColor;
+    self.searchControl = searchController;
+//    UIBarButtonItem *barItem = [UIBarButtonItem appearance];
+//    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+//    attrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+//    [barItem setTitleTextAttributes:attrs forState:UIControlStateNormal];
+    self.searchControl.searchBar.delegate = self;
+    [searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = searchController.searchBar;
+    
 }
 
 #pragma mark - private methods
 - (void)showContactPhoneNumbersWithPerson:(PersonModel*)personModel
 {
+    self.selectedPerson = personModel;
     NSString *name = personModel.name == nil?@"":personModel.name;
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:name delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
     
@@ -56,6 +82,23 @@ static NSString *ContactsCellID = @"ContactsCellID";
         [actionSheet addButtonWithTitle:phone];
     }
     [actionSheet showInView:self.view];
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    if(searchBar.text.length > 0){
+        NSString *keyword = searchBar.text;
+        [self.resultController searchWithKeyword:keyword];
+    }
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if(searchBar.text.length <= 0){
+        NSString *keyword = searchBar.text;
+        [self.resultController searchWithKeyword:keyword];
+    }
 }
 
 #pragma mark - UIAction sheet delegate
@@ -118,7 +161,6 @@ static NSString *ContactsCellID = @"ContactsCellID";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray *contacts = [[[MDataUtil shareInstance] contacts] objectAtIndex:indexPath.section];
     PersonModel *model = contacts[indexPath.row];
-    self.selectedPerson = model;
     [self showContactPhoneNumbersWithPerson:model];
 }
 

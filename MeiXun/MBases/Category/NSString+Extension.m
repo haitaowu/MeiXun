@@ -92,5 +92,24 @@
     return [phonePredicate evaluateWithObject:self];
 }
 
+/**
+ *去掉86前缀的11位手机号码
+ */
+- (NSString*)elevenPhoneNumFormat
+{
+    if (self.length >= 13) {
+        NSString *str = [self stringByReplacingOccurrencesOfString:@"*" withString:@""];
+        str = [str stringByReplacingOccurrencesOfString:@"#" withString:@""];
+        NSRange prefixRange = NSMakeRange(0, 2);
+        NSString *preFixStr = [str substringWithRange:prefixRange];
+        if ([preFixStr isEqualToString:@"86"]) {
+            str = [str substringFromIndex:2];
+        }
+        return str;
+    }else{
+        return self;
+    }
+}
+
 
 @end

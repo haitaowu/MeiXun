@@ -43,4 +43,9 @@
  */
 - (BOOL)rightPhoneNumFormat;
 
+/**
+*去掉86前缀的11位手机号码
+ */
+- (NSString*)elevenPhoneNumFormat;
+
 @end
