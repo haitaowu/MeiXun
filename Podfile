@@ -10,5 +10,6 @@ target 'MeiXun' do
 	pod 'SVProgressHUD', '~> 2.1.2'
 	pod 'FMDB', '~> 2.6.2'
     pod 'MJExtension'
+    pod 'LJContactManager'
 
 end

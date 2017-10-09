@@ -17,21 +17,24 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - LJContactManager (0.0.5)
   - MJExtension (3.0.13)
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - FMDB (~> 2.6.2)
+  - LJContactManager
   - MJExtension
   - SVProgressHUD (~> 2.1.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  LJContactManager: d4af72e8cfc92728143d073fdb3c49eea722cb8d
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 5c6a16220900d0c233314b3572d8f83792c1ff92
+PODFILE CHECKSUM: c908425a5c86ef0284d4b1c6f379e10707023e5b
 
 COCOAPODS: 1.1.1

@@ -11,6 +11,8 @@
 #import "ContactsCell.h"
 #import "PersonModel.h"
 #import "CallingViewController.h"
+#import "LJContactManager.h"
+
 
 static NSString *ContactsCellID = @"ContactsCellID";
 
@@ -39,7 +41,10 @@ static NSString *ContactsCellID = @"ContactsCellID";
     [[MDataUtil shareInstance] shouldSynchronizeAddressBookToLocalContacts];
 }
 
-
+#pragma mark - selectors
+- (IBAction)tapAddContact:(id)sender {
+    [[LJContactManager sharedInstance] createNewContactWithPhoneNum:@"" controller:self];
+}
 #pragma mark - setup ui
 - (void)setupUI
 {
@@ -68,7 +73,6 @@ static NSString *ContactsCellID = @"ContactsCellID";
     self.searchControl.searchBar.delegate = self;
     [searchController.searchBar sizeToFit];
     self.tableView.tableHeaderView = searchController.searchBar;
-    
 }
 
 #pragma mark - private methods

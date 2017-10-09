@@ -83,7 +83,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="联系人" id="Gd5-YY-XJq">
-                        <barButtonItem key="rightBarButtonItem" image="add_user_icon" id="Kmo-zP-T1l"/>
+                        <barButtonItem key="rightBarButtonItem" image="add_user_icon" id="Kmo-zP-T1l">
+                            <connections>
+                                <action selector="tapAddContact:" destination="YQ1-Sm-e7x" id="rkP-iX-92s"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJq-i1-BWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
