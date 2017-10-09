@@ -178,7 +178,7 @@
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateFailed:
-                NSLog(@"交易失败");
+                NSLog(@"交易失败 tran error = %@",tran.error);
                 [SVProgressHUD showInfoWithStatus:@"交易失败,请稍后再试"];
                 self.confirmBtn.enabled = YES;
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
