@@ -108,6 +108,21 @@
     [MNetworkUtil POSTWithURL:kReceiptkUrl params:params reqSuccess:^(id data) {
         result(ReqResultSuccType,data);
     } reqFail:^(NSString *msg) {
+//        [SVProgressHUD showInfoWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
+
+/**
+ *  发送一个POST请求
+ *  购买时新建一条订单,请求订单信息。
+ */
+
++ (void)RequestOrderIDWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil POSTWithURL:kOrderIDUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
         [SVProgressHUD showInfoWithStatus:msg];
         result(ReqResultFailType,msg);
     }];

@@ -51,5 +51,21 @@ typedef void(^ReLoadContactsBlock)();
  des加密
  */
 + (NSString *) encodingDES:(NSString *) desString;
+
+/**
+ uncompletion SKPaymentTransaction
+ */
++ (NSMutableArray *) unCompletionTrans;
+
+/**
+ save uncompletion SKPaymentTransaction
+ */
++ (void) saveunCompletionTrans:(NSArray*)trans;
+
+/**
+ submite uncompletion recipt validate
+ */
++ (void)checkUnCompletionTransAndSubmit;
+
 @end
        

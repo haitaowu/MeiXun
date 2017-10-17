@@ -42,14 +42,21 @@
 {
     [super layoutSubviews];
     CGSize viewSize = self.size;
+    [self.nameLabel sizeToFit];
+    CGSize nameSize = self.nameLabel.size;
     //name label frame
+    CGFloat nameX = (viewSize.width - nameSize.width) * 0.5;
+    CGFloat nameY = viewSize.height * 0.5 - nameSize.height;
     CGFloat nameHeight = viewSize.height * (1 - kPriceRatio);
-    CGRect nameF = {{0,0},{viewSize.width,nameHeight}};
+    CGRect nameF = {{nameX,nameY},nameSize};
     self.nameLabel.frame = nameF;
     
+    [self.priceLabel sizeToFit];
+    CGSize priceSize = self.priceLabel.size;
     CGFloat priceHeight = viewSize.height * kPriceRatio;
-    CGFloat priceY = nameHeight;
-    CGRect priceF = {{0,priceY},{viewSize.width,priceHeight}};
+    CGFloat priceX = (viewSize.width - priceSize.width) * 0.5;
+    CGFloat priceY = viewSize.height * 0.5;
+    CGRect priceF = {{priceX,priceY},priceSize};
     self.priceLabel.frame = priceF;
 }
 
@@ -75,6 +82,7 @@
     //2.price label set up
     NSString *priceStr = [NSString stringWithFormat:@"售价%@.00元",[pro price]];
     self.priceLabel.text = priceStr;
+    [self setNeedsLayout];
 }
 
 
@@ -111,8 +119,8 @@
 
 - (void)setNormalTitleColor
 {
-    self.nameLabel.textColor = MNavBarColor;
-    self.priceLabel.textColor = MNavBarColor;
+    self.nameLabel.textColor = [UIColor whiteColor];
+    self.priceLabel.textColor = [UIColor whiteColor];
 }
 
 - (void)setupBase
@@ -136,15 +144,16 @@
     
     [self setNormalTitleColor];
     
-    self.layer.borderColor = MNavBarColor.CGColor;
-    self.layer.borderWidth = 1;
-    self.layer.cornerRadius = 5;
-    self.layer.masksToBounds = YES;
+//    self.layer.borderColor = MNavBarColor.CGColor;
+//    self.layer.borderWidth = 1;
+//    self.layer.cornerRadius = 5;
+//    self.layer.masksToBounds = YES;
     //normal state
-    [self setBackgroundImage:[UIImage imageWithColor:[UIColor groupTableViewBackgroundColor]] forState:UIControlStateNormal];
+    UIImage *img = [UIImage imageNamed:@"me_cardBg"];
+    [self setBackgroundImage:img forState:UIControlStateNormal];
     
     //selected state
-    [self setBackgroundImage:[UIImage imageWithColor:MNavBarColor] forState:UIControlStateSelected];
+//    [self setBackgroundImage:[UIImage imageWithColor:MNavBarColor] forState:UIControlStateSelected];
 }
 
 @end

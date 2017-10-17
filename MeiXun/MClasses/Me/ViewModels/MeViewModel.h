@@ -45,6 +45,12 @@
 
 
 
+/**
+ *  发送一个POST请求
+ *  购买时新建一条订单,请求订单信息。
+ */
+
++ (void)RequestOrderIDWithParams:(id)params result:(ReqReusltBlock)result;
 
 
 /**
@@ -59,6 +65,7 @@
  *  请求修改密码
  */
 + (void)ReqModifyPwdWithParams:(id)params result:(ReqReusltBlock)result;
+
 
 /**
  *  发送一个POST请求

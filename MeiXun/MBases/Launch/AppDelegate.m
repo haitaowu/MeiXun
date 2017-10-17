@@ -32,7 +32,7 @@
         [self setupUnLoginUI];
     }
     [self.window makeKeyAndVisible];
-    
+    [MDataUtil checkUnCompletionTransAndSubmit];
     
 //
 //    NSString *locationStr = [[MDataManagerUtil shareInstance] locationForNumber:@"1806195"];

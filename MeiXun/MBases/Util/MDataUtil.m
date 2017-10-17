@@ -13,9 +13,9 @@
 #import "MDataManagerUtil.h"
 #import <AddressBook/AddressBook.h>
 #import "SecurityUtil.h"
-//#import "GTMBase64.h"
+#import "MeViewModel.h"
 #import <CommonCrypto/CommonCryptor.h>
-
+#import <StoreKit/StoreKit.h>
 
 
 #define  kLibPath               NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject
@@ -600,5 +600,59 @@ static const NSString *kBZDESKey = @"20160520";
         [hexString appendString:[NSString stringWithFormat:@"%0.2hhx", chars[i]]];
     }
     return hexString;
+}
+
+/**
+ uncompletion SKPaymentTransaction
+ */
++ (NSMutableArray *) unCompletionTrans
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSArray *array = [userDefault objectForKey:kUnCompletionTransKey];
+    return [NSMutableArray arrayWithArray:array];
+}
+
+/**
+ save uncompletion SKPaymentTransaction
+ */
++ (void) saveunCompletionTrans:(NSArray*)trans
+{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:trans forKey:kUnCompletionTransKey];
+    [userDefault synchronize];
+}
+
++ (void)checkUnCompletionTransAndSubmit
+{
+    NSMutableArray *unCompletTrans = [MDataUtil unCompletionTrans];
+    if (unCompletTrans != nil) {
+        NSMutableArray *tmpTrans = [NSMutableArray arrayWithArray:[unCompletTrans mutableCopy]];
+        for (NSDictionary *transaction in unCompletTrans) {
+            NSDictionary *params = [self unCompleteionParamsWith:transaction];
+            [MeViewModel submitIAPReceiptWithParams:params result:^(ReqResultType status, id data) {
+                if (status == ReqResultSuccType) {
+                    [tmpTrans removeObject:transaction];
+                    [MDataUtil saveunCompletionTrans:tmpTrans];
+                }
+            }];
+        }
+    }
+}
+
+
++ (NSMutableDictionary*)unCompleteionParamsWith:(NSDictionary *)transaction
+{
+    NSString *token = [MDataUtil shareInstance].accModel.token;
+    NSString *userId = [MDataUtil shareInstance].accModel.userId;
+    NSString *mobile = [MDataUtil shareInstance].accModel.mobile;
+    NSString *quota = [transaction objectForKey:kParamQuota];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kParamQuota] = quota;
+    params[kParamMobile] = mobile;
+    params[kParamUserIdType] = userId;
+    params[kParamTokenType] = token;
+    params[kPayNo] = [transaction objectForKey:kPayNo];
+    params[kParamReceipt] = [transaction objectForKey:kReceiptKey];
+    return params;
 }
 @end

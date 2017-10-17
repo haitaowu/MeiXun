@@ -34,6 +34,11 @@
 #define      kParamCalledMobile            @"calledMobile"
 
 
+#define      kReceiptKey                           @"kReceiptKey"
+#define      kPayNo                                @"payNo"
+#define      kUnCompletObjKey                      @"kUnCompletObjKey"
+#define      kUnCompletionTransKey                 @"kUnCompletionTransKey"
+
 //request server return data key
 #define      kReturnCode                 @"code"
 #define      kReturnMsg                  @"msg"
@@ -57,6 +62,7 @@
 
 
 #define     kBaseUrl                                  @"http://106.14.7.180:8180/mxc-api/rest/"
+//#define     kBaseUrl                                  @"http://analysis.vicp.net:8090/mxc-api/rest/"
 
 
 
@@ -117,6 +123,10 @@
 //在线充值
 #define     kReceiptkUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kReceiptSubUrl]
 #define     kReceiptSubUrl           @"cardService/rechargeOnline"
+
+//在线充值
+#define     kOrderIDUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kOrderIDSubUrl]
+#define     kOrderIDSubUrl           @"cardService/iosOnlineData"
 
 
 

@@ -13,12 +13,16 @@
 #import "UIImage+Extension.h"
 
 
+
 @interface IAPTableViewController ()<SKPaymentTransactionObserver,SKProductsRequestDelegate>
-@property(nonatomic,strong) IBOutletCollection(MProductButton) NSArray* products;
+@property(nonatomic,strong) IBOutlet MProductButton* yiBaiCardBtn;
 @property (nonatomic,strong)MProductButton *selectedProduct;
 @property (weak, nonatomic) IBOutlet UIButton *confirmBtn;
 @property (nonatomic,strong)SKProductsRequest *request;
 @property (nonatomic,strong)NSArray *appleProducts;
+@property(nonatomic,strong) NSMutableDictionary *reqOrderIdParams;
+
+
 @end
 
 @implementation IAPTableViewController
@@ -46,6 +50,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+//    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD dismiss];
     [self.request cancel];
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
@@ -60,12 +65,19 @@
 #pragma mark - setup UI 
 - (void)setupProductsViewWithArray:(NSArray*)productsArras
 {
-    [self.products enumerateObjectsUsingBlock:^(MProductButton  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (idx < productsArras.count) {
-            SKProduct *productObj = productsArras[idx];
-            [obj setProductData:productObj];
+    for (SKProduct *productObj in productsArras) {
+        if ([productObj.productIdentifier isEqualToString:@"com.mei.myi"]) {
+            [self.yiBaiCardBtn setProductData:productObj];
+            self.selectedProduct = self.yiBaiCardBtn;
         }
-    }];
+    }
+//
+//    [self.products enumerateObjectsUsingBlock:^(MProductButton  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if (idx < productsArras.count) {
+//            SKProduct *productObj = productsArras[idx];
+//            [obj setProductData:productObj];
+//        }
+//    }];
 }
 
 #pragma mark - private methods
@@ -84,6 +96,13 @@
     self.request = request;
 }
 
+- (void)popCurrentViewControllerAfterDelay
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:YES];
+    });
+}
+
 // 14.交易结束,当交易结束后还要去appstore上验证支付信息是否都正确,只有所有都正确后,我们就可以给用户方法我们的虚拟物品了。
 - (void)completeTransaction:(SKPaymentTransaction *)transaction
 {
@@ -99,7 +118,7 @@
      21      BASE64是可以编码和解码的
      22      */
     NSString *encodeStr = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-    
+//    self.transaction = transaction;
     [self submitReceiptWith:encodeStr];
     
     //此方法为将这一次操作上传给我本地服务器,记得在上传成功过后一定要记得销毁本次操作。调用
@@ -121,13 +140,38 @@
     params[kParamUserIdType] = userId;
     params[kParamTokenType] = token;
     params[kParamReceipt] = receipt;
+    params[kPayNo] = self.reqOrderIdParams[kPayNo];
+    __block typeof(self) blockSelf = self;
     [MeViewModel submitIAPReceiptWithParams:params result:^(ReqResultType status, id data) {
+        self.confirmBtn.enabled = YES;
         if (status == ReqResultSuccType) {
             [SVProgressHUD showInfoWithStatus:@"充值成功"];
+        }else{
+            [SVProgressHUD dismiss];
+            NSMutableArray *unCompletTrans = [MDataUtil unCompletionTrans];
+            if (unCompletTrans == nil) {
+                unCompletTrans = [NSMutableArray array];
+            }
+            NSString *payNo = self.reqOrderIdParams[kPayNo];
+            NSDictionary *tranDict = @{kParamQuota:quota,kReceiptKey:receipt,kPayNo:payNo};
+            [unCompletTrans addObject:tranDict];
+            [MDataUtil saveunCompletionTrans:unCompletTrans];
         }
+        [blockSelf popCurrentViewControllerAfterDelay];
     }];
 }
 
+- (void)requestOrderIDWithParams:(NSDictionary*)params withBlock:(void(^)(BOOL result,id data)) resultBlock
+{
+    [MeViewModel RequestOrderIDWithParams:params result:^(ReqResultType status, id data) {
+        if (status == ReqResultSuccType) {
+            resultBlock(YES,data);
+        }else{
+//            [SVProgressHUD dismiss];
+            resultBlock(NO,nil);
+        }
+    }];
+}
 
 #pragma mark - SKProductsRequestDelegate
 // 10.接收到产品的返回信息,然后用返回的商品信息
@@ -167,7 +211,6 @@
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"交易完成");
-                self.confirmBtn.enabled = YES;
                 [self completeTransaction:tran];
                 break;
             case SKPaymentTransactionStatePurchasing:
@@ -177,19 +220,27 @@
                 NSLog(@"已经购买过商品");
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
-            case SKPaymentTransactionStateFailed:
+            case SKPaymentTransactionStateFailed:{
                 NSLog(@"交易失败 tran error = %@",tran.error);
-                [SVProgressHUD showInfoWithStatus:@"交易失败,请稍后再试"];
-                self.confirmBtn.enabled = YES;
+//                [SVProgressHUD showInfoWithStatus:@"交易失败,请稍后再试"];
+//                [SVProgressHUD dismiss];
+//                self.confirmBtn.enabled = YES;
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                [self.reqOrderIdParams setObject:@"fail" forKey:@"message"];
+                __block typeof(self) blockSelf = self;
+                [self requestOrderIDWithParams:self.reqOrderIdParams withBlock:^(BOOL result, id data) {
+                    [SVProgressHUD showInfoWithStatus:@"交易失败,请稍后再试"];
+                    self.confirmBtn.enabled = YES;
+                    [blockSelf popCurrentViewControllerAfterDelay];
+                }];
                 break;
+            }
             default:
                 self.confirmBtn.enabled = YES;
                 break;
         }
     }
 }
-
 
 #pragma mark - selectors
 - (IBAction)tapConfirmBtn:(id)sender {
@@ -201,28 +252,55 @@
     if([self.appleProducts count] <= 0){
         return;
     }
-    [SVProgressHUD showInfoWithStatus:@"购买中..."];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD showWithStatus:@"苹果验证中，请稍等..." ];
 //    [self.confirmBtn setTitle:@"hello" forState:UIControlStateNormal];
     self.confirmBtn.enabled = NO;
-    // 12.发送购买请求
     SKProduct *requestProduct = (SKProduct*)self.selectedProduct.productData;
-    SKPayment *payment = [SKPayment paymentWithProduct:requestProduct];
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
-}
-
-
-- (IBAction)tapProduct:(MProductButton*)sender
-{
-    if (sender.selected == NO) {
-        sender.selected = YES;
-        self.selectedProduct = sender;
-        for (MProductButton *product in self.products) {
-            if (product.tag != sender.tag) {
-                product.selected = NO;
-            }
+    NSString *userId = [MDataUtil shareInstance].accModel.userId;
+    NSString *mobile = [MDataUtil shareInstance].accModel.mobile;
+    NSString *token = [MDataUtil shareInstance].accModel.token;
+    NSString *quota = [NSString stringWithFormat:@"%@",[requestProduct price]];
+//    if ([quota containsString:@"45"]) {
+//        quota = @"100";
+//    }else{
+//        quota = @"200";
+//    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    self.reqOrderIdParams = params;
+    params[kParamQuota] = quota;
+    params[kParamMobile] = mobile;
+    params[kParamUserIdType] = userId;
+    params[kParamTokenType] = token;
+    [self requestOrderIDWithParams:params withBlock:^(BOOL result, id data) {
+        if (result == YES) {
+            NSString *payNo = data;
+            HTLog(@"order id ==== %@",payNo);
+            params[kPayNo] = payNo;
+            
+            // 12.发送购买请求
+            SKPayment *payment = [SKPayment paymentWithProduct:requestProduct];
+            [[SKPaymentQueue defaultQueue] addPayment:payment];
+        }else{
+            self.confirmBtn.enabled = YES;
+            [SVProgressHUD dismiss];
         }
-    }
+    }];
+    
 }
+
+//- (IBAction)tapProduct:(MProductButton*)sender
+//{
+//    if (sender.selected == NO) {
+//        sender.selected = YES;
+//        self.selectedProduct = sender;
+//        for (MProductButton *product in self.products) {
+//            if (product.tag != sender.tag) {
+//                product.selected = NO;
+//            }
+//        }
+//    }
+//}
 
 #pragma mark - UITableView --- Table view  delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
