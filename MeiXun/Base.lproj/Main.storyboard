@@ -1563,17 +1563,91 @@
                     <connections>
                         <outlet property="confirmBtn" destination="ltR-ln-aCK" id="jVR-ZH-r2A"/>
                         <outlet property="yiBaiCardBtn" destination="cRI-0m-qr8" id="l4e-0L-eqm"/>
+                        <segue destination="YUW-ZT-hfP" kind="show" identifier="chargeSuccSegue" id="3pM-x6-r5C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ivu-nm-eZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2108" y="2047.826086956522"/>
         </scene>
+        <!--充值成功-->
+        <scene sceneID="z5K-LF-Tki">
+            <objects>
+                <viewController id="YUW-ZT-hfP" customClass="ChargeSuccViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vgO-Sf-9RR"/>
+                        <viewControllerLayoutGuide type="bottom" id="VSo-cr-mMs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RDL-iN-SMy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charge_sucss" translatesAutoresizingMaskIntoConstraints="NO" id="o08-DD-qB8">
+                                <rect key="frame" x="123" y="30" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="9vn-28-Qcw"/>
+                                    <constraint firstAttribute="width" secondItem="o08-DD-qB8" secondAttribute="height" multiplier="1:1" id="nQa-9Y-rI4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扣款成功，预计10分钟后到账" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgg-VX-Gnj">
+                                <rect key="frame" x="68" y="188" width="239" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如遇系统忙可能延迟到账，请耐心等待" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8h-k6-1ks">
+                                <rect key="frame" x="48" y="225" width="278" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.34901960780000002" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrz-Bg-EWn">
+                                <rect key="frame" x="20" y="275" width="335" height="40"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.72156862749999995" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="j79-T4-vFW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="完成">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapConfirmBtn:" destination="bd5-9B-Lu3" eventType="touchUpInside" id="JAy-hu-d8o"/>
+                                    <action selector="tapFinishedBtn:" destination="YUW-ZT-hfP" eventType="touchUpInside" id="Y4Y-Lz-1Ph"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o08-DD-qB8" firstAttribute="top" secondItem="vgO-Sf-9RR" secondAttribute="bottom" constant="30" id="IzX-Xn-Oom"/>
+                            <constraint firstItem="jgg-VX-Gnj" firstAttribute="top" secondItem="o08-DD-qB8" secondAttribute="bottom" constant="30" id="P8o-xy-DK4"/>
+                            <constraint firstItem="o08-DD-qB8" firstAttribute="centerX" secondItem="RDL-iN-SMy" secondAttribute="centerX" id="SnG-8I-Lsl"/>
+                            <constraint firstItem="C8h-k6-1ks" firstAttribute="centerX" secondItem="RDL-iN-SMy" secondAttribute="centerX" id="U2Y-v9-2Mc"/>
+                            <constraint firstAttribute="trailing" secondItem="lrz-Bg-EWn" secondAttribute="trailing" constant="20" id="XS4-ra-SMc"/>
+                            <constraint firstItem="lrz-Bg-EWn" firstAttribute="leading" secondItem="RDL-iN-SMy" secondAttribute="leading" constant="20" id="dPg-4b-vss"/>
+                            <constraint firstItem="C8h-k6-1ks" firstAttribute="top" secondItem="jgg-VX-Gnj" secondAttribute="bottom" constant="15" id="tCF-lY-XM1"/>
+                            <constraint firstItem="lrz-Bg-EWn" firstAttribute="top" secondItem="C8h-k6-1ks" secondAttribute="bottom" constant="30" id="tdk-uR-50g"/>
+                            <constraint firstItem="jgg-VX-Gnj" firstAttribute="centerX" secondItem="RDL-iN-SMy" secondAttribute="centerX" id="ttj-Hb-SP2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="充值成功" id="A17-8j-xuG"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucc-bH-8gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2108" y="2804"/>
+        </scene>
     </scenes>
     <resources>
         <image name="SeparatorLinePixel" width="4" height="4"/>
         <image name="aboutusIcon" width="60" height="60"/>
         <image name="add_user_icon" width="30" height="30"/>
+        <image name="charge_sucss" width="128" height="128"/>
         <image name="me_cardBg" width="762" height="432"/>
         <image name="me_header_bg" width="1242" height="490"/>
         <image name="me_user_avatar" width="49" height="49"/>

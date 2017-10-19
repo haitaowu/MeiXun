@@ -27,7 +27,7 @@ static NSDictionary *failMsg;
 + (void)POSTWithURL:(NSString *)url params:(id)params reqSuccess:(ReqSucess)success reqFail:(ReqFail)fail
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.timeoutInterval = 18;
+    manager.requestSerializer.timeoutInterval = 30;
     [manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *code = responseObject[kReturnCode];
         if ([code isEqualToString:kReqSuccess]) {

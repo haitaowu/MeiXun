@@ -122,7 +122,7 @@
 
 //在线充值
 #define     kReceiptkUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kReceiptSubUrl]
-#define     kReceiptSubUrl           @"cardService/rechargeOnline"
+#define     kReceiptSubUrl           @"cardService/newRechargeOnline"
 
 //在线充值
 #define     kOrderIDUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kOrderIDSubUrl]

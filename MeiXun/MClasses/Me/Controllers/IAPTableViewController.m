@@ -125,6 +125,17 @@
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
+- (BOOL)arrayContainReciptForArray:(NSArray*)arry payNo:(NSString*)payNo
+{
+    for (NSDictionary *obj in arry) {
+        NSString *savedPayNo = [obj objectForKey:kPayNo];
+        if ([payNo isEqualToString:savedPayNo]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 #pragma mark - requset server
 - (void)submitReceiptWith:(NSString*)receipt
 {
@@ -146,20 +157,29 @@
         self.confirmBtn.enabled = YES;
         if (status == ReqResultSuccType) {
             [SVProgressHUD showInfoWithStatus:@"充值成功"];
+            [blockSelf performSegueWithIdentifier:@"chargeSuccSegue" sender:nil];
         }else{
-            [SVProgressHUD dismiss];
+//            [SVProgressHUD dismiss];
             NSMutableArray *unCompletTrans = [MDataUtil unCompletionTrans];
             if (unCompletTrans == nil) {
                 unCompletTrans = [NSMutableArray array];
             }
             NSString *payNo = self.reqOrderIdParams[kPayNo];
+            if (payNo == nil) {
+                return ;
+            }
             NSDictionary *tranDict = @{kParamQuota:quota,kReceiptKey:receipt,kPayNo:payNo};
-            [unCompletTrans addObject:tranDict];
-            [MDataUtil saveunCompletionTrans:unCompletTrans];
+            if([self arrayContainReciptForArray:unCompletTrans payNo:payNo] == NO){
+                [unCompletTrans addObject:tranDict];
+                [MDataUtil saveunCompletionTrans:unCompletTrans];
+            }
+            [blockSelf popCurrentViewControllerAfterDelay];
         }
-        [blockSelf popCurrentViewControllerAfterDelay];
+        
     }];
 }
+
+
 
 - (void)requestOrderIDWithParams:(NSDictionary*)params withBlock:(void(^)(BOOL result,id data)) resultBlock
 {
@@ -211,6 +231,9 @@
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"交易完成");
+                if (self.reqOrderIdParams == nil) {
+                    return;
+                }
                 [self completeTransaction:tran];
                 break;
             case SKPaymentTransactionStatePurchasing:
@@ -244,6 +267,8 @@
 
 #pragma mark - selectors
 - (IBAction)tapConfirmBtn:(id)sender {
+//    [self performSegueWithIdentifier:@"chargeSuccSegue" sender:nil];
+//    return;
     if (self.selectedProduct == nil) {
         [SVProgressHUD showInfoWithStatus:@"选择充值卡先"];
         return;
@@ -275,7 +300,7 @@
     [self requestOrderIDWithParams:params withBlock:^(BOOL result, id data) {
         if (result == YES) {
             NSString *payNo = data;
-            HTLog(@"order id ==== %@",payNo);
+//            HTLog(@"order id ==== %@",payNo);
             params[kPayNo] = payNo;
             
             // 12.发送购买请求

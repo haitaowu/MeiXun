@@ -31,6 +31,7 @@
 		BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B21F46D7CB00872662 /* ContactsCell.m */; };
 		BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3951B31F46D7CB00872662 /* ContactsCell.xib */; };
 		BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3951B71F47C5C100872662 /* LoadImgOperation.m */; };
+		BE4955211F977FD200C4D022 /* ChargeSuccViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE4955201F977FD100C4D022 /* ChargeSuccViewController.m */; };
 		BE58D11B1F5E40130090E17F /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58D11A1F5E40130090E17F /* CustomTextView.m */; };
 		BE58D11E1F5E89C50090E17F /* SetPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE58D11D1F5E89C50090E17F /* SetPwdTableViewController.m */; };
 		BE5E9FE61F5BE55100B31681 /* ChargeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5E9FE51F5BE55100B31681 /* ChargeModel.m */; };
@@ -125,6 +126,8 @@
 		BE3951B31F46D7CB00872662 /* ContactsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsCell.xib; sourceTree = "<group>"; };
 		BE3951B61F47C5C100872662 /* LoadImgOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadImgOperation.h; sourceTree = "<group>"; };
 		BE3951B71F47C5C100872662 /* LoadImgOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadImgOperation.m; sourceTree = "<group>"; };
+		BE49551F1F977FD100C4D022 /* ChargeSuccViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargeSuccViewController.h; sourceTree = "<group>"; };
+		BE4955201F977FD100C4D022 /* ChargeSuccViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargeSuccViewController.m; sourceTree = "<group>"; };
 		BE58D1191F5E40130090E17F /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextView.h; sourceTree = "<group>"; };
 		BE58D11A1F5E40130090E17F /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextView.m; sourceTree = "<group>"; };
 		BE58D11C1F5E89C50090E17F /* SetPwdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPwdTableViewController.h; sourceTree = "<group>"; };
@@ -587,6 +590,8 @@
 				BE8E0B3F1F57F28200E4B86A /* IAPTableViewController.m */,
 				BE8E0B481F5AB8BA00E4B86A /* ChargeListTableViewController.h */,
 				BE8E0B491F5AB8BA00E4B86A /* ChargeListTableViewController.m */,
+				BE49551F1F977FD100C4D022 /* ChargeSuccViewController.h */,
+				BE4955201F977FD100C4D022 /* ChargeSuccViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -847,6 +852,7 @@
 				BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */,
 				BEF869AB1F4BBFF500F5E08F /* MDataManagerUtil.m in Sources */,
 				BE63E6C51F3DEF8D00E6CC48 /* main.m in Sources */,
+				BE4955211F977FD200C4D022 /* ChargeSuccViewController.m in Sources */,
 				BEE23B881F404DF700BAA66E /* MeTableViewController.m in Sources */,
 				BE3951B41F46D7CB00872662 /* ContactsCell.m in Sources */,
 				BE3951691F46BE0300872662 /* PinyinFormatter.m in Sources */,
