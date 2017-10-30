@@ -160,6 +160,9 @@
             [blockSelf performSegueWithIdentifier:@"chargeSuccSegue" sender:nil];
         }else{
 //            [SVProgressHUD dismiss];
+            if ([data isKindOfClass:[NSString class]]) {
+                [SVProgressHUD showInfoWithStatus:data];
+            }
             NSMutableArray *unCompletTrans = [MDataUtil unCompletionTrans];
             if (unCompletTrans == nil) {
                 unCompletTrans = [NSMutableArray array];

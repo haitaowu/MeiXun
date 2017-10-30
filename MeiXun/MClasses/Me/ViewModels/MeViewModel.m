@@ -108,7 +108,7 @@
     [MNetworkUtil POSTWithURL:kReceiptkUrl params:params reqSuccess:^(id data) {
         result(ReqResultSuccType,data);
     } reqFail:^(NSString *msg) {
-        [SVProgressHUD showInfoWithStatus:msg];
+//        [SVProgressHUD showInfoWithStatus:msg];
         result(ReqResultFailType,msg);
     }];
 }

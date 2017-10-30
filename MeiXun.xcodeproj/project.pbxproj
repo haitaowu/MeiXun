@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B93A1E07252B2FC99D6F25B /* libPods-MeiXun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */; };
+		BE0744321FA6EDD5004C4694 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0744301FA6EDAD004C4694 /* UserNotifications.framework */; };
+		BE0744361FA6F225004C4694 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0744341FA6F224004C4694 /* libUMessage_Sdk_1.5.0a.a */; };
 		BE14D5AA1F4FB5A10037F988 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A41F4FB5A10037F988 /* GTMBase64.m */; };
 		BE14D5AB1F4FB5A10037F988 /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A71F4FB5A10037F988 /* NSData+AES.m */; };
 		BE14D5AC1F4FB5A10037F988 /* SecurityUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BE14D5A91F4FB5A10037F988 /* SecurityUtil.m */; };
@@ -81,6 +83,10 @@
 /* Begin PBXFileReference section */
 		4984CF8DB189A6F5E092B49C /* Pods-MeiXun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiXun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeiXun/Pods-MeiXun.debug.xcconfig"; sourceTree = "<group>"; };
 		A360D35DA78737F4678F2B94 /* Pods-MeiXun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeiXun.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeiXun/Pods-MeiXun.release.xcconfig"; sourceTree = "<group>"; };
+		BE0744301FA6EDAD004C4694 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		BE0744311FA6EDCC004C4694 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		BE0744341FA6F224004C4694 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
+		BE0744351FA6F224004C4694 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		BE14D5A31F4FB5A10037F988 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		BE14D5A41F4FB5A10037F988 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		BE14D5A51F4FB5A10037F988 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -90,6 +96,7 @@
 		BE14D5A91F4FB5A10037F988 /* SecurityUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurityUtil.m; sourceTree = "<group>"; };
 		BE1A3D831F57E00E008D74F7 /* MProductButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MProductButton.h; sourceTree = "<group>"; };
 		BE1A3D841F57E00E008D74F7 /* MProductButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MProductButton.m; sourceTree = "<group>"; };
+		BE215DC81F9F091C00AC0642 /* MeiXun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeiXun.entitlements; sourceTree = "<group>"; };
 		BE2A77BF1F432AE900FDD1BD /* DialogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTableViewController.h; sourceTree = "<group>"; };
 		BE2A77C01F432AE900FDD1BD /* DialogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTableViewController.m; sourceTree = "<group>"; };
 		BE2A77C31F432B6A00FDD1BD /* MTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTabbarController.h; sourceTree = "<group>"; };
@@ -221,8 +228,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE0744321FA6EDD5004C4694 /* UserNotifications.framework in Frameworks */,
 				6B93A1E07252B2FC99D6F25B /* libPods-MeiXun.a in Frameworks */,
 				BE8E0B441F5910C800E4B86A /* StoreKit.framework in Frameworks */,
+				BE0744361FA6F225004C4694 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,10 +250,21 @@
 		9066E30743DC5E1FB6663117 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE0744311FA6EDCC004C4694 /* UserNotificationsUI.framework */,
+				BE0744301FA6EDAD004C4694 /* UserNotifications.framework */,
 				BE8E0B431F5910C800E4B86A /* StoreKit.framework */,
 				D081C6F2FBBC9F12F548BE92 /* libPods-MeiXun.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE0744331FA6F224004C4694 /* UMessage_Sdk_1.5.0a */ = {
+			isa = PBXGroup;
+			children = (
+				BE0744341FA6F224004C4694 /* libUMessage_Sdk_1.5.0a.a */,
+				BE0744351FA6F224004C4694 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.5.0a;
 			sourceTree = "<group>";
 		};
 		BE14D5A11F4FB5A10037F988 /* AES */ = {
@@ -435,6 +455,7 @@
 		BE63E6C21F3DEF8D00E6CC48 /* MeiXun */ = {
 			isa = PBXGroup;
 			children = (
+				BE215DC81F9F091C00AC0642 /* MeiXun.entitlements */,
 				BE63E6E71F3DF28F00E6CC48 /* MBases */,
 				BE3951451F46BB2A00872662 /* Librarry */,
 				BE63E6EC1F3DF2F000E6CC48 /* MClasses */,
@@ -452,6 +473,7 @@
 		BE63E6C31F3DEF8D00E6CC48 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE0744331FA6F224004C4694 /* UMessage_Sdk_1.5.0a */,
 				BE63E6C41F3DEF8D00E6CC48 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -725,6 +747,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -1014,11 +1039,17 @@
 			baseConfigurationReference = 4984CF8DB189A6F5E092B49C /* Pods-MeiXun.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeiXun/MeiXun.entitlements;
 				DEVELOPMENT_TEAM = UY8D3JBH69;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MeiXun/MXPrefixHeader.pch";
 				INFOPLIST_FILE = MeiXun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MeiXun",
+					"$(PROJECT_DIR)/MeiXun/UMessage_Sdk_1.5.0a",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mei.MeiXunCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1029,11 +1060,17 @@
 			baseConfigurationReference = A360D35DA78737F4678F2B94 /* Pods-MeiXun.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeiXun/MeiXun.entitlements;
 				DEVELOPMENT_TEAM = UY8D3JBH69;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MeiXun/MXPrefixHeader.pch";
 				INFOPLIST_FILE = MeiXun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MeiXun",
+					"$(PROJECT_DIR)/MeiXun/UMessage_Sdk_1.5.0a",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mei.MeiXunCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
