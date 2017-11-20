@@ -148,6 +148,8 @@ static MDataUtil *instance = nil;
     phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"+" withString:@""];
     phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
     phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@" " withString:@""];
+    phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@")" withString:@""];
     phoneValue = [[phoneValue componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""];
     
     if (phoneValue.length == 13) {
@@ -317,14 +319,18 @@ static MDataUtil *instance = nil;
 {
     BOOL isAdd = NO;
     NSString *meiNum = @"02869514101";
-    for (PersonModel *person in contacts) {
-        for (NSString *phone in person.phoneNums) {
-            if ([phone isEqualToString:meiNum]) {
-                isAdd = YES;
+    for (NSArray *rawContact in contacts) {
+        for (PersonModel *person in rawContact) {
+            for (NSString *phone in person.phoneNums) {
+                if ([phone isEqualToString:meiNum]) {
+                    isAdd = YES;
+                    break;
+                }
+            }
+            if (isAdd == YES) {
                 break;
             }
         }
-        
         if (isAdd == YES) {
             break;
         }
