@@ -53,6 +53,7 @@
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [[NSNotificationCenter defaultCenter] postNotificationName:kAppWillEnterForegroundNoti object:nil];
+    [[MDataUtil shareInstance] archiveContactsToLocal];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -81,8 +82,10 @@
     [[MDataUtil shareInstance] loadContactsWithBlock:^{
         //2.
         [blockSelf showMainTabView];
+        [[MDataUtil shareInstance] archiveContactsToLocal];
     }];
 }
+
 
 //显示未登录界面
 - (void)setupUnLoginUI

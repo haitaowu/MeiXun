@@ -67,5 +67,9 @@ typedef void(^ReLoadContactsBlock)();
  */
 + (void)checkUnCompletionTransAndSubmit;
 
+/**
+ archive contact to local file after app finished load every times
+ */
+- (void)archiveContactsToLocal;
 @end
        

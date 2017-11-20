@@ -147,6 +147,9 @@ static MDataUtil *instance = nil;
 {
     phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"+" withString:@""];
     phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    phoneValue = [phoneValue stringByReplacingOccurrencesOfString:@" " withString:@""];
+    phoneValue = [[phoneValue componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@""];
+    
     if (phoneValue.length == 13) {
         NSInteger len = 11;
         NSInteger loc = phoneValue.length - len;
@@ -226,6 +229,7 @@ static MDataUtil *instance = nil;
             [self.contacts addObject:sectionContacts];
         }
     }
+    [self addMeiServicePhoneNumWithContacts:rawContacts];
 }
 
 //加载已经归档的联系人数据。
@@ -309,10 +313,29 @@ static MDataUtil *instance = nil;
 }
 
 //添加服务号
-- (void)addMeiServicePhoneNum
+- (void)addMeiServicePhoneNumWithContacts:(NSArray*)contacts
 {
+    BOOL isAdd = NO;
+    NSString *meiNum = @"02869514101";
+    for (PersonModel *person in contacts) {
+        for (NSString *phone in person.phoneNums) {
+            if ([phone isEqualToString:meiNum]) {
+                isAdd = YES;
+                break;
+            }
+        }
+        
+        if (isAdd == YES) {
+            break;
+        }
+    }
+    
+    if (isAdd == YES) {
+        return;
+    }
+    
+    NSString *servicenum = @"028-69514101";
     NSString *name = @"美讯服务号";
-    NSString *num = @"028-69514101";
     NSString *label = @"服务号";
     // 创建一条空的联系人
     ABRecordRef record = ABPersonCreate();
@@ -321,7 +344,7 @@ static MDataUtil *instance = nil;
     ABRecordSetValue(record, kABPersonFirstNameProperty, (__bridge CFTypeRef)name, &error);
     // 添加联系人电话号码以及该号码对应的标签名
     ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABPersonPhoneProperty);
-    ABMultiValueAddValueAndLabel(multi, (__bridge CFTypeRef)num, (__bridge CFTypeRef)label, NULL);
+    ABMultiValueAddValueAndLabel(multi, (__bridge CFTypeRef)servicenum, (__bridge CFTypeRef)label, NULL);
     ABRecordSetValue(record, kABPersonPhoneProperty, multi, &error);
     UIImage *image = [UIImage imageNamed:@"aboutusIcon"];
     NSData *avatarData = UIImagePNGRepresentation(image);
@@ -343,6 +366,38 @@ static MDataUtil *instance = nil;
         count = count + [array count];
     }
     return count;
+}
+
+
+//在通讯录联系人添加、删除、修改之后重新读取通讯录并存储到本地。
+- (void)reloadAfterContactsModified
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSMutableArray *contactsArray = [NSMutableArray array];
+        NSMutableArray *sectionsArray = [NSMutableArray array];
+        NSMutableArray *rawContacts = [self allRawContacts];
+        for (NSString *sectionTitle in self.sectionTitles) {
+            NSMutableArray *sectionContacts = [NSMutableArray array];
+            for (PersonModel *person in rawContacts) {
+                if ([person.nameFirstChar isEqualToString:sectionTitle]) {
+                    [sectionContacts addObject:person];
+                }
+            }
+            if ([sectionContacts count] > 0) {
+                [sectionsArray addObject:sectionTitle];
+                [contactsArray addObject:sectionContacts];
+            }
+        }
+        _sections = sectionsArray;
+        _contacts = contactsArray;
+        [self archiveToLocalForContacts:contactsArray titles:sectionsArray];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (self.reloadContactBlock != nil) {
+                self.reloadContactBlock();
+            }
+        });
+    });
 }
 
 
@@ -386,13 +441,13 @@ static MDataUtil *instance = nil;
         if (granted == YES) {
             NSMutableArray *contacts = [self loadArchivedContacts];
             if (contacts == nil) {
-                [self addMeiServicePhoneNum];
                 //第一次加载通讯录里的联系人
                 [self generaContactsAndSections];
 //                [self archiveContactsTitlesToLocal];
                 [self archiveToLocalForContacts:_contacts titles:_sections];
             }else{
                 _contacts = contacts;
+                [self addMeiServicePhoneNumWithContacts:contacts];
                 _sections = [self loadArchivedSectionTitles];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -504,37 +559,6 @@ static MDataUtil *instance = nil;
         HTLog(@"des encrypt succes  23333....");
     }
     return encryptStr;
-}
-
-//在通讯录联系人添加、删除之后重新读取通讯录并存储到本地。
-- (void)reloadAfterContactsModified
-{
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        NSMutableArray *contactsArray = [NSMutableArray array];
-        NSMutableArray *sectionsArray = [NSMutableArray array];
-        NSMutableArray *rawContacts = [self allRawContacts];
-        for (NSString *sectionTitle in self.sectionTitles) {
-            NSMutableArray *sectionContacts = [NSMutableArray array];
-            for (PersonModel *person in rawContacts) {
-                if ([person.nameFirstChar isEqualToString:sectionTitle]) {
-                    [sectionContacts addObject:person];
-                }
-            }
-            if ([sectionContacts count] > 0) {
-                [sectionsArray addObject:sectionTitle];
-                [contactsArray addObject:sectionContacts];
-            }
-        }
-        _sections = sectionsArray;
-        _contacts = contactsArray;
-        [self archiveToLocalForContacts:contactsArray titles:sectionsArray];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if (self.reloadContactBlock != nil) {
-                self.reloadContactBlock();
-            }
-        });
-    });
 }
 
 
@@ -655,4 +679,18 @@ static const NSString *kBZDESKey = @"20160520";
     params[kParamReceipt] = [transaction objectForKey:kReceiptKey];
     return params;
 }
+
+
+/**
+ archive contacts to local file after app finished load every times
+ */
+- (void)archiveContactsToLocal
+{
+    if (self.granted == YES) {
+        [self reloadAfterContactsModified];
+    }
+}
+
+
+
 @end
