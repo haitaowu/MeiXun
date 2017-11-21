@@ -231,7 +231,7 @@ static MDataUtil *instance = nil;
             [self.contacts addObject:sectionContacts];
         }
     }
-    [self addMeiServicePhoneNumWithContacts:rawContacts];
+    [self addMeiServicePhoneNumWithContacts:self.contacts];
 }
 
 //加载已经归档的联系人数据。
