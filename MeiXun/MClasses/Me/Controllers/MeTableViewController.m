@@ -20,6 +20,9 @@
 #pragma mark - override methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (@available(iOS 11,*)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
