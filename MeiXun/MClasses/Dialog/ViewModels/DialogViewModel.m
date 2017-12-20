@@ -26,5 +26,18 @@
     }];
 }
 
+/*
+ *  发送一个GET请求
+ *  公告
+ */
++ (void)ReqNoticeWithResult:(ReqReusltBlock)result
+{
+    [MNetworkUtil GETWithURL:kNoticeUrl params:nil reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showInfoWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
 
 @end

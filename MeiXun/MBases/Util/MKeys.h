@@ -110,6 +110,14 @@
 #define     kDialogUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kDialogSubUrl]
 #define     kDialogSubUrl           @"callService/callThirdParty"
 
+//显示公告的接口
+#define     kNoticeUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kNoticeSubUrl]
+#define     kNoticeSubUrl           @"noticeService/getNoticeContent"
+
+//1.获取用户消息接口
+#define     kMessageUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kMessageSubUrl]
+#define     kMessageSubUrl           @"messageService/getUserMessages"
+
 
 //重新绑定手机号
 #define     kRebindingUrl              [NSString stringWithFormat:@"%@%@",kBaseUrl,kRebindingSubUrl]

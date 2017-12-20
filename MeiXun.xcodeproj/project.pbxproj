@@ -52,6 +52,8 @@
 		BE8E0B441F5910C800E4B86A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE8E0B431F5910C800E4B86A /* StoreKit.framework */; };
 		BE8E0B471F5AB80500E4B86A /* MchargeListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B461F5AB80500E4B86A /* MchargeListHeader.m */; };
 		BE8E0B4A1F5AB8BA00E4B86A /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B491F5AB8BA00E4B86A /* ChargeListTableViewController.m */; };
+		BE8E9D5B1FEA7A96001DC9D4 /* HTAddedCartAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE8E9D591FEA7A96001DC9D4 /* HTAddedCartAlertView.xib */; };
+		BE8E9D5C1FEA7A96001DC9D4 /* HTAddedCartAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E9D5A1FEA7A96001DC9D4 /* HTAddedCartAlertView.m */; };
 		BE96502C1F4CF0BC004395D2 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96502A1F4CF0BC004395D2 /* ADViewController.m */; };
 		BE96502D1F4CF0BC004395D2 /* ADViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96502B1F4CF0BC004395D2 /* ADViewController.xib */; };
 		BEA696D21F5C444A00F4D7A9 /* DialogViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA696D11F5C444A00F4D7A9 /* DialogViewModel.m */; };
@@ -166,6 +168,9 @@
 		BE8E0B461F5AB80500E4B86A /* MchargeListHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MchargeListHeader.m; sourceTree = "<group>"; };
 		BE8E0B481F5AB8BA00E4B86A /* ChargeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeListTableViewController.h; sourceTree = "<group>"; };
 		BE8E0B491F5AB8BA00E4B86A /* ChargeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeListTableViewController.m; sourceTree = "<group>"; };
+		BE8E9D581FEA7A96001DC9D4 /* HTAddedCartAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAddedCartAlertView.h; sourceTree = "<group>"; };
+		BE8E9D591FEA7A96001DC9D4 /* HTAddedCartAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTAddedCartAlertView.xib; sourceTree = "<group>"; };
+		BE8E9D5A1FEA7A96001DC9D4 /* HTAddedCartAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAddedCartAlertView.m; sourceTree = "<group>"; };
 		BE9650291F4CF0BC004395D2 /* ADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADViewController.h; sourceTree = "<group>"; };
 		BE96502A1F4CF0BC004395D2 /* ADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewController.m; sourceTree = "<group>"; };
 		BE96502B1F4CF0BC004395D2 /* ADViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADViewController.xib; sourceTree = "<group>"; };
@@ -372,6 +377,7 @@
 		BE3951451F46BB2A00872662 /* Librarry */ = {
 			isa = PBXGroup;
 			children = (
+				BE8E9D571FEA7A96001DC9D4 /* HTAddAlertView */,
 				BE14D5A11F4FB5A10037F988 /* AES */,
 				BE3951571F46BE0300872662 /* PinYin4Objc */,
 			);
@@ -630,6 +636,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BE8E9D571FEA7A96001DC9D4 /* HTAddAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				BE8E9D581FEA7A96001DC9D4 /* HTAddedCartAlertView.h */,
+				BE8E9D5A1FEA7A96001DC9D4 /* HTAddedCartAlertView.m */,
+				BE8E9D591FEA7A96001DC9D4 /* HTAddedCartAlertView.xib */,
+			);
+			path = HTAddAlertView;
+			sourceTree = "<group>";
+		};
 		BE9650281F4CF0A1004395D2 /* ADView */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,6 +801,7 @@
 				BE63E6FA1F3DF30A00E6CC48 /* Login.storyboard in Resources */,
 				BE63E6D31F3DEF8D00E6CC48 /* LaunchScreen.storyboard in Resources */,
 				BE63E6D01F3DEF8D00E6CC48 /* Assets.xcassets in Resources */,
+				BE8E9D5B1FEA7A96001DC9D4 /* HTAddedCartAlertView.xib in Resources */,
 				BEF869AD1F4BDAD400F5E08F /* callHomeDB.db in Resources */,
 				BE39516B1F46BE0300872662 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				BE5E9FEB1F5BE9A800B31681 /* ChargeCell.xib in Resources */,
@@ -866,6 +883,7 @@
 				BE3951661F46BE0300872662 /* ChineseToPinyinResource.m in Sources */,
 				BEED88F91F44254B0068D948 /* LoginViewModel.m in Sources */,
 				BEBD698C1F3ED9610062AA36 /* LoginCodeTableViewController.m in Sources */,
+				BE8E9D5C1FEA7A96001DC9D4 /* HTAddedCartAlertView.m in Sources */,
 				BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */,
 				BE14D5AB1F4FB5A10037F988 /* NSData+AES.m in Sources */,
 				BE1A3D851F57E00E008D74F7 /* MProductButton.m in Sources */,

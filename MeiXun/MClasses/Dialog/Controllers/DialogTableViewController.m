@@ -11,6 +11,8 @@
 #import "RecordCell.h"
 #import "RecordModel.h"
 #import "CallingViewController.h"
+#import "HTAddedCartAlertView.h"
+#import "DialogViewModel.h"
 
 
 static NSString *RecordCellID = @"RecordCellID";
@@ -31,6 +33,7 @@ static NSString *RecordCellID = @"RecordCellID";
     [super viewDidLoad];
     [self setupUI];
     [self.keyboard showView];
+    [self reqNoticesData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -97,6 +100,18 @@ static NSString *RecordCellID = @"RecordCellID";
         [blockSelf.tableView reloadData];
     }];
     
+}
+
+#pragma mark - requset server
+- (void)reqNoticesData
+{
+    [DialogViewModel ReqNoticeWithResult:^(ReqResultType status, id data) {
+        if (status == ReqResultSuccType) {
+            NSString *txt = [data objectForKey:@"content"];
+            HTAddedCartAlertView *alertView = [HTAddedCartAlertView AlertView];
+            [alertView showViewWithTxt:txt];
+        }
+    }];
 }
 
 #pragma mark - setup UI
