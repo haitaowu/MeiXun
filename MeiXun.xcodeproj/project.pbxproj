@@ -46,6 +46,10 @@
 		BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6EA1F3DF28F00E6CC48 /* AppDelegate.m */; };
 		BE63E6FA1F3DF30A00E6CC48 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE63E6F91F3DF30A00E6CC48 /* Login.storyboard */; };
 		BE63E6FD1F3DFB0800E6CC48 /* AccTableVieController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */; };
+		BE746A271FED26AF00F1CA86 /* UMsgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE746A241FED26AE00F1CA86 /* UMsgCell.m */; };
+		BE746A281FED26AF00F1CA86 /* UMsgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE746A261FED26AF00F1CA86 /* UMsgCell.xib */; };
+		BE746A2B1FED30E400F1CA86 /* MsgDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE746A2A1FED30E400F1CA86 /* MsgDetailController.m */; };
+		BE746A2E1FED344100F1CA86 /* MsgHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE746A2C1FED344100F1CA86 /* MsgHeader.m */; };
 		BE82B9691F40A040000DE786 /* ModifyPwdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */; };
 		BE8E0B3D1F57E54D00E4B86A /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B3C1F57E54D00E4B86A /* UIImage+Extension.m */; };
 		BE8E0B401F57F28200E4B86A /* IAPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B3F1F57F28200E4B86A /* IAPTableViewController.m */; };
@@ -158,6 +162,13 @@
 		BE63E6F91F3DF30A00E6CC48 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BE63E6FB1F3DFB0800E6CC48 /* AccTableVieController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccTableVieController.h; sourceTree = "<group>"; };
 		BE63E6FC1F3DFB0800E6CC48 /* AccTableVieController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccTableVieController.m; sourceTree = "<group>"; };
+		BE746A241FED26AE00F1CA86 /* UMsgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMsgCell.m; sourceTree = "<group>"; };
+		BE746A251FED26AE00F1CA86 /* UMsgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMsgCell.h; sourceTree = "<group>"; };
+		BE746A261FED26AF00F1CA86 /* UMsgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMsgCell.xib; sourceTree = "<group>"; };
+		BE746A291FED30E400F1CA86 /* MsgDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgDetailController.h; sourceTree = "<group>"; };
+		BE746A2A1FED30E400F1CA86 /* MsgDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgDetailController.m; sourceTree = "<group>"; };
+		BE746A2C1FED344100F1CA86 /* MsgHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgHeader.m; sourceTree = "<group>"; };
+		BE746A2D1FED344100F1CA86 /* MsgHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgHeader.h; sourceTree = "<group>"; };
 		BE82B9671F40A040000DE786 /* ModifyPwdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPwdTableViewController.h; sourceTree = "<group>"; };
 		BE82B9681F40A040000DE786 /* ModifyPwdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdTableViewController.m; sourceTree = "<group>"; };
 		BE8E0B3B1F57E54D00E4B86A /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
@@ -601,6 +612,8 @@
 		BE63E6F41F3DF2F000E6CC48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE746A291FED30E400F1CA86 /* MsgDetailController.h */,
+				BE746A2A1FED30E400F1CA86 /* MsgDetailController.m */,
 				BE8E9D5E1FEA8546001DC9D4 /* MsgListTableViewController.h */,
 				BE8E9D5D1FEA8546001DC9D4 /* MsgListTableViewController.m */,
 				BEE23B861F404DF700BAA66E /* MeTableViewController.h */,
@@ -637,6 +650,11 @@
 				BE5E9FE91F5BE9A800B31681 /* ChargeCell.xib */,
 				BE8E0B451F5AB80400E4B86A /* MchargeListHeader.h */,
 				BE8E0B461F5AB80500E4B86A /* MchargeListHeader.m */,
+				BE746A2D1FED344100F1CA86 /* MsgHeader.h */,
+				BE746A2C1FED344100F1CA86 /* MsgHeader.m */,
+				BE746A251FED26AE00F1CA86 /* UMsgCell.h */,
+				BE746A241FED26AE00F1CA86 /* UMsgCell.m */,
+				BE746A261FED26AF00F1CA86 /* UMsgCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -810,6 +828,7 @@
 				BEF869AD1F4BDAD400F5E08F /* callHomeDB.db in Resources */,
 				BE39516B1F46BE0300872662 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				BE5E9FEB1F5BE9A800B31681 /* ChargeCell.xib in Resources */,
+				BE746A281FED26AF00F1CA86 /* UMsgCell.xib in Resources */,
 				BEF6ADF71F4DD75900F7A2E6 /* CallingViewController.xib in Resources */,
 				BE2A77D11F433D6300FDD1BD /* MNumbers.xib in Resources */,
 				BE3951B51F46D7CB00872662 /* ContactsCell.xib in Resources */,
@@ -895,6 +914,7 @@
 				BE3951681F46BE0300872662 /* NSString+PinYin4Cocoa.m in Sources */,
 				BE2A77C51F432B6A00FDD1BD /* MTabbarController.m in Sources */,
 				BE8E0B3D1F57E54D00E4B86A /* UIImage+Extension.m in Sources */,
+				BE746A2B1FED30E400F1CA86 /* MsgDetailController.m in Sources */,
 				BE58D11B1F5E40130090E17F /* CustomTextView.m in Sources */,
 				BEF9FC4B1F41D8ED00469DB3 /* MoreTableViewController.m in Sources */,
 				BE3951721F46C22E00872662 /* NSString+Extension.m in Sources */,
@@ -923,11 +943,13 @@
 				BE3951671F46BE0300872662 /* HanyuPinyinOutputFormat.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
 				BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */,
+				BE746A271FED26AF00F1CA86 /* UMsgCell.m in Sources */,
 				BE2A77C11F432AE900FDD1BD /* DialogTableViewController.m in Sources */,
 				BEF9FC571F41E15700469DB3 /* ChagneAccTableViewController.m in Sources */,
 				BEED88F51F43EE310068D948 /* MNetworkUtil.m in Sources */,
 				BE63E6EB1F3DF28F00E6CC48 /* AppDelegate.m in Sources */,
 				BEF7F97A1F8B094100572845 /* ContactsSearchController.m in Sources */,
+				BE746A2E1FED344100F1CA86 /* MsgHeader.m in Sources */,
 				BE8E0B401F57F28200E4B86A /* IAPTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

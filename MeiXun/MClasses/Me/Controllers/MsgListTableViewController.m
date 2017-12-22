@@ -7,14 +7,14 @@
 //
 
 #import "MsgListTableViewController.h"
-#import "MchargeListHeader.h"
+#import "MsgHeader.h"
 #import "MeViewModel.h"
-#import "ChargeCell.h"
-
+#import "UMsgCell.h"
+#import "MsgDetailController.h"
 
 
 #define    kReuseHeader  @"reuseHeader"
-static NSString *ChargeCellID = @"ChargeCellID";
+static NSString *UMsgCellID = @"UMsgCellID";
 
 
 
@@ -27,10 +27,12 @@ static NSString *ChargeCellID = @"ChargeCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerClass:[MchargeListHeader class] forHeaderFooterViewReuseIdentifier:kReuseHeader];
+    [self.tableView registerClass:[MsgHeader class] forHeaderFooterViewReuseIdentifier:kReuseHeader];
     [self setupUI];
     [SVProgressHUD showWithStatus:@"加载数据中..."];
-    [MeViewModel ReqCharegeWithResult:^(ReqResultType status, id data) {
+    NSString *userId = [MDataUtil shareInstance].accModel.userId;
+    NSDictionary *params = @{kParamUserIdType:userId};
+    [MeViewModel ReqMsgsWithParams:params result:^(ReqResultType status, id data) {
         [SVProgressHUD dismiss];
         if (status == ReqResultSuccType) {
             self.dataArray = data;
@@ -45,6 +47,13 @@ static NSString *ChargeCellID = @"ChargeCellID";
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"msgDetailSegue"]) {
+        MsgDetailController *destiController = segue.destinationViewController;
+        destiController.msgInfo = sender;
+    }
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -56,8 +65,8 @@ static NSString *ChargeCellID = @"ChargeCellID";
 - (void)setupUI
 {
     // setup tableView cell
-    UINib *alertCellNib = [UINib nibWithNibName:@"ChargeCell" bundle:nil];
-    [self.tableView registerNib:alertCellNib forCellReuseIdentifier:ChargeCellID];
+    UINib *alertCellNib = [UINib nibWithNibName:@"UMsgCell" bundle:nil];
+    [self.tableView registerNib:alertCellNib forCellReuseIdentifier:UMsgCellID];
     
 }
 
@@ -72,9 +81,13 @@ static NSString *ChargeCellID = @"ChargeCellID";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ChargeCell *cell = [tableView dequeueReusableCellWithIdentifier:ChargeCellID];
-    ChargeModel *model = self.dataArray[indexPath.section];
-    cell.chargeModel = model;
+    UMsgCell *cell = [tableView dequeueReusableCellWithIdentifier:UMsgCellID];
+    id model = self.dataArray[indexPath.section];
+    cell.msgModel = model;
+    __weak typeof(self) weakSelf = self;
+    cell.readAllBlock = ^(id msgData) {
+        [weakSelf performSegueWithIdentifier:@"msgDetailSegue" sender:model];
+    };
     return cell;
 }
 
@@ -96,8 +109,8 @@ static NSString *ChargeCellID = @"ChargeCellID";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    ChargeModel *model = self.dataArray[section];
-    MchargeListHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kReuseHeader];
+    id model = self.dataArray[section];
+    MsgHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kReuseHeader];
     [header setData:model];
     return header;
 }
