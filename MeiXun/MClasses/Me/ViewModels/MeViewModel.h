@@ -66,6 +66,11 @@
  */
 + (void)ReqModifyPwdWithParams:(id)params result:(ReqReusltBlock)result;
 
+/**
+ *  发送一个POST请求
+ *  消息列表
+ */
++ (void)ReqMsgsWithParams:(id)params result:(ReqReusltBlock)result;
 
 /**
  *  发送一个POST请求

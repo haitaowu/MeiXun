@@ -54,6 +54,7 @@
 		BE8E0B4A1F5AB8BA00E4B86A /* ChargeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E0B491F5AB8BA00E4B86A /* ChargeListTableViewController.m */; };
 		BE8E9D5B1FEA7A96001DC9D4 /* HTAddedCartAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE8E9D591FEA7A96001DC9D4 /* HTAddedCartAlertView.xib */; };
 		BE8E9D5C1FEA7A96001DC9D4 /* HTAddedCartAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E9D5A1FEA7A96001DC9D4 /* HTAddedCartAlertView.m */; };
+		BE8E9D5F1FEA8547001DC9D4 /* MsgListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8E9D5D1FEA8546001DC9D4 /* MsgListTableViewController.m */; };
 		BE96502C1F4CF0BC004395D2 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96502A1F4CF0BC004395D2 /* ADViewController.m */; };
 		BE96502D1F4CF0BC004395D2 /* ADViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE96502B1F4CF0BC004395D2 /* ADViewController.xib */; };
 		BEA696D21F5C444A00F4D7A9 /* DialogViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BEA696D11F5C444A00F4D7A9 /* DialogViewModel.m */; };
@@ -171,6 +172,8 @@
 		BE8E9D581FEA7A96001DC9D4 /* HTAddedCartAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTAddedCartAlertView.h; sourceTree = "<group>"; };
 		BE8E9D591FEA7A96001DC9D4 /* HTAddedCartAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTAddedCartAlertView.xib; sourceTree = "<group>"; };
 		BE8E9D5A1FEA7A96001DC9D4 /* HTAddedCartAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTAddedCartAlertView.m; sourceTree = "<group>"; };
+		BE8E9D5D1FEA8546001DC9D4 /* MsgListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgListTableViewController.m; sourceTree = "<group>"; };
+		BE8E9D5E1FEA8546001DC9D4 /* MsgListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgListTableViewController.h; sourceTree = "<group>"; };
 		BE9650291F4CF0BC004395D2 /* ADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADViewController.h; sourceTree = "<group>"; };
 		BE96502A1F4CF0BC004395D2 /* ADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewController.m; sourceTree = "<group>"; };
 		BE96502B1F4CF0BC004395D2 /* ADViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADViewController.xib; sourceTree = "<group>"; };
@@ -598,6 +601,8 @@
 		BE63E6F41F3DF2F000E6CC48 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BE8E9D5E1FEA8546001DC9D4 /* MsgListTableViewController.h */,
+				BE8E9D5D1FEA8546001DC9D4 /* MsgListTableViewController.m */,
 				BEE23B861F404DF700BAA66E /* MeTableViewController.h */,
 				BEE23B871F404DF700BAA66E /* MeTableViewController.m */,
 				BEE23B891F408C0A00BAA66E /* AccSettingTableViewController.h */,
@@ -914,6 +919,7 @@
 				BE58D11E1F5E89C50090E17F /* SetPwdTableViewController.m in Sources */,
 				BEF9FC541F41E11300469DB3 /* BindingAccTableViewController.m in Sources */,
 				BEF869B11F4BF9F800F5E08F /* RecordModel.m in Sources */,
+				BE8E9D5F1FEA8547001DC9D4 /* MsgListTableViewController.m in Sources */,
 				BE3951671F46BE0300872662 /* HanyuPinyinOutputFormat.m in Sources */,
 				BEE23B7E1F3FF70F00BAA66E /* EnterPwdTableViewController.m in Sources */,
 				BE3951B81F47C5C100872662 /* LoadImgOperation.m in Sources */,

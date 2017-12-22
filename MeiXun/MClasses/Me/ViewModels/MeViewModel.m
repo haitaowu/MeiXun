@@ -128,5 +128,17 @@
     }];
 }
 
-
+/*
+*  发送一个POST请求
+*  消息列表
+*/
++ (void)ReqMsgsWithParams:(id)params result:(ReqReusltBlock)result
+{
+    [MNetworkUtil POSTWithURL:kMessageUrl params:params reqSuccess:^(id data) {
+        result(ReqResultSuccType,data);
+    } reqFail:^(NSString *msg) {
+        [SVProgressHUD showInfoWithStatus:msg];
+        result(ReqResultFailType,msg);
+    }];
+}
 @end

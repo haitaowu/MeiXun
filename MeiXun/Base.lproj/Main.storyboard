@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mIr-de-aTn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mIr-de-aTn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -316,12 +316,44 @@
                                             <segue destination="1QL-xc-eIg" kind="show" id="8sO-Lh-Pko"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NYF-Y4-jlu">
+                                        <rect key="frame" x="0.0" y="429" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NYF-Y4-jlu" id="3Z9-RL-h6A">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_message" translatesAutoresizingMaskIntoConstraints="NO" id="Zqz-Cg-v1b">
+                                                    <rect key="frame" x="16" y="8.5" width="27" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="27" id="cBS-Qj-1B9"/>
+                                                        <constraint firstAttribute="width" secondItem="Zqz-Cg-v1b" secondAttribute="height" multiplier="1:1" id="cga-x5-eev"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="系统消息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4A-wm-DoG">
+                                                    <rect key="frame" x="51" y="12" width="66" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="v4A-wm-DoG" firstAttribute="leading" secondItem="Zqz-Cg-v1b" secondAttribute="trailing" constant="8" id="LkO-JO-FjX"/>
+                                                <constraint firstItem="v4A-wm-DoG" firstAttribute="centerY" secondItem="Zqz-Cg-v1b" secondAttribute="centerY" id="WYp-uZ-WhG"/>
+                                                <constraint firstItem="Zqz-Cg-v1b" firstAttribute="centerY" secondItem="3Z9-RL-h6A" secondAttribute="centerY" id="aSh-n0-zRj"/>
+                                                <constraint firstItem="Zqz-Cg-v1b" firstAttribute="leading" secondItem="3Z9-RL-h6A" secondAttribute="leading" constant="16" id="pHJ-4e-l45"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Tpj-UF-jiT" kind="show" id="cFs-Eb-7q1"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="VoL-VY-3BA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ITF-YG-ta0">
-                                        <rect key="frame" x="0.0" y="465" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="509" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ITF-YG-ta0" id="Epd-yp-a25">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1661,12 +1693,42 @@
             </objects>
             <point key="canvasLocation" x="2108" y="2804"/>
         </scene>
+        <!--充值明细-->
+        <scene sceneID="w3c-ml-hoS">
+            <objects>
+                <tableViewController id="Tpj-UF-jiT" customClass="MsgListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Cdf-EI-wTD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kq0-TP-bTk">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kq0-TP-bTk" id="xyj-6c-Pk9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Tpj-UF-jiT" id="ZfE-4M-HpS"/>
+                            <outlet property="delegate" destination="Tpj-UF-jiT" id="orb-c4-Ztf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="充值明细" id="OLZ-eD-rTF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bte-js-uxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3246" y="204"/>
+        </scene>
     </scenes>
     <resources>
         <image name="SeparatorLinePixel" width="4" height="4"/>
         <image name="aboutusIcon" width="60" height="60"/>
         <image name="add_user_icon" width="30" height="30"/>
         <image name="charge_sucss" width="128" height="128"/>
+        <image name="icon_message" width="27" height="27"/>
         <image name="me_cardBg" width="762" height="432"/>
         <image name="me_header_bg" width="750" height="280"/>
         <image name="me_user_avatar" width="49" height="49"/>
