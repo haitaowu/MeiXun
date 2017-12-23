@@ -354,7 +354,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Tpj-UF-jiT" kind="show" id="cFs-Eb-7q1"/>
+                                            <segue destination="Tpj-UF-jiT" kind="show" identifier="msgSegue" id="cFs-Eb-7q1"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1753,8 +1753,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="美讯提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYl-Uy-c0c">
-                                                    <rect key="frame" x="16" y="11" width="74" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" red="0.34901960780000002" green="0.3411764706" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1808,6 +1808,7 @@
                     <connections>
                         <outlet property="contentLabel" destination="CHZ-I8-ozA" id="ucp-4N-gPb"/>
                         <outlet property="dateLabel" destination="fLA-Mt-8Yj" id="ekn-vT-hNT"/>
+                        <outlet property="titleLabel" destination="IYl-Uy-c0c" id="OFQ-sE-sjq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQV-HB-25M" userLabel="First Responder" sceneMemberID="firstResponder"/>

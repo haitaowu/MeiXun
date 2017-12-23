@@ -16,4 +16,5 @@ typedef void(^DialogNumberBlock) (NSString *phoneNum);
 @property (nonatomic,copy) DialogNumberBlock dialogBlock;
 + (MKeyboard*)showMKeyboard;
 - (void)showView;
+- (void)disappearView;
 @end

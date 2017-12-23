@@ -23,13 +23,29 @@
     if (@available(iOS 11,*)) {
         self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recivedMsg) name:kRecivedUmengNotifcation object:nil];
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self reqUserInfo];
+}
+
+#pragma mark - selectors
+- (void)recivedMsg
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier:@"msgSegue" sender:nil];
+    });
 }
 
 #pragma mark - requset server

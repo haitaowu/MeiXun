@@ -14,6 +14,8 @@
 #import "UMessage.h"
 
 
+#define kUmengAliasType             @"MX_type_user_phone"
+
 @interface AppDelegate ()<UITabBarControllerDelegate,UNUserNotificationCenterDelegate>
 
 @end
@@ -84,6 +86,7 @@
         [blockSelf showMainTabView];
         [[MDataUtil shareInstance] archiveContactsToLocal];
     }];
+    
 }
 
 
@@ -122,6 +125,9 @@
 //重新绑定切换手机号码成功
 - (void)logoutSuccess
 {
+    MAccModel *model = [MDataUtil shareInstance].accModel;
+    [UMessage removeAlias:model.mobile type:kUmengAliasType response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+    }];
     [[MDataUtil shareInstance] archiveAccModel:nil];
     [self setupUnLoginUI];
 }
@@ -136,6 +142,12 @@
 - (void)loginSuccess
 {
     [self showMainTabView];
+    MAccModel *model = [MDataUtil shareInstance].accModel;
+    [UMessage addAlias:model.mobile type:kUmengAliasType response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+        if (error) {
+            HTLog(@"add alias error = %@",error);
+        }
+    }];
  
 }
 
@@ -214,6 +226,13 @@
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
         
+//        id rootController = self.window.rootViewController;
+//        if ([rootController isKindOfClass:[MTabbarController class]]) {
+//            MTabbarController *tabbarControl = (MTabbarController*)rootController;
+//            tabbarControl.selectedIndex = 2;
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kRecivedUmengNotifcation object:nil];
+//        }
+//
     }else{
         //应用处于前台时的本地推送接受
     }
@@ -228,6 +247,16 @@
         //应用处于后台时的远程推送接受
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
+        id rootController = self.window.rootViewController;
+        if ([rootController isKindOfClass:[MTabbarController class]]) {
+            MTabbarController *tabbarControl = (MTabbarController*)rootController;
+            if (tabbarControl.selectedIndex == 0) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:kDialogRecivedUmengNotifcation object:nil];
+            }else{
+                tabbarControl.selectedIndex = 2;
+                [[NSNotificationCenter defaultCenter] postNotificationName:kRecivedUmengNotifcation object:nil];
+            }
+        }
         
     }else{
         //应用处于后台时的本地推送接受

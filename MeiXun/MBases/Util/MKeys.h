@@ -58,6 +58,9 @@
 #define     kAppWillBecomeInActiveNoti                      @"kAppWillBecomeInActiveNoti"
 #define     kAppWillEnterForegroundNoti                     @"kAppWillEnterForegroundNoti"
 
+#define     kRecivedUmengNotifcation                     @"kRecivedUmengNotifcation"
+#define     kDialogRecivedUmengNotifcation         @"kDialogRecivedUmengNotifcation"
+
 
 
 

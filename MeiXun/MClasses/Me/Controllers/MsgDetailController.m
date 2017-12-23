@@ -10,6 +10,7 @@
 
 
 @interface MsgDetailController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (nonatomic,strong)NSArray *dataArray;
@@ -52,6 +53,11 @@
 - (void)setupUI
 {
     if (self.msgInfo != nil) {
+        NSString *title = [self.msgInfo objectForKey:@"messageTitle"];
+        if (title != nil) {
+            self.titleLabel.text = title;
+        }
+        
         NSString *messageContent = [self.msgInfo objectForKey:@"messageContent"];
         if (messageContent != nil) {
             self.contentLabel.text = messageContent;

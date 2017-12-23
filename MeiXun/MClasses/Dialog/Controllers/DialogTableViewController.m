@@ -47,6 +47,7 @@ static NSString *RecordCellID = @"RecordCellID";
     [super viewWillAppear:animated];
     [self setupBase];
     [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recivedNotificationMsg) name:kDialogRecivedUmengNotifcation object:nil];
 }
 
 #warning 为什么将rootViewController 设置为登录界面时不调用此方法，但是登录成功之后（会重置rootViewController）调用了此方法4次
@@ -146,6 +147,13 @@ static NSString *RecordCellID = @"RecordCellID";
 
 
 #pragma mark - selectors
+- (void)recivedNotificationMsg
+{
+    [self.keyboard disappearView];
+    self.tabBarController.selectedIndex = 2;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRecivedUmengNotifcation object:nil];
+}
+
 - (void)appWillBecomForeg
 {
     [self.tableView reloadData];
