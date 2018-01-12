@@ -151,7 +151,9 @@ static NSString *RecordCellID = @"RecordCellID";
 {
     [self.keyboard disappearView];
     self.tabBarController.selectedIndex = 2;
-    [[NSNotificationCenter defaultCenter] postNotificationName:kRecivedUmengNotifcation object:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRecivedUmengNotifcation object:nil];
+    });
 }
 
 - (void)appWillBecomForeg
@@ -181,6 +183,7 @@ static NSString *RecordCellID = @"RecordCellID";
     self.cellEditEnable = !self.cellEditEnable;
     [self updateNavigationBarItemState];
 }
+
 
 - (void)updateNavigationBarItemState
 {

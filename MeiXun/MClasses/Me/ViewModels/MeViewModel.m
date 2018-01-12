@@ -134,9 +134,9 @@
 */
 + (void)ReqMsgsWithParams:(id)params result:(ReqReusltBlock)result
 {
-    NSString *baseUrl = @"http://analysis.vicp.net:8090/mxc-api/rest/messageService/getUserMessages";
-//    [MNetworkUtil POSTWithURL:kMessageUrl params:params reqSuccess:^(id data) {
-    [MNetworkUtil POSTWithURL:baseUrl params:params reqSuccess:^(id data) {
+//    NSString *baseUrl = @"http://analysis.vicp.net:8090/mxc-api/rest/messageService/getUserMessages";
+    [MNetworkUtil POSTWithURL:kMessageUrl params:params reqSuccess:^(id data) {
+//    [MNetworkUtil POSTWithURL:baseUrl params:params reqSuccess:^(id data) {
         NSArray *list = data[@"messageList"];
         result(ReqResultSuccType,list);
     } reqFail:^(NSString *msg) {

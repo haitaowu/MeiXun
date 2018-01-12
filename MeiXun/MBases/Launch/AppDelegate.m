@@ -43,6 +43,17 @@
 //    HTLog(@"location = %@",locationStr);
     
     [self setupUmengWithOptions:launchOptions];
+    
+    if (launchOptions) {
+        NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (userInfo != nil) {
+            if([[MDataUtil shareInstance] userIsLogin] == YES){
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kDialogRecivedUmengNotifcation object:nil userInfo:userInfo];
+                });
+            }
+        }
+    }
     return YES;
 }
 

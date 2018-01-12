@@ -86,7 +86,7 @@
 {
     [SVProgressHUD showWithStatus:@"加载产品信息中..."];
     // 7.这里的com.mei.myi就对应着苹果后台的商品ID,他们是通过这个ID进行联系的。
-    NSArray *product = @[@"com.mei.mer",@"com.mei.myi"];
+    NSArray *product = @[@"com.mei.myi"];
     NSSet *nsset = [NSSet setWithArray:product];
     // 8.初始化请求
     SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:nsset];
